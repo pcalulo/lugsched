@@ -9,6 +9,11 @@ class University(models.Model):
 	def __unicode__(self):
 		return self.name
 
+	class Meta:
+		# If we didn't do this, the plural name shown in the admin site
+		# would be "Universitys"
+		verbose_name_plural = 'Universities'
+
 
 class UserProfile(models.Model):
 	email = models.CharField(max_length=128)
@@ -31,7 +36,7 @@ class Course(models.Model):
 	university = models.ForeignKey(University)
 
 	def __unicode__(self):
-		return '%s: %s' % (self.code, self.description)
+		return self.code
 
 
 class Schedule(models.Model):
@@ -65,4 +70,8 @@ class Meeting(models.Model):
 class Enrollment(models.Model):
 	schedule = models.ForeignKey(Schedule)
 	section = models.ForeignKey(Section)
+	
+	def __unicode__(self):
+		return unicode(self.section)
+		
 
