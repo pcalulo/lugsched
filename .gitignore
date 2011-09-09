@@ -1,0 +1,8 @@
+# Vim stuff
+*.swp
+*.swo
+
+# Django stuff
+manage.py
+
+*.pyc
