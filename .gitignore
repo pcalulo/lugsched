@@ -4,5 +4,6 @@
 
 # Django stuff
 manage.py
+settings.py
 
 *.pyc
