@@ -62,6 +62,7 @@ class Meeting(models.Model):
 	section = models.ForeignKey(Section)
 	startTime = models.DateTimeField('start time')
 	endTime = models.DateTimeField('end time')
+	days = models.CharField(max_length=7)
 
 	def __unicode__(self):
 		return 'Meeting for %s' % self.section
