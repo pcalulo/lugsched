@@ -25,6 +25,7 @@ class EnrollmentInline(admin.StackedInline):
 	extra=3
 class ScheduleAdmin(admin.ModelAdmin):
 	inlines = [EnrollmentInline]
+	list_display = ['name', 'owner', 'university']
 
 admin.site.register(Schedule, ScheduleAdmin)
 

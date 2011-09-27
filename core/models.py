@@ -46,7 +46,7 @@ class Schedule(models.Model):
 	university = models.ForeignKey(University)
 
 	def __unicode__(self):
-		return '%s (owned by %s)' % (self.name, unicode(self.owner))
+		return '%s' % self.name
 
 
 class Section(models.Model):
