@@ -12,6 +12,21 @@ class UniversityHandler(BaseHandler):
 		else:
 			return base.all()
 
+class UniversityCourseHandler(BaseHandler):
+	allowed_methods = ('GET',)
+	fields = ('id', 'code', 'name', 'description')
+	model = Course
+
+	def read(self, request, uni_id, course_id=None):
+		if course_id:
+			if not isinstance(course_id, int):
+				return Course.objects.get(university__pk=uni_id, code=course_id)
+			else:
+				course = Course.objects.get(pk=course_id)
+		else:
+			return Course.objects.filter(university__pk=uni_id)
+		return None
+
 class UserProfileHandler(BaseHandler):
 	allowed_methods = ('GET',)
 	model = UserProfile
@@ -26,9 +41,12 @@ class CourseHandler(BaseHandler):
 	model = Course
 	exclude = ('university', 'id')
 
-	def read(self, request, course_id):
-		course = Course.objects.get(pk=course_id)
-		return course
+	def read(self, request, course_id=None, uni_id=None):
+		if course_id:
+			return Course.objects.get(pk=course_id)
+		elif uni_id:
+			return Course.objects.filter(university__pk=uni_id)
+		return None
 
 class ScheduleHandler(BaseHandler):
 	allowed_methods = ('GET',)

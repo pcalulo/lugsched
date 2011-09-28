@@ -3,12 +3,15 @@ from piston.resource import Resource
 from api.handlers import *
 
 uni_handler = Resource(UniversityHandler)
+uni_course_handler = Resource(UniversityCourseHandler)
 profile_handler = Resource(UserProfileHandler)
 course_handler = Resource(CourseHandler)
 schedule_handler = Resource(ScheduleHandler)
 
 urlpatterns = patterns('',
 	# University
+	(r'^university/(?P<uni_id>[^/]+)/courses/(?P<course_id>[^/]+)', uni_course_handler),
+	(r'^university/(?P<uni_id>[^/]+)/courses', uni_course_handler),
 	(r'^university/(?P<uni_id>[^/]+)/', uni_handler),
 	(r'^university/', uni_handler),
 
