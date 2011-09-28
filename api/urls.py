@@ -5,6 +5,7 @@ from api.handlers import *
 uni_handler = Resource(UniversityHandler)
 profile_handler = Resource(UserProfileHandler)
 course_handler = Resource(CourseHandler)
+schedule_handler = Resource(ScheduleHandler)
 
 urlpatterns = patterns('',
 	# University
@@ -17,4 +18,7 @@ urlpatterns = patterns('',
 
 	# Course
 	(r'^course/(?P<course_id>[^/]+)/', course_handler),
+
+	# Schedule
+	(r'^schedule/(?P<schedule_id>[^/]+)/', schedule_handler),
 )

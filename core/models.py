@@ -57,6 +57,22 @@ class Section(models.Model):
 	def __unicode__(self):
 		return '%s %s' % (self.course.code, self.name)
 
+	def to_dict(self):
+		sDict = {}
+		meetings = self.meeting_set.all()
+		cleanedMeetings = []
+
+		# We need to remove some Django stuff that gets serialized along with the
+		# rest of the data
+		for meeting in meetings:
+			cleanedMeetings.append(meeting.to_dict())
+
+		sDict['meetings'] = cleanedMeetings
+		sDict['section'] = self.name
+		sDict['courseCode'] = self.course.code
+		sDict['courseName'] = self.course.name
+		return sDict
+
 
 class Meeting(models.Model):
 	section = models.ForeignKey(Section)
@@ -66,6 +82,13 @@ class Meeting(models.Model):
 
 	def __unicode__(self):
 		return 'Meeting for %s' % self.section
+
+	def to_dict(self):
+		mDict = {}
+		mDict['startTime'] = self.startTime
+		mDict['endTime'] = self.endTime
+		mDict['days'] = self.days
+		return mDict
 
 
 class Enrollment(models.Model):

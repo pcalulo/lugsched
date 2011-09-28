@@ -29,3 +29,21 @@ class CourseHandler(BaseHandler):
 	def read(self, request, course_id):
 		course = Course.objects.get(pk=course_id)
 		return course
+
+class ScheduleHandler(BaseHandler):
+	allowed_methods = ('GET',)
+	model = Schedule
+	fields = ('university', 'creationDate', 'name', 'classes')
+	
+	def read(self, request, schedule_id):
+		schedule = Schedule.objects.get(pk=schedule_id)
+
+		enrollments = Enrollment.objects.filter(schedule=schedule)
+		classes = []
+		for enrollment in enrollments:
+			section = enrollment.section.to_dict()
+			classes.append(section)
+
+		schedule.classes = classes
+		return schedule
+
