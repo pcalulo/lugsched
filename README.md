@@ -16,10 +16,10 @@ forever-alone is currently...
 
  * being rewritten from the ground up, to be independent of Google App Engine
 
-This is being done as we are not comfortable with the potential lock-in that
-we would experience should we continue in the original, App Engine-hosted
-web app. The rewrite is expected to go far quicker than the initial development,
-as the problems have already been discovered and sorted out before.
+We are performing this rewrite as we are not comfortable with the potential lock-in
+that we would experience should we continue with the original, GAE-hosted web app.
+The rewrite is expected to go faster and more smoothly than the initial development,
+as a lot of the design has been ironed out.
 
 Credit where credit is due
 --------------------------
