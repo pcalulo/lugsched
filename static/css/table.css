@@ -1,0 +1,48 @@
+table {
+	border-collapse: collapse;
+}
+
+td {
+	padding: 5px 20px 5px 20px
+}
+
+div.searchResultsBox {
+	border-radius: 5px;
+	border-style: solid;
+	border-color: #DDFFDD;
+	background-color: #DDFFDD;
+	width: 300px;
+}
+
+div.shareBox {
+	border-radius: 5px;
+	border-style: solid;
+	border-color: #DDFFDD;
+	background-color: #DDFFDD;
+	position: relative;
+	margin: 10px 10px 10px 27px;
+	display: none;
+	width: 400px;
+}
+
+div.menuItem {
+	line-height: 150%;
+	background-color: #FFFFFF;
+}
+
+div.menuItem-hover {
+	background-color: #DDFFDD;
+}
+
+tr.tableItem-hover {
+	background-color: #DDFFDD;
+}
+
+div.alignRight {
+	float: right;
+}
+
+p#no-courses-text {
+	display: none;
+}
+

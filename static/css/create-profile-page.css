@@ -1,0 +1,23 @@
+
+div#otherUniversityMessage {
+	position: relative;
+	top: 5px;
+}
+
+div#universityList {
+	padding-top: 10px;
+}
+
+div#universitySelectedMessage {
+	display: none;
+}
+
+div#addUniTip {
+	padding-top: 10px;
+	display: none;
+}
+
+input#uniSearchBox {
+	width: 50%;
+	max-width: 100%;
+}

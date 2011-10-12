@@ -1,0 +1,96 @@
+
+* {
+	font-family: Droid Sans, sans-serif;
+}
+
+h1 {
+	font-size: 1.3em;
+	font-weight: normal;
+}
+
+h2 {
+	font-size: 1.2em;
+	font-weight: normal;
+}
+
+.slim {
+	font-weight: normal;
+}
+
+p {
+	line-height: 150%;
+}
+
+label {
+	font-size: 0.8em;
+}
+
+.short-text {
+	line-height: 80%;
+}
+
+.faded-out {
+	color: #999999;
+}
+
+a:visited {
+	color: blue;
+}
+
+.top {
+	
+	width: 100%;
+}
+
+div.header {
+	margin: 0 auto;
+	float: center;
+	min-width: 300px;
+	max-width: 800px;
+	font-size: 10pt;
+}
+
+#signin {
+	float: right;
+}
+
+#apptitle {
+	float: left;
+}
+
+div.body {
+	margin: 0 auto;
+	float: center;
+	min-width: 300px;
+	max-width: 800px;
+}
+
+div.app_description {
+	float: left;
+	text-align: justify;
+}
+
+div.side-image-right {
+	float: right;
+}
+
+div.footer {
+	position: relative;
+	margin: 0 auto;
+	text-align: center;
+	width: 95%;
+	font-size: 6pt;
+	/*clear: both;*/
+}
+
+div.force-narrow {
+	width: 500px;
+}
+
+.fake-h1 {
+	font-size: 1.3em;
+}
+
+.extra-line-spacing {
+	line-height: 150%
+}

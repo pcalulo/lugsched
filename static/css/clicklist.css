@@ -1,0 +1,54 @@
+
+.clicklist-item {
+	border-style: solid;
+	border-width: 1px;
+	border-bottom-width: 0px;
+	border-color: #BBBBBB;
+	padding: 5px 10px 5px 10px;
+	min-width: 50px;
+	max-width: 100%;
+}
+
+.clicklist-item-hover {
+	background-color: #DDFFDD;
+}
+
+.clicklist-item-bottom {
+	border-bottom-width: 1px;
+}
+
+.clicklist-maintext {
+	font-weight: bold;
+	/* Have an ellipsis for overly-long text */
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.clicklist-subtext {
+	font-size: 0.6em;
+	position: relative;
+	bottom: 2px;
+	/* 100% width makes the subtext block clicks to the item button */
+	max-width: 75%; 
+	/* Have an ellipsis for overly-long text */
+	/*white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;*/
+}
+
+.clicklist-righttext {
+	float: right;
+}
+
+.clicklist-item-button {
+	float: right;
+	position: relative;
+	bottom: 20px;
+	left: 6px;
+}
+
+.clicklist-empty-text {
+	color: #999999;
+}
+
