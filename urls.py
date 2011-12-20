@@ -16,4 +16,9 @@ urlpatterns = patterns('',
 	url(r'^admin/', include(admin.site.urls)),
 	(r'^api/', include('falone.api.urls')),
 	(r'^$', include('falone.appbase.urls')),
+
+    # Redirect requests for /favicon.ico to its true location
+    # See http://www.codekoala.com/blog/2008/setup-faviconico-django/
+    (r'^favicon\.ico', 'django.views.generic.simple.redirect_to', 
+        {'url': '/static/images/favicon.ico'}),
 )
