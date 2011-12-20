@@ -24,12 +24,12 @@ as a lot of the design has been ironed out.
 
 The Django Apps
 ---------------
-*core* - Low-level, inner workings stuff belongs in here. Mainly the models.
+**core** - Low-level, inner workings stuff belongs in here. Mainly the models.
 
-*appbase* - Implements the main user-facing functionality of forever-alone, such as
+**appbase** - Implements the main user-facing functionality of forever-alone, such as
 creating/viewing/editing/deleting schedules. (May get split off into further apps if needed)
 
-*api* - Provides the RESTful API, through which other apps can access forever-alone.
+**api** - Provides the RESTful API, through which other apps can access forever-alone.
 
 
 
