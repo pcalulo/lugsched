@@ -73,7 +73,14 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "static/",
+
+
+    # This relative path is included for development purposes. This most likely
+    # won't work when the app's running live.
+    'static/',
+
+    # Store our static files under /opt/
+    '/opt/falone/static/'
 )
 
 # List of finder classes that know how to find static files in
@@ -109,9 +116,12 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 
-    # NOTE: You'll probably want to change this to an absolute path when you deploy
-    # NOTE 2: Oddly enough, this static path seems to work...
-    "templates/",
+    # This relative path is included for development purposes. This most likely
+    # won't work when the app's running live.
+    'templates/',
+
+    # Store our templates under /opt/
+    '/opt/falone/templates/',
 )
 
 INSTALLED_APPS = (
@@ -127,7 +137,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
 
     # Our own stuff
-    'appbase'
+    'appbase',
 )
 
 # A sample logging configuration. The only tangible logging
