@@ -138,6 +138,7 @@ INSTALLED_APPS = (
 
     # Our own stuff
     'appbase',
+    'auth',
 )
 
 # A sample logging configuration. The only tangible logging
