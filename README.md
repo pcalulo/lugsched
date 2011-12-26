@@ -26,6 +26,8 @@ The Django Apps
 ---------------
 **core** - Low-level, inner workings stuff belongs in here. Mainly the models.
 
+**auth** - Handles user login, logout, and registration.
+
 **appbase** - Implements the main user-facing functionality of forever-alone, such as
 creating/viewing/editing/deleting schedules. (May get split off into further apps if needed)
 
