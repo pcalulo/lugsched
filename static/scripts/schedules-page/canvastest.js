@@ -1,6 +1,7 @@
 
 var GRID_COL_WIDTH = 120;
 var X_OFFSET = 45.5;
+var Y_OFFSET = 5.5;
 
 function canvas_main() {
     var canvas = document.getElementById('tutorial');
@@ -10,28 +11,28 @@ function canvas_main() {
     // Draw vertical lines
     for (var i = 0; i <= days.length; i++) {
         ctx.beginPath();
-        ctx.moveTo((i * GRID_COL_WIDTH) + X_OFFSET, 20);
-        ctx.lineTo((i * GRID_COL_WIDTH) + X_OFFSET, 520)
+        ctx.moveTo((i * GRID_COL_WIDTH) + X_OFFSET, Y_OFFSET);
+        ctx.lineTo((i * GRID_COL_WIDTH) + X_OFFSET, 510)
         ctx.stroke();
     }
 
     // Draw header border lines
     for (var i = 0; i <= 32; i += 32) {
         ctx.beginPath()
-        ctx.moveTo(X_OFFSET, i + 20.5);
-        ctx.lineTo(X_OFFSET + (GRID_COL_WIDTH * days.length), i + 20.5);
+        ctx.moveTo(X_OFFSET, i + Y_OFFSET);
+        ctx.lineTo(X_OFFSET + (GRID_COL_WIDTH * days.length), i + Y_OFFSET);
         ctx.stroke();
     }
 
     ctx.beginPath()
-    ctx.moveTo(0, 20.5);
-    ctx.lineTo(X_OFFSET, 20.5);
+    ctx.moveTo(0, Y_OFFSET);
+    ctx.lineTo(X_OFFSET, Y_OFFSET);
     ctx.stroke();
 
     // Draw text
     ctx.font = '12pt Droid Sans';
     for (var i = 0; i < days.length; i++) {
-        ctx.fillText(days[i], X_OFFSET + 10 + (GRID_COL_WIDTH * i), 42);
+        ctx.fillText(days[i], X_OFFSET + 10 + (GRID_COL_WIDTH * i), Y_OFFSET + 22);
     }
 
     ctx.font = '8pt Droid Sans';
