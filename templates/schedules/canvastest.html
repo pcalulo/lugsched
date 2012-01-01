@@ -1,0 +1,16 @@
+{% extends "appbase/base.html" %}
+
+{% block subpage_title %}
+    Canvas test -
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ STATIC_URL }}scripts/libs/jquery.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}scripts/schedules-page/canvastest.js" type="text/javascript"></script>
+{% endblock %}
+
+{% block content %}
+    <h1>Below this h1 is a canvas</h1>
+    <canvas id="tutorial" width="150" height="150">
+    </canvas>
+{% endblock %}
