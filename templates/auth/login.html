@@ -1,0 +1,17 @@
+{% extends "appbase/base.html" %}
+
+{% block subpage_title %}
+Log In -
+{% endblock %}
+
+{% block content %}
+    {% if form.errors %}
+        <p class="error">Oops, invalid username or password!</p>
+    {% endif %}
+
+    <form action="{% url django.contrib.auth.views.login %}?next=/" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Log In" />
+    </form>
+{% endblock %}

@@ -163,3 +163,7 @@ LOGGING = {
         },
     }
 }
+
+# falone's login URL
+LOGIN_URL = '/accounts/login/'
+

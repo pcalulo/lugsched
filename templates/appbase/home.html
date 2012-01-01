@@ -1,53 +1,26 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/styles.css">
-        {% if isAdmin %}
-        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/message-boxes.css">
-        {% endif %}
-        <title>Forever Alone</title>
-    </head>
-    <body>
-        <!-- header -->
-        <div class="header">
-            <div id="apptitle">
-                <b>Forever Alone</b>
-            </div>
-            <div id="signin">
-                {% block login %}
-                    <a href="/accounts/register/">Register</a> |
-                    <a href="/accounts/login/">Log In</a>
-                {% endblock %}
-            </div>
-        </div>
+{% extends "appbase/base.html" %}
+{% block content %}
+    <div class="app_description">
+        <h1>College is fun. Being by yourself isn't.</h1>
+        <p>
+            Are the schedules of you and your friends drifting away from each other, with your courses no longer matching up,
+            but you still want to meet up often and do something fun? <b>That's what Forever Alone is for.</b>
+        </p>
+        <h1>Sharing is caring!</h1>
+        <p>
+            Create your schedule, share them with your friends, and let Forever Alone figure out when you <i>won't</i>
+            be forever alone. It's that simple!
+        </p>
+        <h1>And all you need is a Google Account! <sup>(and, umm, friends...)<sup></h1>
+        <p>
+            What are you waiting for? Log in and get started!
+        </p>
         <br clear="both">
-        <hr>
-        
-        <!-- body -->
-        <div class="body">
-            <div class="app_description">
-                <h1>College is fun. Being by yourself isn't.</h1>
-                <p>
-                    Are the schedules of you and your friends drifting away from each other, with your courses no longer matching up,
-                    but you still want to meet up often and do something fun? <b>That's what Forever Alone is for.</b>
-                </p>
-                <h1>Sharing is caring!</h1>
-                <p>
-                    Create your schedule, share them with your friends, and let Forever Alone figure out when you <i>won't</i>
-                    be forever alone. It's that simple!
-                </p>
-                <h1>And all you need is a Google Account! <sup>(and, umm, friends...)<sup></h1>
-                <p>
-                    What are you waiting for? Log in and get started!
-                </p>
-                <br clear="both">
-                <div class="footer">
-                    This web app was specially made for people who suffer from FAS (Forever Alone Syndrome).
-                    FAS is a disease that lets people do the 'TM' Forever Alone face, experience sadness, and suffer from The Great Depression.
-                    This web app will greatly help in curing the disease FAS.<sup>[<a href="/">citation needed</a>]</sup>. This paragraph may
-                    or may not be intended to be completely meaningless.
-                </div>
-            </div>
+        <div class="footer">
+            This web app was specially made for people who suffer from FAS (Forever Alone Syndrome).
+            FAS is a disease that lets people do the 'TM' Forever Alone face, experience sadness, and suffer from The Great Depression.
+            This web app will greatly help in curing the disease FAS.<sup>[<a href="/">citation needed</a>]</sup>. This paragraph may
+            or may not be intended to be completely meaningless.
         </div>
-    </body>
-</html>
+    </div>
+{% endblock %}
