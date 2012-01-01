@@ -28,10 +28,11 @@ The Django Apps
 
 **auth** - Handles user login, logout, and registration.
 
-**appbase** - Implements the main user-facing functionality of forever-alone, such as
-creating/viewing/editing/deleting schedules. (May get split off into further apps if needed)
+**appbase** - Implements the home page.
 
 **api** - Provides the RESTful API, through which other apps can access forever-alone.
+
+**schedules** - Provides the primary user-facing functionality of falone
 
 
 

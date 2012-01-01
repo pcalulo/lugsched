@@ -14,10 +14,11 @@ urlpatterns = patterns('',
 
 	# Uncomment the next line to enable the admin:
 	url(r'^admin/', include(admin.site.urls)),
-	(r'^api/', include('falone.api.urls')),
-	(r'^$', include('falone.appbase.urls')),
 
     (r'accounts/', include('falone.auth.urls')),
+	(r'^api/', include('falone.api.urls')),
+	(r'^schedules/', include('falone.schedules.urls')),
+	(r'^$', include('falone.appbase.urls')),
 
     # Redirect requests for /favicon.ico to its true location
     # See http://www.codekoala.com/blog/2008/setup-faviconico-django/
