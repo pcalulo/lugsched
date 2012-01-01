@@ -14,7 +14,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'falone',                      # Or path to database file if using sqlite3.
         'USER': 'root',                      # Not used with sqlite3.
-        # NOTE: Change this to match server config when you actually deploy this.
+        # DEPLOY-NOTE: Change this to match server config when you actually deploy this.
         'PASSWORD': 'notsecure',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
@@ -92,6 +92,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
+# DEPLOY-NOTE: Change this before going live!
 SECRET_KEY = '+d#sa&^px-zl$n-dhf_dyxsj5mtq37r3(n-j+sm!j+ji$wq25v'
 
 # List of callables that know how to import templates from various sources.
