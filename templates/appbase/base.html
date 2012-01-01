@@ -5,6 +5,15 @@
 		{% if isAdmin %}
 		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/message-boxes.css">
 		{% endif %}
+
+        {% block extra_css %}
+
+        {% endblock %}
+
+        {% block scripts %}
+
+        {% endblock %}
+
 		<title>
         {% block subpage_title %}
         {% endblock %}

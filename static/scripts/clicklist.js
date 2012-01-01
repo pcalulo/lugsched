@@ -49,8 +49,13 @@ ClickList.prototype.setSortFunction = function(sortFunc) {
 ClickList.prototype.updateItems = function() {
 	// Only the last element should have a bottom border, as having two
 	// adjacent bottom borders results in a thick, ugly line
-	this.div.find(".clicklist-item").removeClass("clicklist-item-bottom");
+    // This also adds the rounded bottom border edges
+	this.div.find(".clicklist-item-bottom").removeClass("clicklist-item-bottom");
 	this.div.find(".clicklist-item:last").addClass("clicklist-item-bottom");
+
+    // Only the top element should have rounded top edges
+    this.div.find(".clicklist-item-top").removeClass("clicklist-item-top")
+    this.div.find(".clicklist-item:first").addClass("clicklist-item-top")
 
 	this.div.find(".clicklist-item").hover(function() {
 		$(this).addClass("clicklist-item-hover");
