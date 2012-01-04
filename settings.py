@@ -138,6 +138,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
 
     # Our own stuff
+    'core',
     'appbase',
     'auth',
 )

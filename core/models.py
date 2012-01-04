@@ -76,8 +76,8 @@ class Section(models.Model):
 
 class Meeting(models.Model):
 	section = models.ForeignKey(Section)
-	startTime = models.DateTimeField('start time')
-	endTime = models.DateTimeField('end time')
+	startTime = models.TimeField('start time')
+	endTime = models.TimeField('end time')
 	days = models.CharField(max_length=7)
 
 	def __unicode__(self):

@@ -86,6 +86,14 @@ ScheduleDisplay.prototype.drawTimeMarkers = function() {
     ctx.restore();
 }
 
+ScheduleDisplay.prototype.createDummyCourses = function() {
+
+}
+
+ScheduleDisplay.prototype.drawCourses = function(courses) {
+    
+}
+
 ScheduleDisplay.prototype.drawChart = function() {
     var ctx = this.ctx;
     var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
