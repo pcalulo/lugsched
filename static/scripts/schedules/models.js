@@ -8,13 +8,14 @@ function University() {
 function Meeting() {
     this.startTime = new Date();
     this.endTime = new Date();
+    this.days = 'MH';
 
     this.startTime.setHours(8);
     this.startTime.setMinutes(0);
     this.endTime.setHours(9);
     this.endTime.setMinutes(30);
 
-    this.room = '';
+    this.room = 'G???';
 }
 
 function Section() {

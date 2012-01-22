@@ -134,7 +134,6 @@ ScheduleDisplay.prototype.drawChart = function() {
 
 ScheduleDisplay.prototype.addCourse = function(course) {
     this.courses.push(course);
-    this.drawCourses();
 }
 
 ScheduleDisplay.prototype.drawCourses = function() {
@@ -142,12 +141,13 @@ ScheduleDisplay.prototype.drawCourses = function() {
     var startIndex, endIndex;
     var ctx = this.ctx
     ctx.save();
-    ctx.fillStyle = "rgba(190, 255, 190, 0.5)";
+    ctx.textAlign = 'left';
 
     for (var i = 0; i < courses.length; i++) {
         var course = courses[i];
+        console.log("Drawing course: " + course.code);
         for (var j = 0; j < course.section.meetings.length; j++) {
-            var meeting = course.section.meetings[i];
+            var meeting = course.section.meetings[j];
 
             // Use the hours as offsets - subtract 8 from them as we're using 8am as the
             // starting point right now.
@@ -161,12 +161,25 @@ ScheduleDisplay.prototype.drawCourses = function() {
 
             console.log("endIndex: " + endIndex);
 
+            // endIndex should be calculated before startIndex
+            // we need to perform this subtraction so the adjustment for
+            // time marker distance is properly computed.
+            endIndex = (endIndex - startIndex) * TIME_MARKER_Y_GAP;
+
             startIndex *= TIME_MARKER_Y_GAP;
             startIndex += TIME_MARKER_BASE_Y;
-            endIndex *= TIME_MARKER_Y_GAP;
 
             // Move the box up a bit, so its top edge is roughly aligned with the middle of the text
+            ctx.fillStyle = "rgba(190, 255, 190, 0.5)";
             ctx.fillRect(X_OFFSET, startIndex - 4, GRID_COL_WIDTH, endIndex);
+
+            // Draw the text
+            ctx.font = '12pt Droid Sans';
+            ctx.fillStyle = "rgba(0, 0, 0, 1)";
+            ctx.fillText(course.code, X_OFFSET + 4, startIndex + 16)
+            ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
+            ctx.font = '9pt Droid Sans';
+            ctx.fillText(meeting.room, X_OFFSET + 4, startIndex + 29)
         }
     }
 
