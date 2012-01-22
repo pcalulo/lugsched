@@ -7,6 +7,7 @@ var X_OFFSET = 45.5;
 var Y_OFFSET = 5.5;
 
 var TIME_MARKER_BASE_Y = Y_OFFSET + 52;
+var TIME_MARKER_Y_GAP = 40;
 
 function ScheduleDisplay(canvas) {
     if (!canvas) {
@@ -21,6 +22,7 @@ function ScheduleDisplay(canvas) {
     }
 
     this.canvas = canvas;
+    this.courses = [];
 
     // In case I carelessly use something like $("#chart-canvas") again...
     // (JQuery returns an array of matching objects, even if you give it an
@@ -77,7 +79,7 @@ ScheduleDisplay.prototype.drawTimeMarkers = function() {
 
     for (var i = 0; i < times.length; i++) {
         // Time markers are 40px apart
-        ctx.fillText(times[i], X_OFFSET - 3, TIME_MARKER_BASE_Y + (40 * i));
+        ctx.fillText(times[i], X_OFFSET - 3, TIME_MARKER_BASE_Y + (TIME_MARKER_Y_GAP * i));
     }
 
     // Restore the context we saved earlier, so the caller won't be using a
@@ -88,10 +90,6 @@ ScheduleDisplay.prototype.drawTimeMarkers = function() {
 
 ScheduleDisplay.prototype.createDummyCourses = function() {
 
-}
-
-ScheduleDisplay.prototype.drawCourses = function(courses) {
-    
 }
 
 ScheduleDisplay.prototype.drawChart = function() {
@@ -129,8 +127,49 @@ ScheduleDisplay.prototype.drawChart = function() {
 
     // Let's see how this thing would look...
     ctx.fillStyle = "rgba(190, 255, 190, 0.5)"
-    ctx.fillRect(X_OFFSET, TIME_MARKER_BASE_Y - 8, GRID_COL_WIDTH, 60);
+    // ctx.fillRect(X_OFFSET, TIME_MARKER_BASE_Y - 8, GRID_COL_WIDTH, 60);
 
     ctx.restore()
+}
+
+ScheduleDisplay.prototype.addCourse = function(course) {
+    this.courses.push(course);
+    this.drawCourses();
+}
+
+ScheduleDisplay.prototype.drawCourses = function() {
+    var courses = this.courses;
+    var startIndex, endIndex;
+    var ctx = this.ctx
+    ctx.save();
+    ctx.fillStyle = "rgba(190, 255, 190, 0.5)";
+
+    for (var i = 0; i < courses.length; i++) {
+        var course = courses[i];
+        for (var j = 0; j < course.section.meetings.length; j++) {
+            var meeting = course.section.meetings[i];
+
+            // Use the hours as offsets - subtract 8 from them as we're using 8am as the
+            // starting point right now.
+            startIndex = meeting.startTime.getHours() - 8;
+            startIndex += meeting.startTime.getMinutes() / 60;
+
+            console.log("startIndex: " + startIndex);
+
+            endIndex = meeting.endTime.getHours() - 8;
+            endIndex += meeting.endTime.getMinutes() / 60;
+
+            console.log("endIndex: " + endIndex);
+
+            startIndex *= TIME_MARKER_Y_GAP;
+            startIndex += TIME_MARKER_BASE_Y;
+            endIndex *= TIME_MARKER_Y_GAP;
+
+            // Move the box up a bit, so its top edge is roughly aligned with the middle of the text
+            ctx.fillRect(X_OFFSET, startIndex - 4, GRID_COL_WIDTH, endIndex);
+        }
+    }
+
+    ctx.restore();
 }
 
