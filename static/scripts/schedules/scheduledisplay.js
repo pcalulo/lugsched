@@ -136,6 +136,23 @@ ScheduleDisplay.prototype.addCourse = function(course) {
     this.courses.push(course);
 }
 
+ScheduleDisplay.prototype.drawSingleMeetingBox = function(course, meeting, startIndex, endIndex, colOffset) {
+    var ctx = this.ctx;
+    ctx.save();
+
+    // Draw the box
+    ctx.fillRect(X_OFFSET + colOffset, startIndex - 4, GRID_COL_WIDTH, endIndex);
+    // Draw the text, making sure to add a bit of spacing
+    ctx.font = '12pt Droid Sans';
+    ctx.fillStyle = "rgba(0, 0, 0, 1)";
+    ctx.fillText(course.code, X_OFFSET + 4 + colOffset, startIndex + 16)
+    ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
+    ctx.font = '9pt Droid Sans';
+    ctx.fillText(meeting.room, X_OFFSET + 4 + colOffset, startIndex + 29)
+
+    ctx.restore();
+}
+
 ScheduleDisplay.prototype.drawCourses = function() {
     var courses = this.courses;
     var startIndex, endIndex;
@@ -148,6 +165,7 @@ ScheduleDisplay.prototype.drawCourses = function() {
         console.log("Drawing course: " + course.code);
         for (var j = 0; j < course.section.meetings.length; j++) {
             var meeting = course.section.meetings[j];
+            var colOffset;
 
             // Use the hours as offsets - subtract 8 from them as we're using 8am as the
             // starting point right now.
@@ -169,17 +187,39 @@ ScheduleDisplay.prototype.drawCourses = function() {
             startIndex *= TIME_MARKER_Y_GAP;
             startIndex += TIME_MARKER_BASE_Y;
 
-            // Move the box up a bit, so its top edge is roughly aligned with the middle of the text
+            // Draw the box(es)
+            // We make sure to move the box up a bit, so its top edge is roughly aligned with the
+            // middle of the text
             ctx.fillStyle = "rgba(190, 255, 190, 0.5)";
-            ctx.fillRect(X_OFFSET, startIndex - 4, GRID_COL_WIDTH, endIndex);
-
-            // Draw the text
-            ctx.font = '12pt Droid Sans';
-            ctx.fillStyle = "rgba(0, 0, 0, 1)";
-            ctx.fillText(course.code, X_OFFSET + 4, startIndex + 16)
-            ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
-            ctx.font = '9pt Droid Sans';
-            ctx.fillText(meeting.room, X_OFFSET + 4, startIndex + 29)
+            if (meeting.hasMondays) {
+                // This goes into the first column - no extra offset required
+                colOffset = 0;
+                this.drawSingleMeetingBox(course, meeting, startIndex, endIndex, colOffset);
+            }
+            if (meeting.hasTuesdays) {
+                colOffset = GRID_COL_WIDTH * 1;
+                this.drawSingleMeetingBox(course, meeting, startIndex, endIndex, colOffset);
+            }
+            if (meeting.hasWednesdays) {
+                colOffset = GRID_COL_WIDTH * 2;
+                this.drawSingleMeetingBox(course, meeting, startIndex, endIndex, colOffset);
+            }
+            if (meeting.hasThursdays) {
+                colOffset = GRID_COL_WIDTH * 3;
+                this.drawSingleMeetingBox(course, meeting, startIndex, endIndex, colOffset);
+            }
+            if (meeting.hasFridays) {
+                colOffset = GRID_COL_WIDTH * 4;
+                this.drawSingleMeetingBox(course, meeting, startIndex, endIndex, colOffset);
+            }
+            if (meeting.hasSaturdays) {
+                colOffset = GRID_COL_WIDTH * 5;
+                this.drawSingleMeetingBox(course, meeting, startIndex, endIndex, colOffset);
+            }
+            if (meeting.hasSundays) {
+                colOffset = GRID_COL_WIDTH * 6;
+                this.drawSingleMeetingBox(course, meeting, startIndex, endIndex, colOffset);
+            }
         }
     }
 

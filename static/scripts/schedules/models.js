@@ -9,7 +9,7 @@ function Meeting() {
     this.startTime = new Date();
     this.endTime = new Date();
 
-    this.hasMondays = false;
+    this.hasMondays = true;
     this.hasTuesdays = false;
     this.hasWednesdays = false;
     this.hasThursdays = false;
