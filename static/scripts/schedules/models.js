@@ -8,7 +8,14 @@ function University() {
 function Meeting() {
     this.startTime = new Date();
     this.endTime = new Date();
-    this.days = 'MH';
+
+    this.hasMondays = false;
+    this.hasTuesdays = false;
+    this.hasWednesdays = false;
+    this.hasThursdays = false;
+    this.hasFridays = false;
+    this.hasSaturdays = false;
+    this.hasSundays = false;
 
     this.startTime.setHours(8);
     this.startTime.setMinutes(0);
