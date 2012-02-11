@@ -6,6 +6,7 @@ Your Schedules -
 
 {% block extra_css %}
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/clicklist.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/schedules.css">
 {% endblock %}
 
 {% block scripts %}
@@ -18,7 +19,9 @@ Your Schedules -
 
 {% block content %}
     <h1>Your Current Schedule</h1>
-    <canvas id="schedule-canvas" width="770" height="500"></canvas>
+    <div class="canvas-container">
+        <canvas id="schedule-canvas" width="770" height="500"></canvas>
+    </div>
 
     <h1>Your Other Schedules</h1>
     <div class="list-test"></div>
