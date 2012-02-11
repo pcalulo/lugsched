@@ -3,5 +3,5 @@ from piston.resource import Resource
 from views import *
 
 urlpatterns = patterns('',
-	(r'^$', hello),
+	(r'^$', home_page),
 )
