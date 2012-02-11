@@ -12,10 +12,14 @@ Your Schedules -
     <script src="{{ STATIC_URL }}scripts/libs/jquery.js" type="text/javascript"></script>
     <script src="{{ STATIC_URL }}scripts/linkedlist.js" type="text/javascript"></script>
     <script src="{{ STATIC_URL }}scripts/clicklist.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}scripts/schedules/scheduledisplay.js" type="text/javascript"></script>
     <script src="{{ STATIC_URL }}scripts/schedules/list.js" type="text/javascript"></script>
 {% endblock %}
 
 {% block content %}
-    <h1>Your Schedules</h1>
+    <h1>Your Current Schedule</h1>
+    <canvas id="schedule-canvas" width="770" height="500"></canvas>
+
+    <h1>Your Other Schedules</h1>
     <div class="list-test"></div>
 {% endblock %}

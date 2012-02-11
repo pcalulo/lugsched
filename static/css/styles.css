@@ -37,6 +37,11 @@ a:visited {
 	color: blue;
 }
 
+/* Stuff for admins */
+a.admin-link {
+    color: red;
+}
+
 .top {
 	
 	width: 100%;

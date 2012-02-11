@@ -8,6 +8,8 @@ $(document).ready(function() {
        item.subText = "Hello, World!";
        clist.add(item);
     }
+
+    var sdisp = new ScheduleDisplay(document.getElementById("schedule-canvas"));
 });
 
 
