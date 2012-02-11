@@ -1,6 +1,11 @@
 {% extends "appbase/base.html" %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/home.css">
+{% endblock %}
 {% block content %}
     <div class="app_description">
+        <img src="http://placehold.it/800x170"></img>
+        <!--<img src="http://placekitten.com/800/200/"></img>-->
         <h1>College is fun. Being by yourself isn't.</h1>
         <p>
             Are the schedules of you and your friends drifting away from each other, with your courses no longer matching up,
