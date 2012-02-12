@@ -1,0 +1,17 @@
+
+Below are very important things to do before deploying the app to 
+EC2/Linode/wherever I decide to put it:
+
+ * Do a grep for "DEPLOY-NOTE". If you actually manage to forget how to do
+   so, here's what you should type:
+
+       grep "DEPLOY-NOTE" -r *
+
+    Make sure to do everything that comes up there.
+
+    Take note that the things that DEPLOY-NOTEs ask for should NOT go into
+    the Git repository. Otherwise, it would simply go into the repo and
+    wouldn't require extra deployment hassle.
+
+(add stuff here as needed)
+
