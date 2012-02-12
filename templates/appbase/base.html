@@ -15,9 +15,13 @@
         {% endblock %}
 
         <title>
-            {% block subpage_title %}
-            {% endblock %}
-            Forever Alone
+            {% if user.is_authenticated %}
+                {% block subpage_title %}
+                {% endblock %}
+                - Forever Alone
+            {% else %}
+                Forever Alone: College schedules done right
+            {% endif %}
         </title>
     </head>
     <body>
