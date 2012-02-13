@@ -23,5 +23,6 @@ urlpatterns = patterns('',
 	(r'^course/(?P<course_id>[^/]+)/', course_handler),
 
 	# Schedule
+	(r'^schedule/', schedule_handler),
 	(r'^schedule/(?P<schedule_id>[^/]+)/', schedule_handler),
 )

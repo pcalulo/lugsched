@@ -3,3 +3,7 @@ div.canvas-container {
     text-align: center;
 }
 
+.hidden {
+    display: none;
+}
+
