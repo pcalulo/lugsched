@@ -169,3 +169,6 @@ LOGGING = {
 # falone's login URL
 LOGIN_URL = '/accounts/login/'
 
+# Point to our user profile class. Required for user.get_profile() calls
+AUTH_PROFILE_MODULE = 'auth.UserProfile'
+

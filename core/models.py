@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class University(models.Model):
@@ -16,6 +17,7 @@ class University(models.Model):
 
 
 class UserProfile(models.Model):
+    user = models.OneToOneField(User);
     email = models.CharField(max_length=128)
     nickname = models.CharField(max_length=64)
     university = models.ForeignKey(University)
