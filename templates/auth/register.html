@@ -1,5 +1,9 @@
 {% extends "appbase/base.html" %}
 
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/register.css">
+{% endblock %}
+
 {% block subpage_title %}
 Create your account -
 {% endblock %}
@@ -9,7 +13,19 @@ Create your account -
 
     <form action="" method="post">
         {% csrf_token %}
+        <h2>Basic Information</h2>
         {{ form.as_p }}
+
+        <h2 class="no-bottom-margin">Your School</h2>
+        <span class="helptext extra-bottom-padding">
+            This information is used by Forever Alone to help organize your schedule.
+        </span>
+
+        <input type="text" size="50"></input>
+        <input type="button" value="Search"></input>
+
+        <br class="spacer"></br>
+
         <input type="submit" value="Register" />
     </form>
 {% endblock %}

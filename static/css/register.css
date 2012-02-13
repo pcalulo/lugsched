@@ -1,0 +1,28 @@
+
+p {
+    line-height: 90%;
+    padding: 0px;
+    margin-bottom: 10px;
+}
+
+span.helptext {
+    display: block;
+    clear: both;
+    font-size: 0.7em;
+    color: #888;
+    padding-bottom: 5px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.no-bottom-margin {
+    margin-bottom: 5px;
+}
+
+.extra-bottom-padding {
+    /* This is what Chrome gives me for h2, so... */
+    margin-bottom: 0.83em;
+}
+
