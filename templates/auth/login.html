@@ -1,7 +1,15 @@
 {% extends "appbase/base.html" %}
 
 {% block subpage_title %}
-Log In -
+Log In
+{% endblock %}
+
+{% block extra_css %}
+    <style type="text/css">
+        div#login-outer-wrapper {
+            text-align: center;
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -9,9 +17,12 @@ Log In -
         <p class="error">Oops, invalid username or password!</p>
     {% endif %}
 
-    <form action="{% url django.contrib.auth.views.login %}?next=/" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Log In" />
-    </form>
+    {# TODO Align the text boxes! #}
+    <div id="login-outer-wrapper">
+        <form action="{% url django.contrib.auth.views.login %}?next=/" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Log In" />
+        </form>
+    </div>
 {% endblock %}
