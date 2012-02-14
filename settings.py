@@ -170,5 +170,5 @@ LOGGING = {
 LOGIN_URL = '/accounts/login/'
 
 # Point to our user profile class. Required for user.get_profile() calls
-AUTH_PROFILE_MODULE = 'auth.UserProfile'
+AUTH_PROFILE_MODULE = 'core.UserProfile'
 
