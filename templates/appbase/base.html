@@ -15,12 +15,11 @@
         {% endblock %}
 
         <title>
+            {# Logged-out pages should get full control over the page title #}
+            {% block subpage_title %}
+            {% endblock %}
             {% if user.is_authenticated %}
-                {% block subpage_title %}
-                {% endblock %}
                 - Forever Alone
-            {% else %}
-                Forever Alone: College schedules done right
             {% endif %}
         </title>
     </head>
