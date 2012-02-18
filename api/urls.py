@@ -11,7 +11,7 @@ schedule_handler = Resource(ScheduleHandler)
 urlpatterns = patterns('',
 	# University
 	(r'^university/(?P<uni_id>[^/]+)/courses/(?P<course_id>[^/]+)', uni_course_handler),
-	(r'^university/(?P<uni_id>[^/]+)/courses', uni_course_handler),
+	(r'^university/(?P<uni_id>[^/]+)/courses/', uni_course_handler),
 	(r'^university/(?P<uni_id>[^/]+)/', uni_handler),
 	(r'^university/', uni_handler),
 
@@ -21,6 +21,7 @@ urlpatterns = patterns('',
 
 	# Course
 	(r'^course/(?P<course_id>[^/]+)/', course_handler),
+	(r'^course/', course_handler),
 
 	# Schedule
 	(r'^schedule/', schedule_handler),

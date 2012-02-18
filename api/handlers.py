@@ -39,14 +39,23 @@ class UserProfileHandler(BaseHandler):
 class CourseHandler(BaseHandler):
     allowed_methods = ('GET',)
     model = Course
-    exclude = ('university', 'id')
+    exclude = ('university')
 
     def read(self, request, course_id=None, uni_id=None):
         if course_id:
+            # If given a course ID, return that
+            # e.g. /api/course/1/
             return Course.objects.get(pk=course_id)
         elif uni_id:
+            # If given a university ID, return all known courses for that university
+            # e.g. /api/university/1/courses/
             return Course.objects.filter(university__pk=uni_id)
-        return None
+        else:
+            # If we're not given anythin at all, return all known courses for the
+            # user's university
+            user_profile = request.user.get_profile()
+            uni = user_profile.university
+            return Course.objects.filter(university=uni)
 
 class ScheduleHandler(BaseHandler):
     allowed_methods = ('GET',)
