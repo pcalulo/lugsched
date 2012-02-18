@@ -19,6 +19,7 @@ Log In
 
     {# TODO Align the text boxes! #}
     <div id="login-outer-wrapper">
+        <h1>Log In</h1>
         <form action="{% url django.contrib.auth.views.login %}?next=/" method="post">
             {% csrf_token %}
             {{ form.as_p }}
