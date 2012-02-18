@@ -9,6 +9,7 @@
     <script src="{{ STATIC_URL }}scripts/libs/jquery.js" type="text/javascript"></script>
     <script src="{{ STATIC_URL }}scripts/linkedlist.js" type="text/javascript"></script>
     <script src="{{ STATIC_URL }}scripts/clicklist.js" type="text/javascript"></script>
+    {# <script src="{{ STATIC_URL }}scripts/auth/register.js" type="text/javascript"></script> #}
 {% endblock %}
 
 {% block subpage_title %}
@@ -23,17 +24,21 @@ Create your account - Forever Alone
         <h2>Basic Information</h2>
         {{ form.as_p }}
 
-        <h2 class="no-bottom-margin">Your School</h2>
+        <h2 class="no-bottom-margin">Your DLSU email account</h2>
         <span class="helptext extra-bottom-padding">
-            This information is used by Forever Alone to help organize your schedule.
+            To prevent our server (note how it's singular) from instantly going belly-up, we're
+            limiting users to De La Salle University students, for now.
         </span>
 
+        <label for="dlsu-email">DLSU e-mail (<i>idnumber</i>@dlsu.edu.ph): </label>
+        <input type="text" size="20" id="dlsu-email"></input>
+        {% comment %}
         <input type="text" size="50"></input>
         <input type="button" value="Search"></input>
+        <div id="university-search-results"></div>
+        {% endcomment %}
 
         <br class="spacer"></br>
-
-        
 
         <input type="submit" value="Register" />
     </form>
