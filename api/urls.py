@@ -6,6 +6,7 @@ uni_handler = Resource(UniversityHandler)
 uni_course_handler = Resource(UniversityCourseHandler)
 profile_handler = Resource(UserProfileHandler)
 course_handler = Resource(CourseHandler)
+section_handler = Resource(SectionHandler)
 schedule_handler = Resource(ScheduleHandler)
 
 urlpatterns = patterns('',
@@ -18,6 +19,12 @@ urlpatterns = patterns('',
 	# UserProfile
 	(r'^profile/(?P<profile_id>[^/]+)/', profile_handler),
 	(r'^profile/', profile_handler),
+
+    # Sections
+	(r'^course/(?P<course_id>[^/]+)/section/(?P<section_id>[^/]+)', section_handler),
+	(r'^course/(?P<course_id>[^/]+)/section/', section_handler),
+	(r'^section/(?P<section_id>)[^/]+', section_handler),
+	(r'^section/', section_handler),
 
 	# Course
 	(r'^course/(?P<course_id>[^/]+)/', course_handler),
