@@ -4,12 +4,18 @@
 
 from datetime import time
 from core.models import *
+from django.contrib.auth.models import User
 
 uni_count = len(University.objects.all())
 if (uni_count > 0):
     print 'Found at least one existing University!'
     print 'This script should only be used to quickly set up an empty database'
-    return
+    sys.exit(1)
+
+user_count = len(User.objects.all())
+if (user_count == 0):
+    print 'No users found!'
+    print 'Please configure a superuser - The user with ID 0 will be assumed to be the admin'
 
 uni = University()
 uni.name = 'De La Salle University'
@@ -17,10 +23,17 @@ uni.address = '2401 Taft Avenue, Malate, Manila'
 uni.termsPerYear = 3
 uni.save()
 
+user = User.objects.all()[0]
+profile = UserProfile()
+profile.user = user
+profile.nickname = 'Pat'
+profile.university = uni
+profile.save()
+
 course = Course()
-course.code = 'COMPRO1'
-course.name = 'Introduction to Computer Programming'
-course.description = '...'
+course.code = 'THEORDT'
+course.name = 'Theory of Reddit'
+course.description = 'An in-depth course on Turing machines and Reddit'
 course.university = uni
 course.save()
 

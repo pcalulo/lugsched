@@ -17,18 +17,21 @@ class University(models.Model):
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User);
-    email = models.CharField(max_length=128)
+    user = models.OneToOneField(User)
+
+    # Blank and null must be true, so the admin site and the database,
+    # respectively, will allow us to leave fields empty. For more details, see:
+    # http://www.b-list.org/weblog/2006/jun/28/django-tips-difference-between-blank-and-null/
+    email = models.CharField(max_length=128, blank=True, null=True)
     nickname = models.CharField(max_length=64)
     university = models.ForeignKey(University)
+
+    # This is, apparently, the recommended way to create a many-to-many
+    # relationship with the same class - see ManyToManyField docs.
+    friends = models.ManyToManyField('self', blank=True, null=True)
     
     def __unicode__(self):
-        return '%s (%s)' % (self.nickname, self.email)
-
-
-class Friendship(models.Model):
-    user1 = models.ForeignKey(UserProfile, related_name='user1')
-    user2 = models.ForeignKey(UserProfile, related_name='user2')
+        return '%s (%s)' % (self.nickname, self.email or 'email not specified')
 
 
 class Course(models.Model):
