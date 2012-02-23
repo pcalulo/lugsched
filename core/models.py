@@ -19,19 +19,18 @@ class University(models.Model):
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
 
-    # Blank and null must be true, so the admin site and the database,
-    # respectively, will allow us to leave fields empty. For more details, see:
-    # http://www.b-list.org/weblog/2006/jun/28/django-tips-difference-between-blank-and-null/
-    email = models.CharField(max_length=128, blank=True, null=True)
     nickname = models.CharField(max_length=64)
     university = models.ForeignKey(University)
 
     # This is, apparently, the recommended way to create a many-to-many
     # relationship with the same class - see ManyToManyField docs.
+    # Also, blank and null must be true, so the admin site and the database,
+    # respectively, will allow us to leave fields empty. For more details, see:
+    # http://www.b-list.org/weblog/2006/jun/28/django-tips-difference-between-blank-and-null/
     friends = models.ManyToManyField('self', blank=True, null=True)
     
     def __unicode__(self):
-        return '%s (%s)' % (self.nickname, self.email or 'email not specified')
+        return '%s (%s)' % (self.nickname, self.user)
 
 
 class Course(models.Model):
@@ -44,20 +43,9 @@ class Course(models.Model):
         return self.code
 
 
-class Schedule(models.Model):
-    creationDate = models.DateTimeField('date created')
-    name = models.CharField(max_length=100)
-    owner = models.ForeignKey(UserProfile)
-    university = models.ForeignKey(University)
-
-    def __unicode__(self):
-        return '%s' % self.name
-
-
 class Section(models.Model):
     name = models.CharField(max_length=16)
     course = models.ForeignKey(Course)
-    enrollees = models.ManyToManyField(Schedule, through='Enrollment')
 
     def __unicode__(self):
         return '%s %s' % (self.course.code, self.name)
@@ -77,6 +65,17 @@ class Section(models.Model):
         sDict['courseCode'] = self.course.code
         sDict['courseName'] = self.course.name
         return sDict
+
+
+class Schedule(models.Model):
+    creationDate = models.DateTimeField('date created')
+    name = models.CharField(max_length=100)
+    owner = models.ForeignKey(UserProfile)
+    university = models.ForeignKey(University)
+    classes = models.ManyToManyField(Section)
+
+    def __unicode__(self):
+        return '%s' % self.name
 
 
 class Meeting(models.Model):
@@ -101,13 +100,4 @@ class Meeting(models.Model):
         mDict['endTime'] = self.endTime
         mDict['days'] = self.days
         return mDict
-
-
-class Enrollment(models.Model):
-    schedule = models.ForeignKey(Schedule)
-    section = models.ForeignKey(Section)
-    
-    def __unicode__(self):
-        return unicode(self.section)
-        
 
