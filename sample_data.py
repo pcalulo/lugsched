@@ -16,6 +16,7 @@ user_count = len(User.objects.all())
 if (user_count == 0):
     print 'No users found!'
     print 'Please configure a superuser - The user with ID 0 will be assumed to be the admin'
+    sys.exit(1)
 
 uni = University()
 uni.name = 'De La Salle University'
