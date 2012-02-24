@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class University(models.Model):
     name = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
-    termsPerYear = models.IntegerField('terms per year')
+    terms_per_year = models.IntegerField('terms per year')
     
     def __unicode__(self):
         return self.name
@@ -28,6 +28,7 @@ class UserProfile(models.Model):
     # respectively, will allow us to leave fields empty. For more details, see:
     # http://www.b-list.org/weblog/2006/jun/28/django-tips-difference-between-blank-and-null/
     friends = models.ManyToManyField('self', blank=True, null=True)
+    current_schedule = models.ForeignKey('Schedule', blank=True, null=True)
     
     def __unicode__(self):
         return '%s (%s)' % (self.nickname, self.user)
@@ -80,16 +81,16 @@ class Schedule(models.Model):
 
 class Meeting(models.Model):
     section = models.ForeignKey(Section)
-    startTime = models.TimeField('start time')
-    endTime = models.TimeField('end time')
+    start_time = models.TimeField('start time')
+    end_time = models.TimeField('end time')
 
-    hasMondays = models.BooleanField(default=False)
-    hasTuesdays = models.BooleanField(default=False)
-    hasWednesdays = models.BooleanField(default=False)
-    hasThursdays = models.BooleanField(default=False)
-    hasFridays = models.BooleanField(default=False)
-    hasSaturdays = models.BooleanField(default=False)
-    hasSundays = models.BooleanField(default=False)
+    has_mondays = models.BooleanField(default=False)
+    has_tuesdays = models.BooleanField(default=False)
+    has_wednesdays = models.BooleanField(default=False)
+    has_thursdays = models.BooleanField(default=False)
+    has_fridays = models.BooleanField(default=False)
+    has_saturdays = models.BooleanField(default=False)
+    has_sundays = models.BooleanField(default=False)
 
     def __unicode__(self):
         return 'Meeting for %s' % self.section

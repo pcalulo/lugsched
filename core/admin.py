@@ -4,7 +4,7 @@ from django.contrib import admin
 class UniversityAdmin(admin.ModelAdmin):
 	fieldsets = [
 		('Basic Information', {'fields': ['name', 'address']}),
-		('Further Details', {'fields': ['termsPerYear']})
+		('Further Details', {'fields': ['terms_per_year']})
 	]
 
 	list_display = ['name', 'address']
@@ -28,7 +28,7 @@ admin.site.register(Schedule, ScheduleAdmin)
 admin.site.register(Section)
 
 class MeetingAdmin(admin.ModelAdmin):
-	list_display = ['section', 'startTime', 'endTime']
+	list_display = ['section', 'start_time', 'end_time']
 
 admin.site.register(Meeting, MeetingAdmin)
 

@@ -21,7 +21,7 @@ if (user_count == 0):
 uni = University()
 uni.name = 'De La Salle University'
 uni.address = '2401 Taft Avenue, Malate, Manila'
-uni.termsPerYear = 3
+uni.terms_per_year = 3
 uni.save()
 
 user = User.objects.all()[0]
@@ -45,9 +45,9 @@ section.save()
 
 meeting = Meeting()
 meeting.section = section
-meeting.startTime = time(8, 0)
-meeting.endTime = time(9, 30)
-meeting.hasMondays = True
-meeting.hasThursdays = True
+meeting.start_time = time(8, 0)
+meeting.end_time = time(9, 30)
+meeting.has_mondays = True
+meeting.has_thursdays = True
 meeting.save()
 
