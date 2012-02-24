@@ -20,7 +20,12 @@ Your Schedules
 {% block content %}
     <h1>Your Current Schedule</h1>
     <div class="canvas-container">
-        <canvas id="schedule-canvas" width="770" height="500"></canvas>
+        <canvas id="schedule-canvas" class="hidden" width="770" height="500"></canvas>
+        <h2 class="no-bottom-margin">You do not have a current schedule set!</h2>
+        <span class="helptext">
+            You can either create a new schedule, or mark an existing one as your
+            current schedule.
+        </span>
     </div>
 
     <h1>Your Other Schedules</h1>

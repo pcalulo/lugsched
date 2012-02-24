@@ -7,3 +7,16 @@ div.canvas-container {
     display: none;
 }
 
+span.helptext {
+    display: block;
+    clear: both;
+    font-size: 0.75em;
+    color: #888;
+    padding-bottom: 5px;
+}
+
+.no-bottom-margin {
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+

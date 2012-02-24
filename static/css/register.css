@@ -5,14 +5,6 @@ p {
     margin-bottom: 10px;
 }
 
-span.helptext {
-    display: block;
-    clear: both;
-    font-size: 0.7em;
-    color: #888;
-    padding-bottom: 5px;
-}
-
 label {
     font-weight: bold;
 }
@@ -28,5 +20,13 @@ label {
 
 #university-search-results {
     padding-top: 1em;
+}
+
+span.helptext {
+    display: block;
+    clear: both;
+    font-size: 0.7em;
+    color: #888;
+    padding-bottom: 5px;
 }
 
