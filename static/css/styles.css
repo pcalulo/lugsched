@@ -4,7 +4,7 @@
 }
 
 h1 {
-	font-size: 1.3em;
+	font-size: 1.4em;
 	font-weight: normal;
 }
 
@@ -43,15 +43,12 @@ a.admin-link {
 }
 
 .top {
-	
-	width: 100%;
+	max-width: 100%;
 }
 
 div.header {
 	margin: 0 auto;
 	float: center;
-	min-width: 300px;
-	max-width: 800px;
 	font-size: 10pt;
 }
 
@@ -63,9 +60,12 @@ div.header {
 	float: left;
 }
 
-div.body {
+body {
+    display: block;
+}
+
+div.page {
 	margin: 0 auto;
-	float: center;
 	min-width: 300px;
 	max-width: 800px;
 }
@@ -90,6 +90,10 @@ div.footer {
 
 div.force-narrow {
 	width: 500px;
+}
+
+div.center {
+    text-align: center;
 }
 
 .fake-h1 {

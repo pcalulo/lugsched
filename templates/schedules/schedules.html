@@ -21,13 +21,22 @@ Your Schedules
     <h1>Your Current Schedule</h1>
     <div class="canvas-container">
         <canvas id="schedule-canvas" class="hidden" width="770" height="500"></canvas>
-        <h2 class="no-bottom-margin">You do not have a current schedule set!</h2>
+        <h2 class="no-bottom-margin">
+            You haven't told me what you current schedule is :(
+        </h2>
         <span class="helptext">
             You can either create a new schedule, or mark an existing one as your
-            current schedule.
+            active schedule.
         </span>
     </div>
 
     <h1>Your Other Schedules</h1>
     <div class="list-test"></div>
+    </div>
+    <div class="center">
+        <h2 class="no-bottom-margin">No schedules here :/</h2>
+        <span class="helptext">
+            Why not create one?
+        </span>
+    </div>
 {% endblock %}
