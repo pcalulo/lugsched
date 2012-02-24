@@ -44,7 +44,7 @@
 	font-size: 0.6em;
 	position: relative;
 	bottom: 2px;
-	/* 100% width makes the subtext block clicks to the item button */
+	/* 100% width makes the subtext steal clicks to the item button */
 	max-width: 75%; 
 	/* Have an ellipsis for overly-long text */
 	/*white-space: nowrap;
