@@ -2,6 +2,7 @@
 div.canvas-container {
     text-align: center;
     padding-bottom: 16px;
+    color: gray;
 }
 
 .hidden {
