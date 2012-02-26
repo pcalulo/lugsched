@@ -9,6 +9,6 @@ urlpatterns = patterns('',
     # It *might* be more likely that when a user logs out, he's simply letting
     # a friend log in.
     # TODO: Double-check this guess regarding logouts
-    url(r'logout/$', logout_then_login)
+    url(r'logout/$', user_logout)
 )
 
