@@ -67,8 +67,8 @@ div.header {
 /* girl look at that */
 body {
     display: block;
+    background-color: lightgray;
     /*
-    background-color: gray;
     margin: 0;
     padding: 0;
     */
@@ -84,13 +84,8 @@ div.page {
     padding: 8px;
 }
 
-div.app_description {
-	float: left;
+div.app-description {
 	text-align: justify;
-}
-
-div.side-image-right {
-	float: right;
 }
 
 div.footer {
@@ -98,17 +93,24 @@ div.footer {
 	margin: 0 auto;
 	text-align: center;
 	width: 95%;
-	font-size: 6pt;
+	font-size: 8pt;
     margin-top: 32px;
 	/*clear: both;*/
 }
 
-div.force-narrow {
-	width: 500px;
-}
-
 div.center {
     text-align: center;
+}
+
+.side-image-right {
+    display: block;
+	float: right;
+    margin: 8px;
+    margin-right: 0px;
+}
+
+.clear {
+    clear: both;
 }
 
 .fake-h1 {
