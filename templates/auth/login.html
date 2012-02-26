@@ -22,7 +22,7 @@ Log In
     <div id="login-outer-wrapper" class="no-bottom-">
         <h1 class="no-bottom-margin">Log In</h1>
         <span class="helptext">Enter your login credentials below.</span>
-        <form action="{% url django.contrib.auth.views.login %}?next=/" method="post">
+        <form action="{% url auth.views.user_login %}?next=/" method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <input type="submit" value="Log In" />
