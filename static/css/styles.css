@@ -67,8 +67,10 @@ div.header {
 /* girl look at that */
 body {
     display: block;
-    background-color: lightgray;
+    background-image: url(/static/images/bgstripe-lighter.png);
+    background-repeat: repeat;
     /*
+    background-color: #565656;
     margin: 0;
     padding: 0;
     */
