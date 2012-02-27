@@ -34,3 +34,6 @@ forever-alone.
 **schedules** - Provides the primary user-facing functionality of falone, i.e.
 schedule CRUD operations
 
+**coursewiki** - The course data crowdsourcing tool on which our course-finding
+functionality will depend
+
