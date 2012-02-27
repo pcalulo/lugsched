@@ -1,0 +1,23 @@
+
+span.coursecode {
+    font-weight: bold;
+}
+
+div.leftbox {
+    float: left;
+}
+
+div.rightbox {
+    float: left;
+}
+
+div.messagebox {
+    padding: 8px;
+    text-align: justify;
+    /*background-color: #ffff88;*/
+}
+
+li {
+    font-size: 11pt;
+}
+

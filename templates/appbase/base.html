@@ -2,9 +2,6 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/styles.css">
-        {% if isAdmin %}
-        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/message-boxes.css">
-        {% endif %}
 
         {% block extra_css %}
 
@@ -62,7 +59,7 @@
                     <p><a href="/accounts/logout/">Log Out</a></p>
                 {% endblock %}
             </div>
-            <div class="footer">
+            <div class="footer clear">
                 Bacon ipsum dolor sit amet jerky laborum pork belly, ut
                 drumstick short ribs tenderloin sirloin turducken flank esse
                 pastrami labore. Consectetur spare ribs hamburger culpa occaecat
