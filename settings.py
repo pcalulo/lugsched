@@ -139,6 +139,7 @@ INSTALLED_APPS = (
 
     # Our own stuff
     'core',
+    'coursewiki',
     'appbase',
     'auth',
 )

@@ -18,6 +18,7 @@ urlpatterns = patterns('',
     (r'accounts/', include('falone.auth.urls')),
 	(r'^api/', include('falone.api.urls')),
 	(r'^schedules/', include('falone.schedules.urls')),
+	(r'^coursewiki/', include('falone.coursewiki.urls')),
 	(r'^$', include('falone.appbase.urls')),
 
     # Redirect requests for /favicon.ico to its true location

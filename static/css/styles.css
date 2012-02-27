@@ -83,6 +83,7 @@ div.page {
     background-color: white;
     border-style: dashed;
     border-width: 1px;
+    border-radius: 10px;
     padding: 8px;
 }
 
