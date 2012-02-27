@@ -67,7 +67,7 @@ div.header {
 /* girl look at that */
 body {
     display: block;
-    background-image: url(/static/images/bgstripe-lighter.png);
+    background-image: url(/static/images/bgstripe-thin-ltr.png);
     background-repeat: repeat;
     /*
     background-color: #565656;
