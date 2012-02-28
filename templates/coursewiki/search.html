@@ -22,8 +22,8 @@ Search
     {% if searchQuery != '' %}
         <h2 class="no-bottom-margin">Search results for "{{ searchQuery }}":</h2>
         <label>
-            {{ numResults }}
-            {% if numResults > 1 %}
+            {{ searchResults|length }}
+            {% if searchResults|length > 1 %}
                 results
             {% else %}
                 result

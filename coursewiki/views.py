@@ -23,7 +23,6 @@ def search(request):
     context = RequestContext(request, {
         'searchQuery': request.GET.get('searchQuery', ''),
         'searchResults': results,
-        'numResults': len(results),
     })
     
     return HttpResponse(template.render(context))
