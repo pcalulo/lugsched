@@ -1,0 +1,35 @@
+{% extends "appbase/base.html" %}
+
+{% block subpage_title %}
+Search
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/coursewiki.css">
+{% endblock %}
+
+{% block content %}
+    <h1>Course Wiki Search</h1>
+    <div class="searchbox">
+        <form method="GET" action="./search">
+            <label for="searchQuery">Enter a course code (e.g. <i>WEBDEVE</i>):</label>
+            <input name="searchQuery" type="text" size="30"
+                value="{{ searchQuery }}">
+            </input>
+            <input type="submit" value="Search"></input>
+        </form>
+    </div>
+    {% if searchQuery != '' %}
+        <h2>Search results for "{{ searchQuery }}":</h2>
+
+        {% for course in searchResults %}
+            <div class="search-result">
+                <h3 class="no-bottom-margin">
+                    <a href="/">{{ course.code }} - {{ course.name }}</a>
+                </h3> 
+                <label>{{ course.description }}</label>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+

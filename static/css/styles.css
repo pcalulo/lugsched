@@ -15,6 +15,11 @@ h2 {
 	font-weight: normal;
 }
 
+h3 {
+    font-size: 1.1em;
+    font-weight: normal;
+}
+
 .slim {
 	font-weight: normal;
 }
@@ -120,5 +125,9 @@ div.center {
 
 .extra-line-spacing {
 	line-height: 150%
+}
+
+.no-bottom-margin {
+    margin-bottom: 0px;
 }
 

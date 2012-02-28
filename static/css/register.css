@@ -9,10 +9,6 @@ label {
     font-weight: bold;
 }
 
-.no-bottom-margin {
-    margin-bottom: 5px;
-}
-
 .extra-bottom-padding {
     /* This is what Chrome gives me for h2, so... */
     margin-bottom: 0.83em;

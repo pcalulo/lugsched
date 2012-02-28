@@ -13,7 +13,8 @@ div.searchbox {
     text-align: center;
 }
 
-label {
+h2 {
+    margin-bottom: 4px;
 }
 
 div.messagebox {
@@ -22,12 +23,16 @@ div.messagebox {
     /*background-color: #ffff88;*/
 }
 
+div.third-width {
+    width: 100px;;
+}
+
 div.leftbox {
     float: left;
 }
 
 div.rightbox {
-    float: left;
+    float: right;
 }
 
 li {

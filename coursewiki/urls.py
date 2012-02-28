@@ -5,5 +5,5 @@ from views import *
 
 urlpatterns = patterns('',
 	(r'^$', main_page),
-    (r'canvastest$', direct_to_template, {'template': 'schedules/canvastest.html'}),
+    (r'search$', search),
 )
