@@ -1,9 +1,17 @@
 
 div.search-result {
-    padding-top: 8px;
     padding-bottom: 8px;
 }
 
 div.search-result h3 {
     font-size: 1.1em;
 }
+
+div#add-course-tip {
+    font-size: 11pt;
+    margin-top: 8px;
+    padding: 8px;
+    border-radius: 5px;
+    background: #FFFFBB;
+}
+

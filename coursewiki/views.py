@@ -13,7 +13,7 @@ def search(request):
     template = loader.get_template('coursewiki/search.html')
 
     results = []
-    for i in range(0, 1):
+    for i in range(0, 2):
         course = Course()
         course.code = 'BALIWAN'
         course.name = 'Introduction to Insanity'

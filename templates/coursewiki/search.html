@@ -5,7 +5,10 @@ Search
 {% endblock %}
 
 {% block extra_css %}
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/coursewiki.css">
+    <link rel="stylesheet" type="text/css"
+        href="{{ STATIC_URL }}css/coursewiki/main.css">
+    <link rel="stylesheet" type="text/css"
+        href="{{ STATIC_URL }}css/coursewiki/search.css">
 {% endblock %}
 
 {% block content %}
@@ -40,6 +43,11 @@ Search
                 <label>{{ course.description }}</label>
             </div>
         {% endfor %}
+
+        <div id="add-course-tip">
+            Unable to find the course you're looking for? LugSched might not know
+            about it yet. <a href="../newcourse/">Add a course</a>
+        </div>
     {% endif %}
 {% endblock %}
 
