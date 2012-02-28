@@ -3,18 +3,31 @@ span.coursecode {
     font-weight: bold;
 }
 
+div.searchbox {
+    padding: 8px;
+    border-radius: 5px;
+    /*
+    background: #FFFFBB;
+    */
+    background: #AAFFAA;
+    text-align: center;
+}
+
+label {
+}
+
+div.messagebox {
+    margin-top: 8px;
+    text-align: justify;
+    /*background-color: #ffff88;*/
+}
+
 div.leftbox {
     float: left;
 }
 
 div.rightbox {
     float: left;
-}
-
-div.messagebox {
-    padding: 8px;
-    text-align: justify;
-    /*background-color: #ffff88;*/
 }
 
 li {

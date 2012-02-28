@@ -11,7 +11,14 @@ Course Wiki
 
 {% block content %}
     <h1>Course Wiki - De La Salle University</h1>
-    <div>
+    <div class="searchbox">
+        <form method="GET" action="./search">
+            <label for="searchQuery">Search for a course (e.g. <i>WEBDEVE</i>):</label>
+            <input name="searchQuery" type="text" size="30"></input>
+            <input type="submit" value="Search"></input>
+        </form>
+    </div>
+    <div class="messagebox">
         Is our course database incomplete? Help us help you help
         us all by adding missing courses and correcting errors.
     </div>
