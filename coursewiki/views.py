@@ -13,7 +13,7 @@ def search(request):
     template = loader.get_template('coursewiki/search.html')
 
     results = []
-    for i in range(0, 5):
+    for i in range(0, 1):
         course = Course()
         course.code = 'BALIWAN'
         course.name = 'Introduction to Insanity'
@@ -23,6 +23,7 @@ def search(request):
     context = RequestContext(request, {
         'searchQuery': request.GET.get('searchQuery', ''),
         'searchResults': results,
+        'numResults': len(results),
     })
     
     return HttpResponse(template.render(context))

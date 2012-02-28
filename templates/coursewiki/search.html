@@ -20,7 +20,17 @@ Search
         </form>
     </div>
     {% if searchQuery != '' %}
-        <h2>Search results for "{{ searchQuery }}":</h2>
+        <h2 class="no-bottom-margin">Search results for "{{ searchQuery }}":</h2>
+        <label>
+            {{ numResults }}
+            {% if numResults > 1 %}
+                results
+            {% else %}
+                result
+            {% endif %}
+            found
+        </label>
+
 
         {% for course in searchResults %}
             <div class="search-result">
