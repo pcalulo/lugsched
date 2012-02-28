@@ -15,7 +15,7 @@ def search(request):
     results = []
     for i in range(0, 2):
         course = Course()
-        course.code = 'BALIWAN'
+        course.code = 'BALI/WAN'
         course.name = 'Introduction to Insanity'
         course.description = 'An in-depth blah blah blah something'
         results.append(course)
