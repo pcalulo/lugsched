@@ -3,6 +3,10 @@ span.coursecode {
     font-weight: bold;
 }
 
+span.subtext {
+    font-size: 0.8em;
+}
+
 div.searchbox {
     padding: 8px;
     border-radius: 5px;
@@ -21,7 +25,7 @@ div.messagebox {
 }
 
 div.third-width {
-    width: 100px;;
+    width: 100px;
 }
 
 div.leftbox {
@@ -34,5 +38,9 @@ div.rightbox {
 
 li {
     font-size: 11pt;
+}
+
+label {
+    font-weight: bold;
 }
 

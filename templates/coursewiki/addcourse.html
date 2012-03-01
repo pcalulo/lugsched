@@ -1,0 +1,45 @@
+{% extends "appbase/base.html" %}
+
+{% block subpage_title %}
+Add a Course
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css"
+        href="{{ STATIC_URL }}css/coursewiki/main.css">
+{% endblock %}
+
+{% block content %}
+    <h1 class="no-bottom-margin">Add a Course</h1>
+    <span class="subtext">
+        Please ensure that the course you are about to add really does exist.
+    </span>
+
+    <form action='' method='POST'>
+        {% csrf_token %}
+        <p>
+            <label for="courseCode">Course code:
+                <input type="text" name="courseCode"></input>
+            </label>
+            <span class="helptext">The short name for courses, e.g. <i>BASICON</i></span>
+        </p>
+        <p>
+            <label>Course name:
+                <input type="text" name="courseName" size="40"></input>
+            </label>
+            <span class="helptext">
+                The long name for courses, e.g. <i>Basic Computer Concepts</i>
+            </span>
+        </p>
+        <p>
+            <label>Course description:
+                <input type="text" name="description" size="50"></input>
+            </label>
+            <span class="helptext">
+                A brief description of what the course is about
+            </span>
+        </p>
+
+        <input type="submit" value="Submit to Wiki"></input>
+    </form>
+{% endblock %}

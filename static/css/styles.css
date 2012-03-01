@@ -32,6 +32,18 @@ label {
 	font-size: 0.8em;
 }
 
+span.helptext {
+    display: block;
+    clear: both;
+    font-size: 0.7em;
+    color: #888;
+    padding-bottom: 5px;
+}
+
+span.helptext > i {
+    color: #888
+}
+
 .short-text {
 	line-height: 80%;
 }

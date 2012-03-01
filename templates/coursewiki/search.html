@@ -24,7 +24,7 @@ Course Wiki Search
     </div>
     {% if searchQuery != '' %}
         <h2 class="no-bottom-margin">Search results for "{{ searchQuery }}":</h2>
-        <label>
+        <span class="subtext">
             {{ searchResults|length }}
             {% if searchResults|length > 1 %}
                 results
@@ -32,7 +32,7 @@ Course Wiki Search
                 result
             {% endif %}
             found
-        </label>
+        </span>
 
 
         {% for course in searchResults %}
@@ -40,13 +40,13 @@ Course Wiki Search
                 <a href="./{{ course.university|urlencode:"" }}/courses/{{ course.code|urlencode:"" }}">
                     {{ course.code }} - {{ course.name }}
                 </a>
-                <label>{{ course.description }}</label>
+                <span class="subtext">{{ course.description }}</span>
             </div>
         {% endfor %}
 
         <div id="add-course-tip">
             Unable to find the course you're looking for? LugSched might not know
-            about it yet. <a href="./newcourse">Add a course</a>
+            about it yet. <a href="./actions/addcourse">Add a course</a>
         </div>
     {% endif %}
 {% endblock %}

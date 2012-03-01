@@ -4,6 +4,7 @@ from django.template import RequestContext, loader
 from django.utils.http import urlquote_plus, urlquote
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
+
 from core.models import *
 
 @login_required
@@ -20,7 +21,7 @@ def main_page(request, uni_name=None):
     })
     return HttpResponse(template.render(context))
 
-def search(request):
+def search_view(request):
     template = loader.get_template('coursewiki/search.html')
     uni = University.objects.get(pk=1)
 
@@ -38,5 +39,30 @@ def search(request):
         'searchResults': results,
     })
     
+    return HttpResponse(template.render(context))
+
+def add_course_on_post(request):
+    try:
+        profile = request.user.get_profile()
+    except Exception:
+        return HttpResponseForbidden()
+
+    university = profile.university
+
+    course = Course()
+    course.code = request.POST.get('courseCode')
+    course.name = request.POST.get('courseName')
+    course.description = request.POST.get('description')
+    course.university = university
+    course.save()
+    return redirect('/coursewiki/')
+    
+
+def add_course_view(request):
+    if request.method == 'POST':
+        return add_course_on_post(request)
+
+    context = RequestContext(request)
+    template = loader.get_template('coursewiki/addcourse.html')
     return HttpResponse(template.render(context))
 

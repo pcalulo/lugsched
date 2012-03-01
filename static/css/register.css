@@ -18,11 +18,3 @@ label {
     padding-top: 1em;
 }
 
-span.helptext {
-    display: block;
-    clear: both;
-    font-size: 0.7em;
-    color: #888;
-    padding-bottom: 5px;
-}
-
