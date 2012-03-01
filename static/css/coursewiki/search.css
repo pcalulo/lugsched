@@ -3,7 +3,9 @@ div.search-result {
     padding-bottom: 8px;
 }
 
-div.search-result h3 {
+div.search-result a {
+    display: block;
+    margin-top: 8px;
     font-size: 1.1em;
 }
 
