@@ -31,22 +31,21 @@ Course Wiki
     <div class="leftbox clear">
         <h2>Recently added courses</h2>
         <ul>
-            <li><span class="coursecode">COMPRO1</span> - Introduction to Computer Programming
-            <li><span class="coursecode">WEBDEVE</span> - Web Development
-            <li><span class="coursecode">EXAMPLE</span> - Hello World
-            <li><span class="coursecode">ADVMEME</span> - Advanced Meme Usage
-            <li><span class="coursecode">BASITRL</span> - Basics of Trolling
+            {% for course in recent_courses %}
+                <li><span class="coursecode">
+                    {{ course.code }}
+                </span> - {{ course.name }}</li>
+            {% endfor %}
         </ul>
     </div>
     <div class="rightbox">
         <h2>Recently updated courses</h2>
         <ul>
-            <li><span class="coursecode">DASALGO</span> - Data Structures and Algorithms
-            <li><span class="coursecode">THEOCOM</span> - Theory of Computation
-            <li><span class="coursecode">OFFEDRV</span> - Offensive Driving
-            <li><span class="coursecode">INTMEME</span> - Introduction to
-                Internet Memes
-            <li><span class="coursecode">ADVNTRL</span> - Advanced Trolling
+            {% for course in recent_courses %}
+                <li><span class="coursecode">
+                    {{ course.code }}
+                </span> - {{ course.name }}</li>
+            {% endfor %}
         </ul>
     </div>
 {% endblock %}

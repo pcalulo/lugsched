@@ -5,6 +5,7 @@
 from datetime import time
 from core.models import *
 from django.contrib.auth.models import User
+from datetime import datetime
 
 uni_count = len(University.objects.all())
 if (uni_count > 0):
@@ -36,6 +37,7 @@ course.code = 'THEORDT'
 course.name = 'Theory of Reddit'
 course.description = 'An in-depth course on Turing machines and Reddit'
 course.university = uni
+course.creation_date = datetime.now()
 course.save()
 
 section = Section()
