@@ -17,8 +17,12 @@ def register(request):
     return render_to_response('auth/register.html', RequestContext(request, {'form': form, }))
 
 def user_login(request):
+    # If the user is logged in...
     if request.user.is_authenticated():
-        return redirect('/schedules/')
+        # ...and the request has a 'next' parameter, redirect to that.
+        # otherwise, redirect to /schedules/
+        dest_url = request.GET.get('next', '/schedules/')
+        return redirect(dest_url)
     
     return login(request, template_name='auth/login.html')
 
