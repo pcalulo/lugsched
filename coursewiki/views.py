@@ -30,6 +30,7 @@ def main_page(request, uni_name=None):
     })
     return HttpResponse(template.render(context))
 
+@login_required
 def search_view(request, uni_name):
     template = loader.get_template('coursewiki/search.html')
 
@@ -42,6 +43,7 @@ def search_view(request, uni_name):
     
     return HttpResponse(template.render(context))
 
+@login_required
 def add_course_on_post(request, uni_name=None):
     try:
         profile = request.user.get_profile()
@@ -61,7 +63,7 @@ def add_course_on_post(request, uni_name=None):
     course.save()
     return redirect('/coursewiki/')
     
-
+@login_required
 def add_course_view(request, uni_name=None):
     if request.method == 'POST':
         return add_course_on_post(request)
