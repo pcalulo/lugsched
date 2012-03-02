@@ -121,6 +121,10 @@ div.center {
     text-align: center;
 }
 
+div.hidden {
+    display: none;
+}
+
 .side-image-right {
     display: block;
 	float: right;

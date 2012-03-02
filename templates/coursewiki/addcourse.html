@@ -7,6 +7,15 @@ Add a Course
 {% block extra_css %}
     <link rel="stylesheet" type="text/css"
         href="{{ STATIC_URL }}css/coursewiki/main.css">
+    <link rel="stylesheet" type="text/css"
+        href="{{ STATIC_URL }}css/coursewiki/forms.css">
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ STATIC_URL }}scripts/coursewiki/addcourse.js"
+        type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}scripts/libs/jquery.js"
+        type="text/javascript"></script>
 {% endblock %}
 
 {% block content %}
@@ -15,16 +24,24 @@ Add a Course
         Please ensure that the course you are about to add really does exist.
     </span>
 
-    <form action='' method='POST'>
+    <div class="errorbox hidden" id="data-incomplete-message">
+        Please fill in all of the required fields.
+    </div>
+    <form action='' method='POST' name='courseData'>
         {% csrf_token %}
+        <span class="subtext">
+            <i><span class="required-data">*</span> - required</i>
+        </span>
         <p>
             <label for="courseCode">Course code:
+                <span class="required-data">*</span>
                 <input type="text" name="courseCode"></input>
             </label>
             <span class="helptext">The short name for courses, e.g. <i>BASICON</i></span>
         </p>
         <p>
             <label>Course name:
+                <span class="required-data">*</span>
                 <input type="text" name="courseName" size="40"></input>
             </label>
             <span class="helptext">
@@ -40,6 +57,6 @@ Add a Course
             </span>
         </p>
 
-        <input type="submit" value="Submit to Wiki"></input>
+        <input type="submit" value="Submit to Wiki" onClick="return doInputValidation()"></input>
     </form>
 {% endblock %}
