@@ -30,12 +30,16 @@ div.third-width {
 
 div.leftbox {
     float: left;
+    min-width: 150px;
     max-width: 400px;
+    width: 50%;
 }
 
 div.rightbox {
     float: right;
+    min-width: 150px;
     max-width: 400px;
+    width: 50%;
 }
 
 li {
