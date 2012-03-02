@@ -25,14 +25,7 @@ def search_view(request):
     template = loader.get_template('coursewiki/search.html')
     uni = University.objects.get(pk=1)
 
-    results = []
-    for i in range(0, 2):
-        course = Course()
-        course.code = 'BALIWAN'
-        course.name = 'Introduction to Insanity'
-        course.description = 'An in-depth blah blah blah something'
-        course.university = uni
-        results.append(course)
+    results = Course.objects.all()
 
     context = RequestContext(request, {
         'searchQuery': request.GET.get('searchQuery', ''),
