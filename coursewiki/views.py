@@ -30,7 +30,7 @@ def main_page(request, uni_name=None):
     })
     return HttpResponse(template.render(context))
 
-def search_view(request, uni_name=None):
+def search_view(request, uni_name):
     template = loader.get_template('coursewiki/search.html')
 
     results = Course.objects.all()
@@ -55,6 +55,7 @@ def add_course_on_post(request, uni_name=None):
     course.name = request.POST.get('courseName')
     course.description = request.POST.get('description', '')
     course.university = university
+    course.creator = request.user
     course.creation_date = datetime.now()
 
     course.save()

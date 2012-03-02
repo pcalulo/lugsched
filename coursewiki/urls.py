@@ -4,7 +4,7 @@ from piston.resource import Resource
 from views import *
 
 urlpatterns = patterns('',
-    (r'search$', search_view),
+    (r'^(?P<uni_name>[^/]+)/search$', search_view),
 
     (r'^(?P<uni_name>[^/]+)/actions/addcourse$', add_course_view),
 

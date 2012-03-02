@@ -39,7 +39,9 @@ class Course(models.Model):
     name = models.CharField(max_length=64)
     description = models.CharField(max_length=200)
     university = models.ForeignKey(University)
+
     creation_date = models.DateTimeField('date created')
+    creator = models.ForeignKey(User)
 
     def __unicode__(self):
         return self.code

@@ -38,6 +38,7 @@ course.name = 'Theory of Reddit'
 course.description = 'An in-depth course on Turing machines and Reddit'
 course.university = uni
 course.creation_date = datetime.now()
+course.creator = user
 course.save()
 
 section = Section()
