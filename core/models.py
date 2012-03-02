@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class University(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)
     address = models.CharField(max_length=200)
     terms_per_year = models.IntegerField('terms per year')
     
