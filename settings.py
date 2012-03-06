@@ -1,4 +1,4 @@
-# Django settings for falone project.
+# Django settings for lugsched project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -12,7 +12,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'falone',                      # Or path to database file if using sqlite3.
+        'NAME': 'lugsched',                      # Or path to database file if using sqlite3.
         'USER': 'root',                      # Not used with sqlite3.
         # DEPLOY-NOTE: Change this to match server config when you actually deploy this.
         'PASSWORD': 'notsecure',                  # Not used with sqlite3.
@@ -80,7 +80,7 @@ STATICFILES_DIRS = (
     'static/',
 
     # Store our static files under /opt/
-    '/opt/falone/static/'
+    '/opt/lugsched/static/'
 )
 
 # List of finder classes that know how to find static files in
@@ -110,7 +110,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'falone.urls'
+ROOT_URLCONF = 'lugsched.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -122,7 +122,7 @@ TEMPLATE_DIRS = (
     'templates/',
 
     # Store our templates under /opt/
-    '/opt/falone/templates/',
+    '/opt/lugsched/templates/',
 )
 
 INSTALLED_APPS = (
@@ -167,7 +167,7 @@ LOGGING = {
     }
 }
 
-# falone's login URL
+# lugsched's login URL
 LOGIN_URL = '/accounts/login/'
 
 # Point to our user profile class. Required for user.get_profile() calls

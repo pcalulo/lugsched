@@ -6,8 +6,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 	# Examples:
-	# url(r'^$', 'falone.views.home', name='home'),
-	# url(r'^falone/', include('falone.foo.urls')),
+	# url(r'^$', 'lugsched.views.home', name='home'),
+	# url(r'^lugsched/', include('lugsched.foo.urls')),
 
 	# Uncomment the admin/doc line below to enable admin documentation:
 	# url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
@@ -15,11 +15,11 @@ urlpatterns = patterns('',
 	# Uncomment the next line to enable the admin:
 	url(r'^admin/', include(admin.site.urls)),
 
-    (r'accounts/', include('falone.auth.urls')),
-	(r'^api/', include('falone.api.urls')),
-	(r'^schedules/', include('falone.schedules.urls')),
-	(r'^coursewiki/', include('falone.coursewiki.urls')),
-	(r'^$', include('falone.appbase.urls')),
+    (r'accounts/', include('lugsched.auth.urls')),
+	(r'^api/', include('lugsched.api.urls')),
+	(r'^schedules/', include('lugsched.schedules.urls')),
+	(r'^coursewiki/', include('lugsched.coursewiki.urls')),
+	(r'^$', include('lugsched.appbase.urls')),
 
     # Redirect requests for /favicon.ico to its true location
     # See http://www.codekoala.com/blog/2008/setup-faviconico-django/
