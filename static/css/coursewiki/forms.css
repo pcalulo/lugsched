@@ -1,6 +1,7 @@
 
 span.required-data {
     color: red;
+    font-weight: bold;
 }
 
 div.errorbox {
