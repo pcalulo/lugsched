@@ -54,22 +54,6 @@ class Section(models.Model):
     def __unicode__(self):
         return '%s %s' % (self.course.code, self.name)
 
-    def to_dict(self):
-        sDict = {}
-        meetings = self.meeting_set.all()
-        cleanedMeetings = []
-
-        # We need to remove some Django stuff that gets serialized along with the
-        # rest of the data
-        for meeting in meetings:
-            cleanedMeetings.append(meeting.to_dict())
-
-        sDict['meetings'] = cleanedMeetings
-        sDict['section'] = self.name
-        sDict['courseCode'] = self.course.code
-        sDict['courseName'] = self.course.name
-        return sDict
-
 
 class Schedule(models.Model):
     creationDate = models.DateTimeField('date created')
