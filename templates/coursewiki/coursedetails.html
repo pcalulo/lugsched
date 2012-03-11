@@ -1,0 +1,27 @@
+{% extends "appbase/base.html" %}
+
+{% block subpage_title %}
+    Course details
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css"
+        href="{{ STATIC_URL }}css/coursewiki/main.css">
+{% endblock %}
+
+{% block content %}
+    <h1 class="no-bottom-margin">{{ course_code }}</h1>
+    <span class="subtext">{{ course_name }} </span>
+
+    <h2 class="minimal-bottom-margin">Sections</h2>
+    {% if sections|length > 0 %}
+        <ul>
+        {% for section in sections %}
+            <li>{{ section.name }} 
+        {% endfor %}
+        </ul>
+    {% else %}
+        This course doesn't have any sections yet.
+    {% endif %}
+{% endblock %}
+

@@ -43,6 +43,19 @@ def search_view(request, uni_name):
     
     return HttpResponse(template.render(context))
 
+def course_details_view(request, uni_name, course_code):
+    template = loader.get_template('coursewiki/coursedetails.html')
+
+    course = Course.objects.get(code = course_code)
+
+    context = RequestContext(request, {
+        'course_code': course_code,
+        'course_name': course.name,
+        'sections': Section.objects.filter(course = course),
+    })
+
+    return HttpResponse(template.render(context))
+
 @login_required
 def add_course_on_post(request, uni_name=None):
     try:
@@ -61,7 +74,11 @@ def add_course_on_post(request, uni_name=None):
     course.creation_date = datetime.now()
 
     course.save()
-    return redirect('/coursewiki/')
+
+    # Redirect to the newly-created course
+    return redirect('/coursewiki/%s/courses/%s' %
+        (urlquote(university.name, safe=''), urlquote(course.code, safe=''))
+    )
     
 @login_required
 def add_course_view(request, uni_name=None):
