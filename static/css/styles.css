@@ -1,18 +1,18 @@
 
 * {
-	font-family: Open Sans, Droid Sans, sans-serif;
+    font-family: Open Sans, Droid Sans, sans-serif;
     color: #333333;
 }
 
 h1 {
-	font-size: 1.4em;
-	font-weight: normal;
+    font-size: 1.4em;
+    font-weight: normal;
     color: inherit;
 }
 
 h2 {
-	font-size: 1.2em;
-	font-weight: normal;
+    font-size: 1.2em;
+    font-weight: normal;
 }
 
 h3 {
@@ -21,15 +21,15 @@ h3 {
 }
 
 .slim {
-	font-weight: normal;
+    font-weight: normal;
 }
 
 p {
-	line-height: 150%;
+    line-height: 150%;
 }
 
 label {
-	font-size: 0.8em;
+    font-size: 0.8em;
 }
 
 span.helptext {
@@ -45,11 +45,11 @@ span.helptext > i {
 }
 
 .short-text {
-	line-height: 80%;
+    line-height: 80%;
 }
 
 .faded-out {
-	color: #999999;
+    color: #999999;
 }
 
 
@@ -63,22 +63,22 @@ a.admin-link {
 }
 
 .top {
-	max-width: 100%;
+    max-width: 100%;
 }
 
 div.header {
-	margin: 0 auto;
-	float: center;
-	font-size: 10pt;
+    margin: 0 auto;
+    float: center;
+    font-size: 10pt;
     padding-bottom: 4px;
 }
 
 #signin {
-	float: right;
+    float: right;
 }
 
 #apptitle {
-	float: left;
+    float: left;
 }
 
 /* girl look at that */
@@ -93,9 +93,9 @@ body {
 }
 
 div.page {
-	margin: 0 auto;
-	min-width: 300px;
-	max-width: 800px;
+    margin: 0 auto;
+    min-width: 300px;
+    max-width: 800px;
     background-color: white;
     border-style: dashed;
     border-width: 1px;
@@ -105,15 +105,15 @@ div.page {
 }
 
 div.app-description {
-	text-align: justify;
+    text-align: justify;
 }
 
 div.footer {
-	position: relative;
-	margin: 0 auto;
-	text-align: center;
-	width: 95%;
-	font-size: 8pt;
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+    width: 95%;
+    font-size: 8pt;
     padding-top: 32px;
 }
 
@@ -127,7 +127,7 @@ div.hidden {
 
 .side-image-right {
     display: block;
-	float: right;
+    float: right;
     margin: 8px;
     margin-right: 0px;
 }
@@ -137,11 +137,11 @@ div.hidden {
 }
 
 .fake-h1 {
-	font-size: 1.3em;
+    font-size: 1.3em;
 }
 
 .extra-line-spacing {
-	line-height: 150%
+    line-height: 150%
 }
 
 .no-bottom-margin {

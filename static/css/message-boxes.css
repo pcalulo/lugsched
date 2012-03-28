@@ -1,19 +1,19 @@
 
 div.errorMessage {
-	border-radius: 8px;
-	background-color: #FFDDDD;
-	padding: 5px 0 5px 10px;
-	min-width: 300px;
-	max-width: 100%;
-	display: none;
+    border-radius: 8px;
+    background-color: #FFDDDD;
+    padding: 5px 0 5px 10px;
+    min-width: 300px;
+    max-width: 100%;
+    display: none;
 }
 
 div.infoMessage {
-	border-radius: 8px;
-	background-color: #DDFFDD;
-	padding: 5px 0 5px 10px;
-	min-width: 300px;
-	max-width: 100%;
-	display: none;
+    border-radius: 8px;
+    background-color: #DDFFDD;
+    padding: 5px 0 5px 10px;
+    min-width: 300px;
+    max-width: 100%;
+    display: none;
 }
 
