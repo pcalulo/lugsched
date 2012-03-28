@@ -5,7 +5,7 @@
  * */
 
 if ((typeof console) == 'undefined') {
-	console = {};
-	console.log = console.error = function() {};
+    console = {};
+    console.log = console.error = function() {};
 }
 
