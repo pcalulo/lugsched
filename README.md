@@ -33,7 +33,7 @@ The Django Apps
 **appbase** - Implements the home page.
 
 **api** - Provides the RESTful API, through which other apps can access
-forever-alone.
+LugSched.
 
 **schedules** - Provides the primary user-facing functionality of LugSched, i.e.
 schedule CRUD operations
