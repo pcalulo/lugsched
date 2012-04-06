@@ -2,6 +2,9 @@
 /*
  * clicklist.js: a system for easily creating and manipulating 
  * lists of items
+ *
+ * Reused from Lawrence Patrick Calulo's side-project "LugSched"
+ * https://github.com/lugkhast/lugsched
  */
 
 function ClickListButtonData() {
@@ -68,27 +71,27 @@ ClickList.prototype.orderedAdd = function(element) {
     this.list.orderedAdd(element);
 }
 
-ClickList.prototype.createItemHTML = function(element) {
-    var html = "<div class='clicklist-item' id='clicklist-new'>" + 
-    "<div class='clicklist-maintext'>" + element.mainText;  
-
-    html += "<div class='clicklist-righttext'>" + element.rightText + "</div>"
-    html += "</div>"
-    if (element.button1.text) {
-        html += "<input type='button' value='" + element.button1.text;
-        html += "' class='clicklist-item-button'></input>";
-    }
-
-    if (element.button2.text) {
-        html += "<input type='button' value='" + element.button2.text;
-        html += "' class='clicklist-item-button'></input>";
-    }
-
-    html += "<div class='clicklist-subtext'>" + element.subText + "</div>";
+ClickList.prototype.createItem = function(element) {
+    var item = document.createElement("div");
+    item.className = "clicklist-item";
+    item.id = "clicklist-new";
     
-        
-    html += "</div>";
-    return html;
+    var mainText = document.createElement("div");
+    mainText.className = "clicklist-maintext";
+    mainText.textContent = element.mainText;
+    item.appendChild(mainText);
+    
+    var rightText = document.createElement("div");
+    rightText.className = "clicklist-righttext";
+    rightText.textContent = element.rightText;
+    mainText.appendChild(rightText);
+    
+    var subText = document.createElement("div");
+    subText.className = "clicklist-subtext";
+    subText.textContent = element.subText;
+    item.appendChild(subText)
+    
+    return item;
 }
 
 ClickList.prototype.initListItem = function(item, data) {
@@ -104,7 +107,7 @@ ClickList.prototype.add = function(element) {
         return;
     }
     this.list.add(element);
-    this.div.append(this.createItemHTML(element));
+    this.div.append(this.createItem(element));
 
     var newItem = $("#clicklist-new");
     this.initListItem(newItem, element);
@@ -117,7 +120,7 @@ ClickList.prototype.add = function(element) {
 
 
 ClickList.prototype._fullUpdateTraversalFunc = function(element, list) {
-    list.div.append(list.createItemHTML(element));
+    list.div.append(list.createItem(element));
     list.initListItem($("#clicklist-new"), element);
 }
 /*
