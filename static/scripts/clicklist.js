@@ -2,9 +2,6 @@
 /*
  * clicklist.js: a system for easily creating and manipulating 
  * lists of items
- *
- * Reused from Lawrence Patrick Calulo's side-project "LugSched"
- * https://github.com/lugkhast/lugsched
  */
 
 function ClickListButtonData() {
