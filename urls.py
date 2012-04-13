@@ -15,11 +15,11 @@ urlpatterns = patterns('',
 	# Uncomment the next line to enable the admin:
 	url(r'^admin/', include(admin.site.urls)),
 
-    (r'accounts/', include('lugsched.auth.urls')),
-	(r'^api/', include('lugsched.api.urls')),
-	(r'^schedules/', include('lugsched.schedules.urls')),
-	(r'^coursewiki/', include('lugsched.coursewiki.urls')),
-	(r'^$', include('lugsched.appbase.urls')),
+    url(r'^accounts/', include('auth.urls')),
+	url(r'^api/', include('api.urls')),
+	url(r'^schedules/', include('schedules.urls')),
+	url(r'^coursewiki/', include('coursewiki.urls')),
+	url(r'^$', include('appbase.urls')),
 
     # Redirect requests for /favicon.ico to its true location
     # See http://www.codekoala.com/blog/2008/setup-faviconico-django/
