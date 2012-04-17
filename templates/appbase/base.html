@@ -27,15 +27,12 @@
         <!-- header -->
         <div class="header">
             <span id="apptitle">
-                LugSched
+                <a href="/">LugSched</a>
             </span>
             <div id="navbuttons">
                 {% block login %}
                     <ul>
                     {% if user.is_authenticated %}
-                        {% if user.is_staff %}
-                            <li><a href='/admin/' class='admin-link'>Administration</a>
-                        {% endif %}
                         <li id="navSchedButton"> <a href="/schedules/">Schedules</a>
                         <li id="navCourseWikiButton">
                             <a href="/coursewiki/">Course Wiki</a>
