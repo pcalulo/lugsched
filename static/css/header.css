@@ -4,7 +4,11 @@ div.header {
     height: 48px;
     margin: 0;
     border: 0;
-    background-color: #669900;
+
+    background-color: #75a800;
+
+    box-shadow: 0px 0px 10px 5px #AAA;
+
     color: white;
 }
 
@@ -12,7 +16,6 @@ div.header {
     float: right;
     position: relative;
     right: 16px;
-
     display: block;
 }
 
@@ -23,11 +26,13 @@ div.header {
     padding: 8px;
     padding-left: 10px;
 
-    border-color: rgb(102, 153, 25);
+    border-color: #b6db49;
 }
 
 #navbuttons > ul > li.selected {
-    border-bottom: 5px solid;
+    border-bottom: 6px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
 }
 
 /* Top bar links should always be white and not underlined */

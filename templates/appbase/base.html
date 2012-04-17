@@ -36,14 +36,18 @@
                         {% if user.is_staff %}
                             <li><a href='/admin/' class='admin-link'>Administration</a>
                         {% endif %}
-                        <li> <a href="/schedules/">Schedules</a>
-                        <li> <a href="/coursewiki/">Course Wiki</a>
-                        <li> <a href="/accounts/logout/">{{ user.username }}</a>
+                        <li id="navSchedButton"> <a href="/schedules/">Schedules</a>
+                        <li id="navCourseWikiButton">
+                            <a href="/coursewiki/">Course Wiki</a>
+                        </li>
+                        <li id="navLogoutButton">
+                            <a href="/accounts/logout/">{{ user.username }}</a>
+                        </li>
                     {% else %}
-                        <li>
+                        <li id="navRegisterButton">
                             <a href="/accounts/register/">Register</a>
                         </li>
-                        <li><a href="/accounts/login/">Log In</a></li>
+                        <li id="navLoginButton"><a href="/accounts/login/">Log In</a></li>
                     {% endif %}
                     </ul>
                 {% endblock %}
