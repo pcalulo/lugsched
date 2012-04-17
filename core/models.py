@@ -1,7 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
+# This file contains LugSched's core data models.
+#
+# When updating models in this file, please also update the relevant models for
+# the coursewiki archive (in coursewiki/models.py)
+#
+# The above only applies to models that are used by the wiki.
+
+
 class University(models.Model):
     name = models.CharField(max_length=200, unique=True)
     address = models.CharField(max_length=200)
