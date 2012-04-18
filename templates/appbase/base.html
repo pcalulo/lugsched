@@ -38,21 +38,15 @@
                             <a href="/coursewiki/">Course Wiki</a>
                         </li>
                         <li id="navLogoutButton">
-                            {#
-                                TODO: User button should show a drop-down menu,
-                                with links to the users profile and for logout.
-                            #}
                             <a href="/accounts/logout/">{{ user.username }}</a>
                         </li>
                     {% else %}
-                        <a href="/accounts/register/">
-                            <li id="navRegisterButton">
-                                Register
-                            </li>
-                        </a>
-                        <a href="/accounts/login/">
-                            <li id="navLoginButton">Log In</li>
-                        </a>
+                        <li id="navRegisterButton">
+                            <a href="/accounts/register/">Register</a>
+                        </li>
+                        <li id="navLoginButton">
+                            <a href="/accounts/login/">Log In</a>
+                        </li>
                     {% endif %}
                     </ul>
                 {% endblock %}

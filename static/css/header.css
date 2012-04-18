@@ -19,7 +19,7 @@ div.header {
     display: block;
 }
 
-#navbuttons > ul > a > li {
+#navbuttons > ul > li {
     display: inline;
     position: relative;
     bottom: 4px;
@@ -27,13 +27,10 @@ div.header {
     padding-left: 10px;
 
     border-color: #99cc00
-
-    color: white;
-    text-decoration: none;
 }
 
 /* Top bar links should always be white and not underlined */
-#navbuttons > ul > a {
+#navbuttons > ul > li > a {
     color: white;
     text-decoration: none;
 }
