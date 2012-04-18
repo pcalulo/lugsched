@@ -19,7 +19,7 @@ div.header {
     display: block;
 }
 
-#navbuttons > ul > li {
+#navbuttons > ul > a > li {
     display: inline;
     position: relative;
     bottom: 4px;
@@ -27,18 +27,21 @@ div.header {
     padding-left: 10px;
 
     border-color: #99cc00
+
+    color: white;
+    text-decoration: none;
+}
+
+/* Top bar links should always be white and not underlined */
+#navbuttons > ul > a {
+    color: white;
+    text-decoration: none;
 }
 
 #navbuttons > ul > li.selected {
     border-bottom: 6px solid white;
     border-left: 1px solid white;
     border-right: 1px solid white;
-}
-
-/* Top bar links should always be white and not underlined */
-#navbuttons > ul > li > a {
-    color: white;
-    text-decoration: none;
 }
 
 #apptitle {
