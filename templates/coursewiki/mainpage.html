@@ -7,24 +7,18 @@ Course Wiki
 {% block page_css %}
 {% endblock %}
 
-{% block content %}
-    <h1>Course Wiki - {{ uni_name }}</h1>
-    <div class="searchbox">
-        <form method="GET" action="./search">
-            <label for="searchQuery">Search for a course (e.g. <i>WEBDEVE</i>):</label>
-            <input name="searchQuery" type="text" size="30"></input>
-            <input type="submit" value="Search"></input>
-        </form>
+{% block narrow_content %}
+    <div class="center">
+        <h1 class="no-bottom-margin">Course Wiki - {{ uni_name }}</h1>
         <span class="subtext">
-            Other actions:
-            <a href="./actions/addcourse">Add a Course</a> |
-            <a href="./actions/addcourse">Request deletion of a course</a>
+            Search for courses from this university below.
         </span>
     </div>
-    <div class="messagebox">
-        <h2 class="no-bottom-padding">Contribute</h2>
-        Is our course database incomplete? Help us help you help
-        us all by adding missing courses and correcting errors.
+    <div class="searchbox">
+        <form method="GET" action="./search">
+            <input name="searchQuery" type="text" size="70"></input>
+            <input type="submit" value="Search"></input>
+        </form>
     </div>
     <div class="leftbox clear">
         <h2>Recently added</h2>
