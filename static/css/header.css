@@ -12,6 +12,29 @@ div.header {
     color: white;
 }
 
+#apptitle {
+    color: white;
+    font-size: 29px;
+    position: relative;
+    top: 2px;
+    left: 16px;
+    max-width: 80%;
+    float: left;
+}
+
+#apptitle > a {
+    color: white;
+    text-decoration: none;
+}
+
+#header-university-label {
+    font-size: 0.5em;
+
+    position: relative;
+    bottom: 4px;
+    left: 10px;
+}
+
 #navbuttons {
     float: right;
     position: relative;
@@ -39,20 +62,5 @@ div.header {
     border-bottom: 6px solid white;
     border-left: 1px solid white;
     border-right: 1px solid white;
-}
-
-#apptitle {
-    color: white;
-    font-size: 29px;
-    position: relative;
-    top: 2px;
-    left: 16px;
-    max-width: 80%;
-    float: left;
-}
-
-#apptitle > a {
-    color: white;
-    text-decoration: none;
 }
 

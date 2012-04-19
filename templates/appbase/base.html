@@ -28,6 +28,11 @@
         <div class="header">
             <span id="apptitle">
                 <a href="/">LugSched</a>
+                {% if user.is_authenticated %}
+                    <span id="header-university-label">
+                        {{ user.get_profile.university }}
+                    </span>
+                {% endif %}
             </span>
             <div id="navbuttons">
                 {% block navbuttons %}
