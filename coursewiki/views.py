@@ -37,6 +37,7 @@ def search_view(request, uni_name):
     results = Course.objects.all()
 
     context = RequestContext(request, {
+        'uni_name': uni_name,
         'searchQuery': request.GET.get('searchQuery', ''),
         'searchResults': results,
     })
