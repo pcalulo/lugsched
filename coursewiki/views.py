@@ -9,7 +9,7 @@ from datetime import datetime
 
 from core.models import *
 
-def get_most_recent_courses():
+def get_newest_courses():
     # The most recently created course will be the first one listed
     return Course.objects.order_by('-creation_date')[:5]
 
@@ -26,7 +26,7 @@ def main_page(request, uni_name=None):
     template = loader.get_template('coursewiki/mainpage.html')
     context = RequestContext(request, {
         'uni_name': uni_name,
-        'recent_courses': get_most_recent_courses()
+        'newest_courses': get_newest_courses()
     })
     return HttpResponse(template.render(context))
 

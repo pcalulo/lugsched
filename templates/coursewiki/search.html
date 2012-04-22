@@ -13,7 +13,10 @@ Course Wiki Search
 
 {% block narrow_content %}
     <div class="searchbox">
-        <h1>Course Wiki Search - {{ uni_name }}</h1>
+        <h1 class="no-bottom-margin">Course Wiki - {{ uni_name }}</h1>
+        <span class="subtext">
+            Search for courses from this university below.
+        </span>
         <form method="GET" action="./search">
             <input name="searchQuery" type="text" size="70"
                 value="{{ searchQuery }}">

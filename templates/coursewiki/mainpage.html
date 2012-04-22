@@ -23,7 +23,7 @@ Course Wiki
     <div class="leftbox clear">
         <h2>Recently added</h2>
         <ul>
-            {% for course in recent_courses %}
+            {% for course in newest_courses %}
                 <li><span class="coursecode">
                     {{ course.code }}
                 </span> - {{ course.name }}</li>
@@ -33,7 +33,7 @@ Course Wiki
     <div class="rightbox">
         <h2>Recently updated</h2>
         <ul>
-            {% for course in recent_courses %}
+            {% for course in newest_courses %}
                 <li><span class="coursecode">
                     {{ course.code }}
                 </span> - {{ course.name }}</li>
