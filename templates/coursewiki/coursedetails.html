@@ -15,12 +15,13 @@
     <div id="container">
 
     <div class="course-details">
-        <h1 class="no-bottom-margin">{{ course.code }}</h1>
-        <span class="subtext faded-out">{{ course.name }}</span>
-
-        <p>
+        <h1 class="no-bottom-margin">
+            {{ course.code }}
+            <span class="faded-out">{{ course.name }}</span>
+        </h1>
+        <span class="subtext">
             {{ course.description }}
-        </p>
+        </span>
     
         <h2 class="minimal-bottom-margin">Sections</h2>
         {% if sections|length > 0 %}
@@ -30,7 +31,9 @@
             {% endfor %}
             </ul>
         {% else %}
-            This course doesn't have any sections yet.
+            <span class="subtext">
+                This course doesn't have any sections yet.
+            </span>
         {% endif %}
     </div>
 

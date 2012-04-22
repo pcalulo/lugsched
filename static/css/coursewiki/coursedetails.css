@@ -22,3 +22,7 @@ div.course-comments {
     top: 16px;
 }
 
+h1 > .faded-out {
+    font-size: 80%;
+}
+

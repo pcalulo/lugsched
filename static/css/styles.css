@@ -83,8 +83,9 @@ div.app-description {
 }
 
 div.small-padding {
-    padding-left: 8px;
-    padding-right: 8px;
+    /* Match the 16px padding on the top bar */
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
 div.limit-width {
