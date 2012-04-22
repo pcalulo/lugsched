@@ -15,8 +15,12 @@
     <div id="container">
 
     <div class="course-details">
-        <h1 class="no-bottom-margin">{{ course_code }}</h1>
-        <span class="subtext">{{ course_name }} </span>
+        <h1 class="no-bottom-margin">{{ course.code }}</h1>
+        <span class="subtext faded-out">{{ course.name }}</span>
+
+        <p>
+            {{ course.description }}
+        </p>
     
         <h2 class="minimal-bottom-margin">Sections</h2>
         {% if sections|length > 0 %}

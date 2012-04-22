@@ -50,8 +50,7 @@ def course_details_view(request, uni_name, course_code):
     course = Course.objects.get(code = course_code)
 
     context = RequestContext(request, {
-        'course_code': course_code,
-        'course_name': course.name,
+        'course': course,
         'sections': Section.objects.filter(course = course),
     })
 
