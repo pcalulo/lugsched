@@ -7,21 +7,47 @@
 {% block page_css %}
     <link rel="stylesheet" type="text/css"
         href="{{ STATIC_URL }}css/coursewiki/main.css">
+    <link rel="stylesheet" type="text/css"
+        href="{{ STATIC_URL }}css/coursewiki/coursedetails.css">
 {% endblock %}
 
-{% block content %}
-    <h1 class="no-bottom-margin">{{ course_code }}</h1>
-    <span class="subtext">{{ course_name }} </span>
+{% block padded_content %}
+    <div id="container">
 
-    <h2 class="minimal-bottom-margin">Sections</h2>
-    {% if sections|length > 0 %}
-        <ul>
-        {% for section in sections %}
-            <li>{{ section.name }} 
-        {% endfor %}
-        </ul>
-    {% else %}
-        This course doesn't have any sections yet.
-    {% endif %}
+    <div class="course-details">
+        <h1 class="no-bottom-margin">{{ course_code }}</h1>
+        <span class="subtext">{{ course_name }} </span>
+    
+        <h2 class="minimal-bottom-margin">Sections</h2>
+        {% if sections|length > 0 %}
+            <ul>
+            {% for section in sections %}
+                <li>{{ section.name }} 
+            {% endfor %}
+            </ul>
+        {% else %}
+            This course doesn't have any sections yet.
+        {% endif %}
+    </div>
+
+    <div class="course-comments">
+        The quick brown fox jumps over the lazy dog.
+        The quick brown fox jumps over the lazy dog.
+        The quick brown fox jumps over the lazy dog.
+        The quick brown fox jumps over the lazy dog.
+        The quick brown fox jumps over the lazy dog.
+        The quick brown fox jumps over the lazy dog.
+        The quick brown fox jumps over the lazy dog.
+        The quick brown fox jumps over the lazy dog.
+        The quick brown fox jumps over the lazy dog.
+        The quick brown fox jumps over the lazy dog.
+        The quick brown fox jumps over the lazy dog.
+        The quick brown fox jumps over the lazy dog.
+        The quick brown fox jumps over the lazy dog.
+        The quick brown fox jumps over the lazy dog.
+        The quick brown fox jumps over the lazy dog.
+    </div>
+
+    </div>
 {% endblock %}
 
