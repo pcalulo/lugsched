@@ -2,7 +2,7 @@
 {% load comments %}
 
 {% block subpage_title %}
-    Course Details
+    {{ course.code }} - Course Details
 {% endblock %}
 
 {% block page_css %}
@@ -89,6 +89,30 @@
                                 <li> A list item
                                 <li> Another list item
                             </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &gt; This is a quote,<br>
+                            &gt; as you can see.
+                        </td>
+                        <td>
+                            <blockquote>
+                                <p>
+                                    This is a quote, as you can see.
+                                </p>
+                            </blockquote>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            You need an empty line
+                            <br><br>
+                            to start a new paragraph
+                        </td>
+                        <td>
+                            <p>You need an empty line</p>
+                            <p>to start a new paragraph</p>
                         </td>
                     </tr>
                 </table>
