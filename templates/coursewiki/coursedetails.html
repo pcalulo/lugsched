@@ -12,6 +12,13 @@
         href="{{ STATIC_URL }}css/coursewiki/coursedetails.css">
 {% endblock %}
 
+{% block scripts %}
+    <script src="{{ STATIC_URL }}scripts/libs/jquery.js"
+        type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}scripts/coursewiki/coursedetails.js"
+        type="text/javascript"></script>
+{% endblock %}
+
 {% block padded_content %}
     <div id="container">
 
@@ -41,11 +48,59 @@
     <div class="course-comments">
         {% get_comment_count for course as comment_count %}
 
+        {# Comment input form #}
+        <div id="comment-input">
+            <textarea rows="5" cols="60"></textarea>
+            <div class="controls">
+                <span class="subtext">
+                    <a id="markdown-toggle" onclick="toggleMarkdownHelp()"
+                        href="#">
+                        Formatting help
+                    </a>
+                </span>
+                <input type="button" value="Preview"
+                    class="submitbutton"></input>
+                <input type="button" value="Post it!"
+                    class="submitbutton"></input>
+            </div>
+            <div id="markdown-help">
+                You can use <b>Markdown</b> to style your comments. Here are
+                examples of how to do it:
+                <table>
+                    <tr>
+                        <th>Raw input</th>
+                        <th>Final output</th>
+                    </tr>
+                    <tr>
+                        <td>*italicized*</td>
+                        <td><i>italicized</i></td>
+                    </tr>
+                    <tr>
+                        <td>**bold**</td>
+                        <td><b>bold</b></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            * A list item<br>
+                            * Another list item
+                        </td>
+                        <td>
+                            <ul>
+                                <li> A list item
+                                <li> Another list item
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
         {% if comment_count == 0 %}
             <div id="nocomments">
                 No comments yet
             </div>
         {% endif %}
+
         {% get_comment_list for course as comments %}
         {% for comment in comments %}
             <div class="comment-header subtext">
