@@ -1,4 +1,5 @@
 {% extends "coursewiki/base.html" %}
+{% load comments %}
 
 {% block subpage_title %}
     Course Details
@@ -38,21 +39,22 @@
     </div>
 
     <div class="course-comments">
-        The quick brown fox jumps over the lazy dog.
-        The quick brown fox jumps over the lazy dog.
-        The quick brown fox jumps over the lazy dog.
-        The quick brown fox jumps over the lazy dog.
-        The quick brown fox jumps over the lazy dog.
-        The quick brown fox jumps over the lazy dog.
-        The quick brown fox jumps over the lazy dog.
-        The quick brown fox jumps over the lazy dog.
-        The quick brown fox jumps over the lazy dog.
-        The quick brown fox jumps over the lazy dog.
-        The quick brown fox jumps over the lazy dog.
-        The quick brown fox jumps over the lazy dog.
-        The quick brown fox jumps over the lazy dog.
-        The quick brown fox jumps over the lazy dog.
-        The quick brown fox jumps over the lazy dog.
+        {% get_comment_count for course as comment_count %}
+
+        {% if comment_count == 0 %}
+            <div id="nocomments">
+                No comments yet
+            </div>
+        {% endif %}
+        {% get_comment_list for course as comments %}
+        {% for comment in comments %}
+            <div class="comment-header subtext">
+                {{ comment.user_name }}
+            </div>
+            <div class="comment-content">
+                {{ comment.comment }}
+            </div>
+        {% endfor %}
     </div>
 
     </div>

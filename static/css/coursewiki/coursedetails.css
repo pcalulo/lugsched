@@ -15,11 +15,20 @@ div.course-comments {
     height: 100%;
     min-height: 100%;
     float: right;
-
-    background-color: lightgray;
-
     position: relative;
     top: 16px;
+}
+
+div.comment {
+    box-shadow: 0 0 10px 10px gray;
+}
+
+#nocomments {
+    text-align: center;
+    background-color: lightyellow;
+    border: 1px solid brown;
+    padding: 8px;
+    box-shadow: 0 0 15px 2px gray;
 }
 
 h1 > .faded-out {
