@@ -13,8 +13,6 @@ def markdownify_handler(request):
     
     comment_text = str(request.body)
 
-    print 'REQUEST BODY: ', comment_text
-
     md.reset()
     markdowned_text = md.convert(comment_text)
 

@@ -15,13 +15,21 @@ talk about while walking from class to class...
 
 LugSched is currently...
 -----------------------------
- * being rewritten from the ground up, to be independent of Google App Engine
+ * being actively developed as a hobby project
 
-We are performing this rewrite as we are not comfortable with the potential
-lock-in that we would experience should we continue with the original,
-GAE-hosted web app, which was named forever-alone. The rewrite is expected to go
-faster and more smoothly than the initial development, as a lot of the design
-has been ironed out.
+
+Required Python Packages
+-----------------------------
+1. **Django**, of course
+2. **django-piston**, for easy RESTful APIs
+3. **markdown**, for convenient text formatting
+
+You can easily install this using easy\_install, like so:
+
+    sudo easy_install Django django-piston markdown
+
+easy\_install should be readily available from your distro's package
+repositories.
 
 
 The Django Apps
