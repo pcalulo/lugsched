@@ -49,7 +49,7 @@
         {% get_comment_count for course as comment_count %}
 
         {# Comment input form #}
-        <div id="comment-input">
+        <div id="comment-input" class="side-box">
             <textarea id="comment-box" rows="5" cols="60"></textarea>
             <div class="controls">
                 <span class="subtext">
@@ -57,6 +57,12 @@
                         href="#">
                         Formatting help
                     </a>
+                </span>
+                <span class="preview-controls">
+                    <img src="/static/images/spinner.gif" class="spinner"></img>
+                    <label>Generating preview</label>
+                    <input type="button" value="Cancel" onClick="cancelPreview()">
+                    </input>
                 </span>
                 <input type="button" value="Preview" onClick="getPreview()"
                     class="submitbutton"></input>

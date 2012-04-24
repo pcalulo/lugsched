@@ -10,6 +10,9 @@ from django.shortcuts import redirect
 # Required data for comments
 from django.contrib.sites.models import Site
 
+# The preview view must be exempt from CSRF protection
+from django.views.decorators.csrf import csrf_exempt
+
 import markdown
 from datetime import datetime
 
@@ -22,8 +25,7 @@ def get_newest_courses():
 # Prepare our markdown object
 # For information on the parameters, see:
 # http://packages.python.org/Markdown/reference.html
-md = markdown.Markdown(safe_mode=True, output_format='html5',
-    enable_attributes=False)
+md = markdown.Markdown(safe_mode='escape')
 
 
 @login_required
@@ -92,12 +94,17 @@ def course_comments_post(request, uni_name, course_code):
     comment.is_removed = False
     comment.save()
 
+@csrf_exempt
 def course_comments_preview(request, uni_name, course_code):
-    # Only accept GET requests
-    if request.method != 'GET':
+    # Only accept POST requests
+    if request.method != 'POST':
         return HttpResponseBadRequest('<h1>HTTP 400 Bad Request</h1>')
     
-    comment_text = request.GET['text']
+    comment_text = str(request.body)
+
+    print 'REQUEST BODY: ', comment_text
+
+    md.reset()
     markdowned_text = md.convert(comment_text)
 
     return HttpResponse(markdowned_text)

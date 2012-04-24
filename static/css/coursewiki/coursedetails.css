@@ -28,7 +28,7 @@ div.course-comments {
     box-shadow: 0 0 10px 1px lightgray;
 }
 
-#comment-input {
+div.side-box {
     padding: 8px;
     border-radius: 8px;
     box-shadow: 0 0 10px 1px lightgray;
@@ -76,6 +76,17 @@ td, th {
 
 td > ul {
     margin: 0px;
+}
+
+span.preview-controls {
+    position: relative;
+    right: 8px;
+    display: none;
+}
+
+img.spinner {
+    position: relative;
+    top: 3px;
 }
 
 div.comment {
