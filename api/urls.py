@@ -2,6 +2,8 @@ from django.conf.urls.defaults import patterns, include, url
 from piston.resource import Resource
 from api.handlers import *
 
+from views import *
+
 uni_handler = Resource(UniversityHandler)
 uni_course_handler = Resource(UniversityCourseHandler)
 profile_handler = Resource(UserProfileHandler)
@@ -33,4 +35,7 @@ urlpatterns = patterns('',
 	# Schedule
 	(r'^schedule/', schedule_handler),
 	(r'^schedule/(?P<schedule_id>[^/]+)/', schedule_handler),
+
+    # Miscellaneous APIs
+    (r'^misc/markdownify$', markdownify_handler),
 )

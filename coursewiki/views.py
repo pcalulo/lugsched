@@ -10,9 +10,6 @@ from django.shortcuts import redirect
 # Required data for comments
 from django.contrib.sites.models import Site
 
-# The preview view must be exempt from CSRF protection
-from django.views.decorators.csrf import csrf_exempt
-
 import markdown
 from datetime import datetime
 
@@ -93,22 +90,6 @@ def course_comments_post(request, uni_name, course_code):
     comment.is_public = True
     comment.is_removed = False
     comment.save()
-
-@csrf_exempt
-def course_comments_preview(request, uni_name, course_code):
-    # Only accept POST requests
-    if request.method != 'POST':
-        return HttpResponseBadRequest('<h1>HTTP 400 Bad Request</h1>')
-    
-    comment_text = str(request.body)
-
-    print 'REQUEST BODY: ', comment_text
-
-    md.reset()
-    markdowned_text = md.convert(comment_text)
-
-    return HttpResponse(markdowned_text)
-    
 
 @login_required
 def add_course_on_post(request, uni_name=None):

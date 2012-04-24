@@ -24,7 +24,7 @@ function getPreview() {
     var text = $("#comment-box").val();
     console.log("Previewing: " + text);
     $.ajax({
-        url: './preview',
+        url: '/api/misc/markdownify',
         data: text,
         type: 'POST',
         processData: false,
