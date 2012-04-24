@@ -24,7 +24,7 @@ Required Python Packages
 2. **django-piston**, for easy RESTful APIs
 3. **markdown**, for convenient text formatting
 
-You can easily install this using easy\_install, like so:
+You can easily install these using easy\_install, like so:
 
     sudo easy_install Django django-piston markdown
 
