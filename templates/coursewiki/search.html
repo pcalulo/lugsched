@@ -39,7 +39,7 @@ Course Wiki Search
 
         {% for course in searchResults %}
             <div class="search-result">
-                <a href="./courses/{{ course.code|urlencode:"" }}">
+                <a href="./courses/{{ course.code|urlencode:"" }}/">
                     {{ course.code }} - {{ course.name }}
                 </a>
                 <br>

@@ -11,3 +11,13 @@ function toggleMarkdownHelp() {
     }
 }
 
+function getPreview() {
+    var text = $("#comment-box").val();
+    console.log("Previewing: " + text);
+    data = {}
+    data.text = text
+    $.get('./preview', data, function(data, textStatus, jqXHR) {
+        console.log(data);
+    });
+}
+

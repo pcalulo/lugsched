@@ -50,7 +50,7 @@
 
         {# Comment input form #}
         <div id="comment-input">
-            <textarea rows="5" cols="60"></textarea>
+            <textarea id="comment-box" rows="5" cols="60"></textarea>
             <div class="controls">
                 <span class="subtext">
                     <a id="markdown-toggle" onclick="toggleMarkdownHelp()"
@@ -58,7 +58,7 @@
                         Formatting help
                     </a>
                 </span>
-                <input type="button" value="Preview"
+                <input type="button" value="Preview" onClick="getPreview()"
                     class="submitbutton"></input>
                 <input type="button" value="Post it!"
                     class="submitbutton"></input>
