@@ -1,46 +1,39 @@
-{% extends "coursewiki/base.html" %}
-
-{% block subpage_title %}
-Add a Course
-{% endblock %}
+{% extends 'coursewiki/base.html' %}
 
 {% block page_css %}
     <link rel="stylesheet" type="text/css"
         href="{{ STATIC_URL }}css/coursewiki/forms.css">
 {% endblock %}
 
-{% block scripts %}
-    <script src="{{ STATIC_URL }}scripts/coursewiki/addcourse.js"
-        type="text/javascript"></script>
-    <script src="{{ STATIC_URL }}scripts/libs/jquery.js"
-        type="text/javascript"></script>
-{% endblock %}
-
-{% block content %}
-    <h1 class="no-bottom-margin">Add a Course</h1>
+{% block padded_content %}
+    <h1 class="no-bottom-margin">Edit Course Details</h1>
     <span class="subtext">
-        Please ensure that the course you are about to add really does exist.
+        Change the details of {{ course.code }} below as
+        needed.
     </span>
 
-    <div class="errorbox hidden" id="data-incomplete-message">
-        Please fill in all of the required fields.
-    </div>
-    <form action='' method='POST' name='courseData'>
+    <hr>
+
+    <form action='' method="POST">
         {% csrf_token %}
+
         <span class="subtext">
             <i><span class="required-data">*</span> - required</i>
         </span>
         <p>
             <label for="courseCode">Course code:
                 <span class="required-data">*</span>
-                <input type="text" name="courseCode"></input>
+                <input type="text" name="courseCode" value="{{ course.code }}">
+                </input>
             </label>
             <span class="helptext">The short name for courses, e.g. <i>BASICON</i></span>
         </p>
         <p>
             <label>Course name:
                 <span class="required-data">*</span>
-                <input type="text" name="courseName" size="40"></input>
+                <input type="text" name="courseName" size="40"
+                    value="{{ course.name }}">
+                </input>
             </label>
             <span class="helptext">
                 The long name for courses, e.g. <i>Basic Computer Concepts</i>
@@ -48,14 +41,15 @@ Add a Course
         </p>
         <p>
             <label>Course description:
-                <input type="text" name="description" size="50"></input>
+                <input type="text" name="description" size="50"
+                    value="{{ course.description }}">
+                </input>
             </label>
             <span class="helptext">
                 A brief description of what the course is about, this is shown
                 in search results.
             </span>
         </p>
-
-        <input type="submit" value="Submit to Wiki" onClick="return doInputValidation()"></input>
+        <input type="submit" value="Update course"></input>
     </form>
 {% endblock %}

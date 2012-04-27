@@ -68,6 +68,36 @@ def course_details_view(request, uni_name, course_code):
 
     return HttpResponse(template.render(context))
 
+def course_details_edit(request, uni_name, course_code):
+    course = Course.objects.get(code = course_code)
+
+    if request.method == 'GET':
+        template = loader.get_template('coursewiki/coursedetails-edit.html')
+        context = RequestContext(request, {
+            'course': course,
+            'sections': Section.objects.filter(course = course),
+        })
+        
+        return HttpResponse(template.render(context))
+    elif request.method == 'POST':
+        try:
+            code = request.POST['courseCode']
+            name = request.POST['courseName']
+            description = request.POST['description']
+        except KeyError:
+            return HttpResponseBadRequest('<h1>HTTP 400 Bad Request</h1>');
+
+        course.code = code
+        course.name = name
+        course.description = description
+        course.save()
+
+        return redirect('/coursewiki/%s/courses/%s' %
+            (urlquote(uni_name, safe=''), urlquote(code, safe=''))
+        )
+    else:
+        return HttpResponseBadRequest()
+
 def course_comments_post(request, uni_name, course_code):
     # Accept only POSTs for now
     if request.method != 'POST':

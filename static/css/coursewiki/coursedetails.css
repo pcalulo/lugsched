@@ -9,6 +9,19 @@ div.course-details {
     float: left;
 }
 
+div.course-actions {
+    position: relative;
+    top: 8px;
+}
+
+div.course-actions > a {
+    padding: 4px;
+    margin-right: 8px;
+    box-shadow: 0 0 10px 1px lightgray;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
 div.course-comments {
     width: 50%;
     height: 100%;

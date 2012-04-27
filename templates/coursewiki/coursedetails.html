@@ -29,7 +29,12 @@
         </h1>
         <span class="subtext">
             {{ course.description }}
+            <div class="course-actions">
+                <a href="history">History</a>
+                <a href="edit">Edit</a>
+            </div>
         </span>
+
     
         <h2 class="minimal-bottom-margin">Sections</h2>
         {% if sections|length > 0 %}
