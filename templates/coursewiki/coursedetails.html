@@ -56,6 +56,8 @@
         {# Comment input form #}
         <div id="comment-input" class="side-box">
             <textarea id="comment-box" rows="5" cols="60"></textarea>
+            <div id="comment-preview">
+            </div>
             <div class="controls">
                 <span class="subtext">
                     <a id="markdown-toggle" onclick="toggleMarkdownHelp()"
@@ -69,8 +71,11 @@
                     <input type="button" value="Cancel" onClick="cancelPreview()">
                     </input>
                 </span>
-                <input type="button" value="Preview" onClick="getPreview()"
-                    class="submitbutton"></input>
+                <input name="close-preview" type="button" value="Close Preview"
+                    class="hidden" onClick="closePreview()">
+                </input>
+                <input name="get-preview" type="button" value="Preview"
+                    onClick="getPreview()" class="submitbutton"></input>
                 <input type="button" value="Post it!"
                     class="submitbutton"></input>
             </div>

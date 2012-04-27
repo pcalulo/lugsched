@@ -14,10 +14,19 @@ function toggleMarkdownHelp() {
     }
 }
 
-function getPreview() {
-    // Disable potentially pesky buttons, and show the "getting preview" message
+function disableCommentWidgets() {
     $("#comment-input > textarea").attr("disabled", true);
     $("#comment-input > .controls > input").attr("disabled", true);
+}
+
+function enableCommentWidgets() {
+    $("#comment-input > textarea").attr("disabled", false);
+    $("#comment-input > .controls > input").attr("disabled", false);
+}
+
+function getPreview() {
+    // Disable potentially pesky buttons, and show the "getting preview" message
+    disableCommentWidgets();
     $("#comment-input > .controls > .preview-controls").show();
 
     // Send the text to the server for markdownifying
@@ -29,7 +38,16 @@ function getPreview() {
         type: 'POST',
         processData: false,
         success: function(data, textStatus, jqXHR) {
-            console.log(data);
+            console.log(textStatus);
+            if (textStatus == "success") {
+                $("#comment-preview").html(data).slideDown();
+                $("#comment-box").slideUp();
+                $("#comment-input > .controls > .preview-controls").hide();
+                $("#comment-input > .controls > input[name=get-preview]")
+                    .hide();
+                $("#comment-input > .controls > input[name=close-preview]")
+                    .show().attr("disabled", false);
+            }
         },
         dataType: 'html'
     })
@@ -38,8 +56,7 @@ function getPreview() {
 function cancelPreview() {
     // Re-enable buttons that were disabled, and hide the "getting preview"
     // message
-    $("#comment-input > textarea").attr("disabled", false);
-    $("#comment-input > .controls > input").attr("disabled", false);
+    enableCommentWidgets()
     $("#comment-input > .controls > .preview-controls").hide();
 
     // Abort the request
@@ -47,5 +64,15 @@ function cancelPreview() {
         previewJqXHR.abort();
         previewJqXHR = null;
     }
+}
+
+function closePreview() {
+    enableCommentWidgets();
+    $("#comment-input > textarea").slideDown();
+    $("#comment-preview").slideUp();
+    $("#comment-input > .controls > input[name=close-preview]")
+        .hide()
+    $("#comment-input > .controls > input[name=get-preview]")
+        .show();
 }
 

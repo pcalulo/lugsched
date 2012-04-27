@@ -61,6 +61,10 @@ div.side-box {
     top: 4px;
 }
 
+#comment-preview {
+    display: none;
+}
+
 #markdown-help {
     display: none;
 }
