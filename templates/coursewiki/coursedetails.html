@@ -1,5 +1,6 @@
 {% extends "coursewiki/base.html" %}
 {% load comments %}
+{% load markup %}
 
 {% block subpage_title %}
     {{ course.code }} - Course Details
@@ -16,6 +17,8 @@
     <script src="{{ STATIC_URL }}scripts/libs/jquery.js"
         type="text/javascript"></script>
     <script src="{{ STATIC_URL }}scripts/coursewiki/coursedetails.js"
+        type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}scripts/django-csrf.js"
         type="text/javascript"></script>
 {% endblock %}
 
@@ -53,6 +56,24 @@
     <div class="course-comments">
         {% get_comment_count for course as comment_count %}
 
+        {% if comment_count == 0 %}
+            <div id="nocomments">
+                No comments yet
+            </div>
+        {% endif %}
+
+        {% get_comment_list for course as comments %}
+        {% for comment in comments %}
+            <div class="comment">
+                <div class="comment-header">
+                    Posted by <b>{{ comment.user.username }}</b>
+                </div>
+                <div class="comment-content">
+                    {{ comment.comment|markdown }}
+                </div>
+            </div>
+        {% endfor %}
+
         {# Comment input form #}
         <div id="comment-input" class="side-box">
             <textarea id="comment-box" rows="5" cols="60"></textarea>
@@ -76,7 +97,7 @@
                 </input>
                 <input name="get-preview" type="button" value="Preview"
                     onClick="getPreview()" class="submitbutton"></input>
-                <input type="button" value="Post it!"
+                <input type="button" value="Post it!" onClick="postComment()"
                     class="submitbutton"></input>
             </div>
             <div id="markdown-help">
@@ -135,21 +156,6 @@
             </div>
         </div>
 
-        {% if comment_count == 0 %}
-            <div id="nocomments">
-                No comments yet
-            </div>
-        {% endif %}
-
-        {% get_comment_list for course as comments %}
-        {% for comment in comments %}
-            <div class="comment-header subtext">
-                {{ comment.user_name }}
-            </div>
-            <div class="comment-content">
-                {{ comment.comment }}
-            </div>
-        {% endfor %}
     </div>
 
     </div>

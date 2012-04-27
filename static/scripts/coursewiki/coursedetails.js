@@ -76,3 +76,18 @@ function closePreview() {
         .show();
 }
 
+function postComment() {
+    var text = $("#comment-input > textarea").val()
+    $.ajax({
+        url: 'comments',
+        data: text,
+        type: 'POST',
+        processData: false,
+        success: function(data, textStatus, jqXHR) {
+            console.log(textStatus);
+            console.log(data);
+        },
+        dataType: 'html'
+    })
+}
+

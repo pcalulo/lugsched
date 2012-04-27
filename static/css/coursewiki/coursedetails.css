@@ -106,7 +106,15 @@ img.spinner {
 }
 
 div.comment {
-    box-shadow: 0 0 20px 1px gray;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px 1px lightgray;
+    margin-bottom: 16px;
+}
+
+div.comment > .comment-header {
+    font-size: 0.8em;
+    border-bottom: 1px solid lightgray;
 }
 
 h1 > .faded-out {

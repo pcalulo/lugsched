@@ -7,8 +7,15 @@ from django.utils.http import urlquote_plus, urlquote
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 
+from django.contrib.comments.models import Comment
+
 # Required data for comments
 from django.contrib.sites.models import Site
+
+# When testing with a long block of text copy-pasted from Ars Technica, Python's
+# built-in unicode() function failed and threw an error. Django's smart_unicode
+# function handles the same test input just fine.
+from django.utils.encoding import smart_unicode
 
 import markdown
 from datetime import datetime
@@ -110,7 +117,7 @@ def course_comments_post(request, uni_name, course_code):
     except DoesNotExist:
         return HttpResponseNotFound()
 
-    comment_text = request.readlines()
+    comment_text = smart_unicode(request.body)
     comment = Comment()
     comment.content_object = course
     comment.site = Site.objects.get_current()
@@ -120,6 +127,11 @@ def course_comments_post(request, uni_name, course_code):
     comment.is_public = True
     comment.is_removed = False
     comment.save()
+
+    md.reset()
+    markdowned_comment = md.convert(comment_text)
+
+    return HttpResponse(markdowned_comment)
 
 @login_required
 def add_course_on_post(request, uni_name=None):
@@ -144,7 +156,7 @@ def add_course_on_post(request, uni_name=None):
     return redirect('/coursewiki/%s/courses/%s' %
         (urlquote(university.name, safe=''), urlquote(course.code, safe=''))
     )
-    
+
 @login_required
 def add_course_view(request, uni_name=None):
     if request.method == 'POST':
