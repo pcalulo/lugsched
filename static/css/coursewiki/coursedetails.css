@@ -4,14 +4,13 @@ div#container {
 }
 
 div.course-details {
-    width: 30%;
+    width: 50%;
     height: 100%;
-    min-height: 100%;
     float: left;
 }
 
 div.course-comments {
-    width: 68%;
+    width: 50%;
     height: 100%;
     min-height: 100%;
     float: right;
