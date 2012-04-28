@@ -51,16 +51,15 @@ div.header {
     display: inline;
     position: relative;
     bottom: 4px;
-    padding: 8px;
-    padding-left: 10px;
+    padding-bottom: 8px;
 
-    border-color: #eee;
 }
 
 /* Top bar links should always be white and not underlined */
 #navbuttons > ul > li > a {
     color: white;
     text-decoration: none;
+    padding: 16px;
 }
 
 #navbuttons > ul > li.selected {
