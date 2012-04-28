@@ -1,0 +1,5 @@
+LugSched depends on the following JavaScript libraries:
+
+* jQuery - http://jquery.com/
+* tabber - http://www.barelyfitz.com/projects/tabber/
+
