@@ -3,7 +3,7 @@ div#container {
     min-height: 100%;
 }
 
-div.course-details {
+div#course-details {
 }
 
 div.course-actions {
@@ -11,7 +11,7 @@ div.course-actions {
     top: 8px;
 }
 
-div.course-actions > a {
+.actionbutton, div.course-actions > a {
     padding: 4px;
     margin-right: 8px;
     box-shadow: 0 0 10px 1px lightgray;
@@ -19,7 +19,22 @@ div.course-actions > a {
     border-radius: 8px;
 }
 
-div.course-comments {
+#course-info {
+    width: 50%;
+    float: left;
+}
+
+#sections {
+    width: 50%;
+    float: right;
+}
+
+#sections > h2 > .actionbutton {
+    float: right;
+    font-size: 0.7em;
+}
+
+div#course-comments {
     height: 100%;
     min-height: 100%;
 }

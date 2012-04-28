@@ -13,6 +13,8 @@
         href="{{ STATIC_URL }}css/coursewiki/coursedetails.css">
     <link rel="stylesheet" type="text/css"
         href="{{ STATIC_URL }}css/tabber.css">
+    <link rel="stylesheet" type="text/css"
+        href="{{ STATIC_URL }}css/clicklist.css">
 {% endblock %}
 
 {% block scripts %}
@@ -24,40 +26,52 @@
         type="text/javascript"></script>
     <script src="{{ STATIC_URL }}scripts/libs/tabber.min.js"
         type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}scripts/linkedlist.js"
+        type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}scripts/clicklist.js"
+        type="text/javascript"></script>
 {% endblock %}
 
 {% block padded_content %}
     <div id="container" class="tabber">
 
-    <div class="course-details tabbertab" title="Course Details">
-        <h1 class="no-bottom-margin">
-            {{ course.code }}
-            <span class="faded-out">{{ course.name }}</span>
-        </h1>
-        <span class="subtext">
-            {{ course.description }}
-            <div class="course-actions">
-                <a href="history">History</a>
-                <a href="edit">Edit</a>
-            </div>
-        </span>
-
-    
-        <h2 class="minimal-bottom-margin">Sections</h2>
-        {% if sections|length > 0 %}
-            <ul>
-            {% for section in sections %}
-                <li>{{ section.name }} 
-            {% endfor %}
-            </ul>
-        {% else %}
+    <div id="course-details" class="tabbertab" title="Course Details">
+        <div id="course-info">
+            <h1 class="no-bottom-margin">
+                {{ course.code }}
+                <span class="faded-out">{{ course.name }}</span>
+            </h1>
             <span class="subtext">
-                This course doesn't have any sections yet.
+                {{ course.description }}
+                <div class="course-actions">
+                    <a href="history">History</a>
+                    <a href="edit">Edit</a>
+                </div>
             </span>
-        {% endif %}
+        </div>
+
+        <div id="sections">
+            <h2 class="minimal-bottom-margin">
+                Sections for {{ course.code }}
+                <a href="#" class="actionbutton">
+                    New Section
+                </a>
+            </h2>
+            {% if sections|length > 0 %}
+                <ul>
+                {% for section in sections %}
+                    <li>{{ section.name }} 
+                {% endfor %}
+                </ul>
+            {% else %}
+                <span class="subtext">
+                    This course doesn't have any sections yet.
+                </span>
+            {% endif %}
+        </div>
     </div>
 
-    <div class="course-comments tabbertab" title="Discussion">
+    <div id="course-comments" class="tabbertab" title="Discussion">
         {% get_comment_count for course as comment_count %}
 
         {% if comment_count == 0 %}
