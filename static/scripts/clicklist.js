@@ -21,6 +21,13 @@ function ClickList(div) {
     this.div = div;
     this.list = new LinkedList();
     this.emptyText = "";
+    this.headerText = "AY 2010-2011, Term 1";
+
+    var headerDiv = document.createElement("div")
+    this.headerDiv = headerDiv;
+    headerDiv.classList.add("clicklist-header");
+    headerDiv.textContent = this.headerText;
+    this.div.append(headerDiv);
 }
 
 ClickList.prototype.updateEmptyText = function() {
@@ -40,6 +47,10 @@ ClickList.prototype.setEmptyText = function(emptyText) {
 
     textElem.text(emptyText);
     this.updateEmptyText();
+}
+
+ClickList.prototype.setHeaderText = function(headerText) {
+    this.headerText = headerText;
 }
 
 ClickList.prototype.setSortFunction = function(sortFunc) {
@@ -71,7 +82,6 @@ ClickList.prototype.orderedAdd = function(element) {
 ClickList.prototype.createItem = function(element) {
     var item = document.createElement("div");
     item.className = "clicklist-item";
-    item.id = "clicklist-new";
     
     var mainText = document.createElement("div");
     mainText.className = "clicklist-maintext";
@@ -92,6 +102,9 @@ ClickList.prototype.createItem = function(element) {
 }
 
 ClickList.prototype.initListItem = function(item, data) {
+    // Make sure we have access to jQuery methods
+    item = $(item);
+
     item.attr("mainText", data.mainText);
     item.find("input:first").click(data.button1.onClick);
     item.find("input:last").click(data.button2.onClick);
@@ -103,22 +116,25 @@ ClickList.prototype.add = function(element) {
         console.error("Missing mainText");
         return;
     }
-    this.list.add(element);
-    this.div.append(this.createItem(element));
 
-    var newItem = $("#clicklist-new");
-    this.initListItem(newItem, element);
+    this.list.add(element);
+
+    var item = this.createItem(element);
+    this.div.append(item);
+
+    this.initListItem(item, element);
     this.updateEmptyText();
     this.updateItems();
 
     // Return the DOM element, so effects can be applied if desired.
-    return this.div.find(":eq(" + this.list.length + ")");
+    return item;
 }
 
 
 ClickList.prototype._fullUpdateTraversalFunc = function(element, list) {
-    list.div.append(list.createItem(element));
-    list.initListItem($("#clicklist-new"), element);
+    var item = list.createItem(element);
+    list.initListItem(item, element);
+    list.div.append(item);
 }
 /*
  * An easy but inefficient way to update the list
@@ -152,5 +168,32 @@ ClickList.prototype.remove = function(element) {
 ClickList.prototype.removeAll = function() {
     this.list = new LinkedList();
     this.fullUpdate();
+}
+
+
+/*******************************************************************
+ * ClickListGroup and related code
+ ******************************************************************/
+
+function ClickListGroupItem(list, headerText) {
+    var div = document.createElement("div");
+    div.textContent = headerText;
+    div.classList.add("clicklist-header");
+
+    this.header = div;
+    this.list = list;
+}
+
+function ClickListGroup(div) {
+    this.div = div;
+    this.groupItems = [];
+}
+
+ClickListGroup.prototype.add = function(list, headerText) {
+    var item = new ClickListGroupItem(list, headerText);
+    this.groupItems.add(item);
+
+    this.div.append(item.header);
+    this.div.append(item.list.div);
 }
 

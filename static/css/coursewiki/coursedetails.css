@@ -13,7 +13,7 @@ div.course-actions {
 
 .actionbutton, div.course-actions > a {
     padding: 4px;
-    margin-right: 8px;
+    margin-right: 4px;
     box-shadow: 0 0 10px 1px lightgray;
     text-decoration: none;
     border-radius: 8px;
@@ -32,6 +32,10 @@ div.course-actions {
 #sections > h2 > .actionbutton {
     float: right;
     font-size: 0.7em;
+}
+
+#sections-header {
+    margin-bottom: 12px;
 }
 
 div#course-comments {

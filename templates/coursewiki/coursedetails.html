@@ -51,23 +51,15 @@
         </div>
 
         <div id="sections">
-            <h2 class="minimal-bottom-margin">
+            <h2 id="sections-header" class="minimal-bottom-margin">
                 Sections for {{ course.code }}
                 <a href="#" class="actionbutton">
                     New Section
                 </a>
             </h2>
-            {% if sections|length > 0 %}
-                <ul>
-                {% for section in sections %}
-                    <li>{{ section.name }} 
-                {% endfor %}
-                </ul>
-            {% else %}
-                <span class="subtext">
-                    This course doesn't have any sections yet.
-                </span>
-            {% endif %}
+            <div id="section-list">
+                <span class="clicklist-empty-text"></span>
+            </div>
         </div>
     </div>
 
