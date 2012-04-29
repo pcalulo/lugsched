@@ -91,17 +91,3 @@ function postComment() {
     })
 }
 
-
-// Sections
-
-$(document).ready(function() {
-    var list = new ClickList($("#section-list"));
-    list.setEmptyText("This course doesn't have any sections yet.");
-
-    var elem = new ClickListElement();
-    elem.mainText = "S22";
-    elem.subText = "Lorem ipsum dolor sit amet...";
-    list.add(elem);
-});
-
-

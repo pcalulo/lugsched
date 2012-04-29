@@ -26,10 +26,6 @@
         type="text/javascript"></script>
     <script src="{{ STATIC_URL }}scripts/libs/tabber.min.js"
         type="text/javascript"></script>
-    <script src="{{ STATIC_URL }}scripts/linkedlist.js"
-        type="text/javascript"></script>
-    <script src="{{ STATIC_URL }}scripts/clicklist.js"
-        type="text/javascript"></script>
 {% endblock %}
 
 {% block padded_content %}
@@ -58,7 +54,23 @@
                 </a>
             </h2>
             <div id="section-list">
-                <span class="clicklist-empty-text"></span>
+                {% if sections|length == 0 %}
+                    This course doesn't have any sections yet.
+                {% else %}
+                    <div class="clicklist-header">
+                        Hello, world!
+                    </div>
+                {% endif %}
+                {% for section in sections %}
+                    <div class="clicklist-item">
+                        <div class="clicklist-maintext">
+                            {{ section.name }}
+                        </div>
+                        <div class="clicklist-subtext">
+                            Something something something
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>
