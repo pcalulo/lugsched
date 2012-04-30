@@ -49,10 +49,49 @@
         <div id="sections">
             <h2 id="sections-header" class="minimal-bottom-margin">
                 Sections for {{ course.code }}
-                <a href="#" class="actionbutton">
+                <a href="javascript:void(null)" class="actionbutton"
+                    onClick="toggleNewSectionPanel()">
                     New Section
                 </a>
             </h2>
+            <div id="add-section-panel">
+                <h3>New Section</h3>
+                <p>
+                    Name: <input type="text" size="5"></input>
+                </p>
+                <h4>Meetings</h4>
+                <p>Room: <input type="text" size="5"></input></p>
+                <p>
+                    Days:
+                    <input type="checkbox" name="monday"></input>
+                    <label for="monday">M</label>
+
+                    <input type="checkbox" name="tuesday"></input>
+                    <label for="tuesday">T</label>
+
+                    <input type="checkbox" name="wednesday"></input>
+                    <label for="wednesday">W</label>
+
+                    <input type="checkbox" name="thursday"></input>
+                    <label for="thursday">H</label>
+
+                    <input type="checkbox" name="friday"></input>
+                    <label for="friday">F</label>
+
+                    <input type="checkbox" name="saturday"></input>
+                    <label for="saturday">S</label>
+                </p>
+                <p>
+                    Time slot:
+                    <input type="text" size="7"></input>
+                    to
+                    <input type="text" size="7"></input>
+                </p>
+
+                <div id="add-section-controls">
+                    <input type="button" value="More meetings"></input>
+                </div>
+            </div>
             <div id="section-list">
                 {% if sections|length == 0 %}
                     This course doesn't have any sections yet.

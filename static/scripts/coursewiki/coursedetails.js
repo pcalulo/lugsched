@@ -91,3 +91,18 @@ function postComment() {
     })
 }
 
+
+///////////////////////////////////////////////////////////////////////
+// "New Section" panel
+///////////////////////////////////////////////////////////////////////
+function toggleNewSectionPanel() {
+    var panel = $("#add-section-panel");
+    if (!panel.is(":visible")) {
+        panel.slideDown();
+    } else {
+        panel.slideUp();
+    }
+}
+
+
+
