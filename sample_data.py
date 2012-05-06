@@ -40,9 +40,17 @@ course.creation_date = datetime.now()
 course.creator = user
 course.save()
 
+term = Term()
+term.university = uni
+term.academic_year = 2011
+term.index = 1
+term.note = 'Hello, world!'
+term.save()
+
 section = Section()
 section.name = 'S22'
 section.course = course
+section.term = term
 section.save()
 
 meeting = Meeting()

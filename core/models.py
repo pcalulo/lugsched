@@ -22,12 +22,6 @@ class University(models.Model):
         verbose_name_plural = 'Universities'
 
 
-class Term(models.Model):
-    university = models.ForeignKey(University)
-    index = models.IntegerField()
-    note = models.CharField(max_length=1000)
-
-
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
 
@@ -44,6 +38,26 @@ class UserProfile(models.Model):
     
     def __unicode__(self):
         return '%s (%s)' % (self.nickname, self.user)
+
+
+class Term(models.Model):
+    university = models.ForeignKey(University)
+
+    # This is the starting year of the academic year that this term belongs to.
+    # For example, if this term belongs to AY 2011-2012, this value should be
+    # set to 2011.
+    academic_year = models.IntegerField()
+
+    index = models.IntegerField()
+    note = models.CharField(max_length=1000)
+
+    def __unicode__(self):
+        return '%s AY %d - %d Term %d' % (
+                    self.university,
+                    self.academic_year,
+                    self.academic_year + 1,
+                    self.index,
+                )
 
 
 class Course(models.Model):
