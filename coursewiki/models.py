@@ -31,6 +31,7 @@ class ArchivedUniversity(models.Model):
         # would be "Universitys"
         verbose_name_plural = 'Archived universities'
 
+
 class ArchivedCourse(models.Model):
     code = models.CharField(max_length=32)
     name = models.CharField(max_length=64)
@@ -50,6 +51,7 @@ class ArchivedCourse(models.Model):
     def __unicode__(self):
         return self.code
 
+
 class ArchivedSection(models.Model):
     name = models.CharField(max_length=16)
     course = models.ForeignKey(Course)
@@ -60,6 +62,7 @@ class ArchivedSection(models.Model):
 
     def __unicode__(self):
         return '%s %s' % (self.course.code, self.name)
+
 
 class ArchivedMeeting(models.Model):
     section = models.ForeignKey(Section)
