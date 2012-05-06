@@ -12,7 +12,6 @@ from django.contrib.auth.models import User
 class University(models.Model):
     name = models.CharField(max_length=200, unique=True)
     address = models.CharField(max_length=200)
-    terms_per_year = models.IntegerField('terms per year')
     
     def __unicode__(self):
         return self.name
@@ -21,6 +20,12 @@ class University(models.Model):
         # If we didn't do this, the plural name shown in the admin site
         # would be "Universitys"
         verbose_name_plural = 'Universities'
+
+
+class Term(models.Model):
+    university = models.ForeignKey(University)
+    index = models.IntegerField()
+    note = models.CharField(max_length=1000)
 
 
 class UserProfile(models.Model):
@@ -57,6 +62,7 @@ class Course(models.Model):
 class Section(models.Model):
     name = models.CharField(max_length=16)
     course = models.ForeignKey(Course)
+    term = models.ForeignKey(Term)
 
     def __unicode__(self):
         return '%s %s' % (self.course.code, self.name)

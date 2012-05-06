@@ -22,7 +22,6 @@ if (user_count == 0):
 uni = University()
 uni.name = 'De La Salle University'
 uni.address = '2401 Taft Avenue, Malate, Manila'
-uni.terms_per_year = 3
 uni.save()
 
 user = User.objects.all()[0]

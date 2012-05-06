@@ -16,7 +16,6 @@ class EditLog(models.Model):
 class ArchivedUniversity(models.Model):
     name = models.CharField(max_length=200, unique=True)
     address = models.CharField(max_length=200)
-    terms_per_year = models.IntegerField('terms per year')
     
     def __unicode__(self):
         return self.name
@@ -24,12 +23,17 @@ class ArchivedUniversity(models.Model):
     def copy(self, university):
         self.name = university.name
         self.address = university.address
-        self.terms_per_year = university.terms_per_year
     
     class Meta:
         # If we didn't do this, the plural name shown in the admin site
         # would be "Universitys"
         verbose_name_plural = 'Archived universities'
+
+
+class ArchivedTerm(models.Model):
+    university = models.ForeignKey(University)
+    index = models.IntegerField()
+    note = models.CharField(max_length=1000)
 
 
 class ArchivedCourse(models.Model):

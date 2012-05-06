@@ -4,7 +4,6 @@ from django.contrib import admin
 class ArchivedUniversityAdmin(admin.ModelAdmin):
 	fieldsets = [
 		('Basic Information', {'fields': ['name', 'address']}),
-		('Further Details', {'fields': ['terms_per_year']})
 	]
 
 	list_display = ['name', 'address']
