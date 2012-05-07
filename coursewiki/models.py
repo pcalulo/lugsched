@@ -32,6 +32,7 @@ class ArchivedUniversity(models.Model):
 
 class ArchivedTerm(models.Model):
     university = models.ForeignKey(University)
+    academic_year = models.IntegerField()
     index = models.IntegerField()
     note = models.CharField(max_length=1000)
 
