@@ -1,12 +1,29 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from datetime import datetime
+
+################################################################################
+# Log-keeping
+# All base models inherit from this, allowing all versioned data to have an edit
+# message.
+################################################################################
+class WikiModel(models.Model):
+    editor = models.ForeignKey(User)
+    edit_timestamp = models.DateTimeField()
+
+    def set_edit_message(self, editor, message):
+        self.editor = editor
+        self.message = message
+        self.edit_timestamp = datetime.now()
+
+
 ################################################################################
 # Base models. Core and coursewiki models inherit from these.
 ################################################################################
 
-class BaseUniversity(models.Model):
-    name = models.CharField(max_length=200, unique=True)
+class BaseUniversity(WikiModel):
+    name = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
     
     def __unicode__(self):
@@ -18,7 +35,7 @@ class BaseUniversity(models.Model):
         verbose_name_plural = 'Universities'
 
 
-class BaseTerm(models.Model):
+class BaseTerm(WikiModel):
     university = models.ForeignKey('University')
 
     # This is the starting year of the academic year that this term belongs to.
@@ -38,20 +55,19 @@ class BaseTerm(models.Model):
                 )
 
 
-class BaseCourse(models.Model):
+class BaseCourse(WikiModel):
     code = models.CharField(max_length=32)
     name = models.CharField(max_length=64)
     description = models.CharField(max_length=200)
     university = models.ForeignKey('University')
 
     creation_date = models.DateTimeField('date created')
-    creator = models.ForeignKey(User)
 
     def __unicode__(self):
         return self.code
 
 
-class BaseSection(models.Model):
+class BaseSection(WikiModel):
     name = models.CharField(max_length=16)
     course = models.ForeignKey('Course')
     term = models.ForeignKey('Term')
@@ -60,7 +76,7 @@ class BaseSection(models.Model):
         return '%s %s' % (self.course.code, self.name)
 
 
-class BaseMeeting(models.Model):
+class BaseMeeting(WikiModel):
     section = models.ForeignKey('Section')
     start_time = models.TimeField('start time')
     end_time = models.TimeField('end time')
@@ -90,19 +106,69 @@ class BaseMeeting(models.Model):
 ################################################################################
 
 class University(BaseUniversity):
-    x = None
+    def update(self, user, message):
+        """
+        Copies the University into the archives, then saves it.
+        """
+        self.set_edit_message(user, message)
+        self.save()
+
+        archived_uni = ArchivedUniversity()
+        archived_uni.copy(self)
+        archived_uni.save()
+
 
 class Term(BaseTerm):
-    x = None
+    def update(self, user, message):
+        """
+        Copies the Term into the archives, then saves it.
+        """
+        self.set_edit_message(user, message)
+        self.save()
+
+        archived_term = ArchivedTerm()
+        archived_term.copy(self)
+        archived_term.save()
+
 
 class Course(BaseCourse):
-    x = None
+    def update(self, user, message):
+        """
+        Copies the Course into the archives, then saves it.
+        """
+        self.set_edit_message(user, message)
+        self.save()
+
+        archived_course = ArchivedCourse()
+        archived_course.copy(self)
+        archived_course.save()
+
 
 class Section(BaseSection):
-    x = None
+    def update(self, user, message):
+        """
+        Copies the Section into the archives, then saves it.
+        """
+        self.set_edit_message(user, message)
+        self.save()
+
+        archived_section = ArchivedSection()
+        archived_section.copy(self)
+        archived_section.save()
+
 
 class Meeting(BaseMeeting):
-    x = None
+    def update(self, user, message):
+        """
+        Copies the Meeting into the archives, then saves it.
+        """
+        self.set_edit_message(user, message)
+        self.save()
+
+        archived_meeting = ArchivedMeeting()
+        archived_meeting.copy(self)
+        archived_meeting.save()
+
 
 ################################################################################
 # User-specific models
@@ -137,4 +203,21 @@ class Schedule(models.Model):
 
     def __unicode__(self):
         return '%s' % self.name
+
+
+############################################################################
+# IMPORTANT!
+# There is a circular dependency between core models and coursewiki models.
+# This is intentional.
+# To prevent problems, this import must be done after all core models have
+# been declared.
+#
+# This is required because the coursewiki models inherit from the base models
+# which are declared in this file. Importing them here means that the classes
+# have already been declared, allowing the coursewiki models code to load
+# without errors.
+
+from coursewiki.models import *
+
+############################################################################
 
