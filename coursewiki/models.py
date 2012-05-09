@@ -15,7 +15,7 @@ class ArchivedUniversity(BaseUniversity):
 
         self.name = university.name
         self.address = university.address
-        self.set_edit_message(university.editor, university.message)
+        self.set_edit_message(university.editor, university.edit_message)
     
     class Meta:
         # If we didn't do this, the plural name shown in the admin site
@@ -33,7 +33,7 @@ class ArchivedTerm(BaseTerm):
         self.academic_year = term.academic_year
         self.index = term.index
         self.note = term.note
-        self.set_edit_message(term.get_edit_message_tuple())
+        self.set_edit_message(term.editor, term.edit_message)
 
 
 class ArchivedCourse(BaseCourse):
@@ -47,7 +47,7 @@ class ArchivedCourse(BaseCourse):
         self.description = course.description
         self.university = course.university
         self.creation_date = course.creation_date
-        self.set_edit_message(course.get_edit_message_tuple())
+        self.set_edit_message(course.editor, course.edit_message)
 
 
 class ArchivedSection(BaseSection):
@@ -59,7 +59,7 @@ class ArchivedSection(BaseSection):
         self.name = section.name
         self.course = section.course
         self.term = section.term
-        self.set_edit_message(section.get_edit_message_tuple())
+        self.set_edit_message(section.editor, section.edit_message)
 
 
 class ArchivedMeeting(BaseMeeting):
@@ -80,5 +80,5 @@ class ArchivedMeeting(BaseMeeting):
         self.has_saturdays = meeting.has_saturdays
         self.has_sundays = meeting.has_sundays
 
-        self.set_edit_message(meeting.get_edit_message_tuple())
+        self.set_edit_message(meeting.editor, meeting.edit_message)
 

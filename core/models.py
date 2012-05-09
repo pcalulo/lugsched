@@ -10,11 +10,12 @@ from datetime import datetime
 ################################################################################
 class WikiModel(models.Model):
     editor = models.ForeignKey(User)
+    edit_message = models.CharField(max_length=255)
     edit_timestamp = models.DateTimeField()
 
     def set_edit_message(self, editor, message):
         self.editor = editor
-        self.message = message
+        self.edit_message = message
         self.edit_timestamp = datetime.now()
 
 
@@ -23,8 +24,8 @@ class WikiModel(models.Model):
 ################################################################################
 
 class BaseUniversity(WikiModel):
-    name = models.CharField(max_length=200)
-    address = models.CharField(max_length=200)
+    name = models.CharField(max_length=255)
+    address = models.CharField(max_length=255)
     
     def __unicode__(self):
         return self.name
