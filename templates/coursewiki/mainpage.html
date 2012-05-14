@@ -25,7 +25,7 @@ Course Wiki
         <ul>
             {% for course in newest_courses %}
                 <li><span class="coursecode">
-                    {{ course.code }}
+                    <a href="courses/{{ course.code|urlencode:"" }}/">{{ course.code }}</a>
                 </span> - {{ course.name }}</li>
             {% endfor %}
         </ul>
@@ -35,7 +35,7 @@ Course Wiki
         <ul>
             {% for course in newest_courses %}
                 <li><span class="coursecode">
-                    {{ course.code }}
+                    <a href="courses/{{ course.code|urlencode:"" }}/">{{ course.code }}</a>
                 </span> - {{ course.name }}</li>
             {% endfor %}
         </ul>

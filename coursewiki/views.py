@@ -152,7 +152,7 @@ def add_course_on_post(request, uni_name=None):
     course.creator = request.user
     course.creation_date = datetime.now()
 
-    course.save()
+    course.update(request.user, 'Added this course')
 
     # Redirect to the newly-created course
     return redirect('/coursewiki/%s/courses/%s' %
