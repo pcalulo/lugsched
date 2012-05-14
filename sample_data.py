@@ -2,10 +2,9 @@
 # Note: run this like so:
 # ./manage.py shell < sample_data.py
 
-from datetime import time
+from datetime import datetime, time
 from core.models import *
 from django.contrib.auth.models import User
-from datetime import datetime
 
 uni_count = len(University.objects.all())
 if (uni_count > 0):
@@ -19,39 +18,35 @@ if (user_count == 0):
     print 'Please configure a superuser - The user with ID 0 will be assumed to be the admin'
     sys.exit(1)
 
+# Get the first user, which we assume to be the superuser. The sample data will
+# be attributed to this user.
+user = User.objects.all()[0]
+
 uni = University()
 uni.name = 'De La Salle University'
 uni.address = '2401 Taft Avenue, Malate, Manila'
-uni.save()
-
-user = User.objects.all()[0]
-profile = UserProfile()
-profile.user = user
-profile.nickname = 'Pat'
-profile.university = uni
-profile.save()
-
-course = Course()
-course.code = 'THEORDT'
-course.name = 'Theory of Reddit'
-course.description = 'An in-depth course on Turing machines and Reddit'
-course.university = uni
-course.creation_date = datetime.now()
-course.creator = user
-course.save()
+uni.update(user, 'Added sample data')
 
 term = Term()
 term.university = uni
 term.academic_year = 2011
 term.index = 1
 term.note = 'Hello, world!'
-term.save()
+term.update(user, 'Added sample data')
+
+course = Course()
+course.code = 'EXAMPLE'
+course.name = 'An example course'
+course.description = 'The quick brown fox jumps over the lazy dog'
+course.university = uni
+course.creation_date = datetime.now()
+course.update(user, 'Added sample data')
 
 section = Section()
 section.name = 'S22'
 section.course = course
 section.term = term
-section.save()
+section.update(user, 'Added sample data')
 
 meeting = Meeting()
 meeting.section = section
@@ -59,5 +54,13 @@ meeting.start_time = time(8, 0)
 meeting.end_time = time(9, 30)
 meeting.has_mondays = True
 meeting.has_thursdays = True
-meeting.save()
+meeting.update(user, 'Added sample data')
+
+# Create the user's profile
+# The university must exist before we can create this
+profile = UserProfile()
+profile.user = user
+profile.nickname = 'Pat'
+profile.university = uni
+profile.save()
 

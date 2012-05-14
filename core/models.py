@@ -62,6 +62,7 @@ class BaseCourse(WikiModel):
     description = models.CharField(max_length=200)
     university = models.ForeignKey('University')
 
+    # We need this to be able to show the most recently created courses
     creation_date = models.DateTimeField('date created')
 
     def __unicode__(self):
