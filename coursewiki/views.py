@@ -67,7 +67,8 @@ def course_details_view(request, uni_name, course_code):
     template = loader.get_template('coursewiki/coursedetails.html')
 
     course = Course.objects.get(code = course_code)
-    sections = course.section_set.all().order_by('name')
+
+    sections = Section.objects.filter(course = course).order_by('name')
 
     context = RequestContext(request, {
         'course': course,
