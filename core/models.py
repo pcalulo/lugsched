@@ -110,7 +110,7 @@ class BaseMeeting(WikiModel):
 class University(BaseUniversity):
     def update(self, user, message):
         """
-        Copies the University into the archives, then saves it.
+        Saves the University, then makes a copy of it in the archives.
         """
         self.set_edit_message(user, message)
         self.save()
@@ -123,7 +123,7 @@ class University(BaseUniversity):
 class Term(BaseTerm):
     def update(self, user, message):
         """
-        Copies the Term into the archives, then saves it.
+        Saves the Term, then makes a copy of it in the archives.
         """
         self.set_edit_message(user, message)
         self.save()
@@ -136,7 +136,7 @@ class Term(BaseTerm):
 class Course(BaseCourse):
     def update(self, user, message):
         """
-        Copies the Course into the archives, then saves it.
+        Saves the Course, then makes a copy of it in the archives.
         """
         self.set_edit_message(user, message)
         self.save()
@@ -149,7 +149,7 @@ class Course(BaseCourse):
 class Section(BaseSection):
     def update(self, user, message):
         """
-        Copies the Section into the archives, then saves it.
+        Saves the Section, then makes a copy of it in the archives.
         """
         self.set_edit_message(user, message)
         self.save()
@@ -162,7 +162,7 @@ class Section(BaseSection):
 class Meeting(BaseMeeting):
     def update(self, user, message):
         """
-        Copies the Meeting into the archives, then saves it.
+        Saves the Meeting, then makes a copy of it in the archives.
         """
         self.set_edit_message(user, message)
         self.save()
