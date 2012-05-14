@@ -32,13 +32,12 @@
 .clicklist-header {
     background-color: gray;
     color: white;
-    font-weight: bold;
 
     padding: 2px 4px 2px 4px;
 }
 
 .clicklist-maintext {
-    font-weight: bold;
+    font-weight: normal;
     /* Have an ellipsis for overly-long text */
     white-space: nowrap;
     overflow: hidden;
@@ -46,7 +45,7 @@
 }
 
 .clicklist-subtext {
-    font-size: 0.6em;
+    font-size: 0.7em;
     position: relative;
     bottom: 2px;
     /* 100% width makes the subtext steal clicks to the item button */

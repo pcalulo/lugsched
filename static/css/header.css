@@ -25,6 +25,7 @@ div.header {
     left: 16px;
     max-width: 80%;
     float: left;
+    font-weight: normal;
 }
 
 #apptitle > a {
@@ -38,6 +39,8 @@ div.header {
     position: relative;
     bottom: 4px;
     left: 10px;
+
+    font-weight: lighter;
 }
 
 #navbuttons {
