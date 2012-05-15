@@ -40,14 +40,14 @@
             <span class="subtext">
                 {{ course.description }}
                 <div class="course-actions">
-                    <a href="history">History</a>
-                    <a href="edit">Edit</a>
+                    <a class="actionbutton" href="history">History</a>
+                    <a class="actionbutton" href="edit">Edit</a>
                 </div>
             </span>
         </div>
 
         <div id="sections">
-            <h2 id="sections-header" class="minimal-bottom-margin">
+            <h2 id="sections-header">
                 Sections for {{ course.code }}
                 <a href="javascript:void(null)" class="actionbutton"
                     onClick="toggleNewSectionPanel()">
@@ -94,7 +94,9 @@
             </div>
             <div id="section-list">
                 {% if sections|length == 0 %}
-                    This course doesn't have any sections yet.
+                    <span class="subtext">
+                        This course doesn't have any sections yet.
+                    </span>
                 {% else %}
                     <div class="clicklist-header">
                         Hello, world!

@@ -17,6 +17,9 @@ div.course-actions {
     box-shadow: 0 0 10px 1px lightgray;
     text-decoration: none;
     border-radius: 8px;
+
+    font-size: 12px;
+    font-weight: lighter;
 }
 
 #course-info {
@@ -31,11 +34,10 @@ div.course-actions {
 
 #sections > h2 > .actionbutton {
     float: right;
-    font-size: 0.7em;
 }
 
 #sections-header {
-    margin-bottom: 12px;
+    margin-bottom: 4px;
 }
 
 #add-section-panel {
