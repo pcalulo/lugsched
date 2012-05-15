@@ -174,7 +174,8 @@ class Meeting(BaseMeeting):
 
 ################################################################################
 # User-specific models
-# These are only modifiable by a single user, and does not need to be versioned.
+# These are only relevant to -- and modifiable by -- a single user, and do not
+# need to be versioned.
 ################################################################################
 
 
