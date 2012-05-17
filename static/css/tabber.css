@@ -36,7 +36,7 @@ li.tabberactive > a {
 ul.tabbernav > li > a {
     text-decoration: none;
     font-size: 0.8em;
-    color: black;
+    color: #333;
     padding: 0 8px 0 8px;
 }
 

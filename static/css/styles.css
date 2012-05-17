@@ -93,6 +93,7 @@ body {
     padding: 0;
     min-height: 100%;
     font-weight: lighter;
+    color: #333;
 }
 
 div.app-description {
