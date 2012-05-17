@@ -93,14 +93,19 @@ function postComment() {
 
 
 ///////////////////////////////////////////////////////////////////////
-// "New Section" panel
+// "Add Section" panel
 ///////////////////////////////////////////////////////////////////////
-function toggleNewSectionPanel() {
+AddSectionPanel = {}
+
+AddSectionPanel.toggle = function() {
     var panel = $("#add-section-panel");
+    var toggleButton = $("#add-section-toggle")
     if (!panel.is(":visible")) {
         panel.slideDown();
+        toggleButton.text("Cancel");
     } else {
         panel.slideUp();
+        toggleButton.text("Add Section");
     }
 }
 

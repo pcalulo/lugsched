@@ -49,8 +49,8 @@
         <div id="sections">
             <h2 id="sections-header">
                 Sections for {{ course.code }}
-                <a href="javascript:void(null)" class="actionbutton"
-                    onClick="toggleNewSectionPanel()">
+                <a id="add-section-toggle" href="javascript:void(null)" class="actionbutton"
+                    onClick="AddSectionPanel.toggle()">
                     Add Section
                 </a>
             </h2>
@@ -60,41 +60,57 @@
                     Please ensure that the information you enter here matches those
                     listed in your school's course offerings for this term.
                 </span>
-                <p>
-                    Name: <input type="text" size="5"></input>
-                </p>
-                <h4>Meetings</h4>
-                <p>Room: <input type="text" size="5"></input></p>
-                <p>
-                    Days:
-                    <input type="checkbox" name="monday"></input>
-                    <label for="monday">M</label>
+                <form action="sections" method="POST">
+                    <p>
+                        Name: <input type="text" size="5"></input>
+                    </p>
+                    <h4>Meetings</h4>
+                    <p>Room: <input type="text" size="5"></input></p>
+                    <p>
+                        Days:
+                        <span id="weekday-checkboxes">
+                            <input type="checkbox" name="monday"></input>
+                            <label for="monday">M</label>
 
-                    <input type="checkbox" name="tuesday"></input>
-                    <label for="tuesday">T</label>
+                            <input type="checkbox" name="tuesday"></input>
+                            <label for="tuesday">T</label>
 
-                    <input type="checkbox" name="wednesday"></input>
-                    <label for="wednesday">W</label>
+                            <input type="checkbox" name="wednesday"></input>
+                            <label for="wednesday">W</label>
 
-                    <input type="checkbox" name="thursday"></input>
-                    <label for="thursday">H</label>
+                            <input type="checkbox" name="thursday"></input>
+                            <label for="thursday">H</label>
 
-                    <input type="checkbox" name="friday"></input>
-                    <label for="friday">F</label>
+                            <input type="checkbox" name="friday"></input>
+                            <label for="friday">F</label>
 
-                    <input type="checkbox" name="saturday"></input>
-                    <label for="saturday">S</label>
-                </p>
-                <p>
-                    Time slot:
-                    <input type="text" size="7"></input>
-                    to
-                    <input type="text" size="7"></input>
-                </p>
+                            <input type="checkbox" name="saturday"></input>
+                            <label for="saturday">S</label>
+                        </span>
 
-                <div id="add-section-controls">
-                    <input type="button" value="More meetings"></input>
-                </div>
+                        <input type="checkbox" name="specific-day"></input>
+                        <label for="specific-day">Specific date</label>
+                    </p>
+                    <p>
+                        Time slot:
+                        <input type="text" size="7"></input>
+                        to
+                        <input type="text" size="7"></input>
+                    </p>
+    
+                    <div id="add-section-controls">
+                        <!--
+                        Finish basic section-adding functionality before
+                        adding this
+                        <input type="button" value="More meetings"></input>
+                        -->
+                        <hr>
+                        <input type="button" value="Submit"></input>
+                        <input type="button" value="Cancel"
+                            onClick="AddSectionPanel.toggle()">
+                        </input>
+                    </div>
+                </form>
             </div>
             <div id="section-list">
                 {% if sections|length == 0 %}

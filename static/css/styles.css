@@ -27,8 +27,9 @@ h3 {
     font-weight: normal;
 }
 
-.slim {
-    font-weight: normal;
+hr {
+    border: none;
+    border-bottom: 1px solid lightgray;
 }
 
 p {
