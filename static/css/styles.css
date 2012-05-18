@@ -1,6 +1,7 @@
 
 h1, h2, h3, h4, h5, h6 {
     font-family: Bree Serif, serif;
+    text-transform: uppercase;
 }
 
 h4, h5, h6 {
@@ -60,7 +61,6 @@ span.helptext > i {
 
 .faded-out {
     color: #888;
-    font-weight: lighter;
 }
 
 

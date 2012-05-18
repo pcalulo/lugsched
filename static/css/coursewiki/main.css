@@ -25,6 +25,11 @@ div.third-width {
     width: 100px;
 }
 
+.leftbox > h2, .rightbox > h2 {
+    text-align: center;
+    border-bottom: 1px solid gray;
+}
+
 div.leftbox {
     float: left;
     min-width: 150px;

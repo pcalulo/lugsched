@@ -21,6 +21,7 @@ div.course-actions {
     font-size: 12px;
     font-weight: lighter;
     font-family: Open Sans, sans-serif;
+    text-transform: none;
 }
 
 #course-info {
