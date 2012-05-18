@@ -11,7 +11,7 @@ div.course-actions {
     top: 8px;
 }
 
-.actionbutton, div.course-actions > a {
+.actionbutton {
     padding: 4px;
     margin-right: 4px;
     box-shadow: 0 0 10px 1px lightgray;
@@ -20,6 +20,7 @@ div.course-actions {
 
     font-size: 12px;
     font-weight: lighter;
+    font-family: Open Sans, sans-serif;
 }
 
 #course-info {

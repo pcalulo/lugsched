@@ -1,10 +1,6 @@
 
-* {
-    font-family: Open Sans, Droid Sans, sans-serif;
-}
-
 h1, h2, h3, h4, h5, h6 {
-    font-family: Dosis;
+    font-family: Bree Serif, serif;
 }
 
 h4, h5, h6 {
@@ -69,7 +65,7 @@ span.helptext > i {
 
 
 a {
-    color: blue;
+    color: green;
 }
 
 /* Stuff for admins */
@@ -94,6 +90,7 @@ body {
     min-height: 100%;
     font-weight: lighter;
     color: #333;
+    font-family: Open Sans, Droid Sans, sans-serif;
 }
 
 div.app-description {
