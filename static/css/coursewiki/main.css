@@ -1,4 +1,13 @@
 
+#coursewiki-title-heading {
+    color: gray;
+    margin-bottom: 0px;
+}
+
+#coursewiki-title-heading > .university-name {
+    color: #333;
+}
+
 span.coursecode {
     font-weight: normal;
 }
@@ -7,8 +16,13 @@ span.subtext {
     font-size: 0.8em;
 }
 
+#coursewiki-title-box {
+    text-align: center;
+}
+
 div.searchbox {
     text-align: center;
+    padding-bottom: 8px;
 }
 
 h2 {
@@ -27,7 +41,7 @@ div.third-width {
 
 .leftbox > h2, .rightbox > h2 {
     text-align: center;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid lightgray;
 }
 
 div.leftbox {
