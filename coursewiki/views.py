@@ -36,8 +36,8 @@ md = markdown.Markdown(safe_mode='escape')
 def main_page(request, uni_name=None):
     if not uni_name:
         profile = request.user.get_profile()
-        uni_name = profile.university.name
-        return redirect('/coursewiki/' + urlquote(uni_name, safe='') + '/')
+        university = profile.university
+        return redirect(university.get_absolute_url())
 
     if uni_name == 'actions':
         return HttpResponseNotFound()
@@ -101,9 +101,7 @@ def course_details_edit(request, uni_name, course_code):
         course.description = description
         course.save()
 
-        return redirect('/coursewiki/%s/courses/%s' %
-            (urlquote(uni_name, safe=''), urlquote(code, safe=''))
-        )
+        return redirect(course.get_absolute_url())
     else:
         return HttpResponseBadRequest()
 
@@ -155,9 +153,7 @@ def add_course_on_post(request, uni_name=None):
     course.update(request.user, 'Added this course')
 
     # Redirect to the newly-created course
-    return redirect('/coursewiki/%s/courses/%s' %
-        (urlquote(university.name, safe=''), urlquote(course.code, safe=''))
-    )
+    return redirect(course.get_absolute_url())
 
 @login_required
 def add_course_view(request, uni_name=None):

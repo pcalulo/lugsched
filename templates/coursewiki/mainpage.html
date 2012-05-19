@@ -18,7 +18,7 @@ Course Wiki
         </span>
     </div>
     <div class="searchbox">
-        <form method="GET" action="./search">
+        <form method="GET" action="{{ coursewiki.views.search_view }}">
             <input name="searchQuery" type="text" size="70"></input>
             <input type="submit" value="Search"></input>
         </form>
@@ -28,7 +28,7 @@ Course Wiki
         <ul>
             {% for course in newest_courses %}
                 <li><span class="coursecode">
-                    <a href="courses/{{ course.code|urlencode:"" }}/">{{ course.code }}</a>
+                    <a href="{{ course.get_absolute_url }}">{{ course.code }}</a>
                 </span> - {{ course.name }}</li>
             {% endfor %}
         </ul>
@@ -38,7 +38,7 @@ Course Wiki
         <ul>
             {% for course in newest_courses %}
                 <li><span class="coursecode">
-                    <a href="courses/{{ course.code|urlencode:"" }}/">{{ course.code }}</a>
+                    <a href="{{ course.get_absolute_url }}">{{ course.code }}</a>
                 </span> - {{ course.name }}</li>
             {% endfor %}
         </ul>

@@ -18,7 +18,10 @@ urlpatterns = patterns('',
     url(r'^accounts/', include('auth.urls')),
 	url(r'^api/', include('api.urls')),
 	url(r'^schedules/', include('schedules.urls')),
+
 	url(r'^coursewiki/', include('coursewiki.urls')),
+	url(r'^wiki/', include('coursewiki.urls')),
+
 	url(r'^$', include('appbase.urls')),
 
     # Redirect requests for /favicon.ico to its true location

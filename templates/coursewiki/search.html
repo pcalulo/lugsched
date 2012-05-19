@@ -39,7 +39,7 @@ Course Wiki Search
 
         {% for course in searchResults %}
             <div class="search-result">
-                <a href="./courses/{{ course.code|urlencode:"" }}/">
+                <a href="{{ course.get_absolute_url }}">
                     {{ course.code }} - {{ course.name }}
                 </a>
                 <br>
@@ -49,7 +49,7 @@ Course Wiki Search
 
         <div id="add-course-tip">
             Unable to find the course you're looking for? LugSched might not know
-            about it yet. <a href="./actions/addcourse">Add it to the wiki</a>.
+            about it yet. <a href="./addcourse">Add it to the wiki</a>.
         </div>
     {% endif %}
 {% endblock %}

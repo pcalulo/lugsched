@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.http import urlquote
 
 from datetime import datetime
 
@@ -119,6 +120,9 @@ class University(BaseUniversity):
         archived_uni.copy(self)
         archived_uni.save()
 
+    def get_absolute_url(self):
+        return '/wiki/uni/%s/' % urlquote(self.name, safe='')
+
 
 class Term(BaseTerm):
     def update(self, user, message):
@@ -144,6 +148,12 @@ class Course(BaseCourse):
         archived_course = ArchivedCourse()
         archived_course.copy(self)
         archived_course.save()
+
+    def get_absolute_url(self):
+        return ('/wiki/uni/%s/courses/%s/' %
+                    (urlquote(self.university.name, safe=''),
+                    urlquote(self.code, safe=''))
+               )
 
 
 class Section(BaseSection):
