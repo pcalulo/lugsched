@@ -97,17 +97,21 @@ function postComment() {
 ///////////////////////////////////////////////////////////////////////
 AddSectionPanel = {}
 
-AddSectionPanel.toggle = function() {
-    var panel = $("#add-section-panel");
-    var toggleButton = $("#add-section-toggle")
-    if (!panel.is(":visible")) {
-        panel.slideDown();
-        toggleButton.text("Cancel");
-    } else {
-        panel.slideUp();
-        toggleButton.text("Add Section");
-    }
+AddSectionPanel.show = function() {
+    $("#add-section-toggle").text("Cancel");
+    $("#add-section-panel").slideDown();
 }
 
+AddSectionPanel.hide = function() {
+    $("#add-section-toggle").text("Add Section");
+    $("#add-section-panel").slideUp();
+}
 
+AddSectionPanel.toggle = function() {
+    if (!$("#add-section-panel").is(":visible")) {
+        AddSectionPanel.show();
+    } else {
+        AddSectionPanel.hide();
+    }
+}
 
