@@ -6,7 +6,7 @@ Add a Course
 
 {% block page_css %}
     <link rel="stylesheet" type="text/css"
-        href="{{ STATIC_URL }}css/coursewiki/forms.css">
+        href="{{ STATIC_URL }}css/forms.css">
 {% endblock %}
 
 {% block scripts %}
@@ -16,11 +16,12 @@ Add a Course
         type="text/javascript"></script>
 {% endblock %}
 
-{% block content %}
+{% block padded_content %}
     <h1 class="no-bottom-margin">Add a Course</h1>
     <span class="subtext">
         Please ensure that the course you are about to add really does exist.
     </span>
+    <hr>
 
     <div class="errorbox hidden" id="data-incomplete-message">
         Please fill in all of the required fields.

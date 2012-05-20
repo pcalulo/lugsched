@@ -32,7 +32,7 @@ p {
     line-height: 150%;
 }
 
-label {
+label, span.subtext {
     font-size: 0.8em;
 }
 
@@ -145,7 +145,7 @@ div.footer {
     line-height: 150%
 }
 
-.no-bottom-margin {
+.no-bottom-margin, .heading-with-subtext {
     margin-bottom: 0px;
 }
 

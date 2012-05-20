@@ -3,6 +3,7 @@
 {% block extra_css %}
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/clicklist.css">
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/register.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/forms.css">
     <style type="text/css">
         #navRegisterButton {
             border-bottom: 6px solid;
@@ -21,8 +22,12 @@
 Create your account - LugSched
 {% endblock %}
 
-{% block content %}
-    <h1>Create your account</h1>
+{% block padded_content %}
+    <h1 class="heading-with-subtext">Create your account</h1>
+    <span class="subtext">
+        Please fill in all fields with your information.
+    </span>
+    <hr>
 
     <form action="" method="post">
         {% csrf_token %}
