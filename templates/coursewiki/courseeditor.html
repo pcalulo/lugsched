@@ -1,0 +1,91 @@
+{% extends 'coursewiki/base.html' %}
+
+{#
+    This acts as the template for both adding and editing courses in the LugSched
+    Course Wiki.
+    
+    Take note that, conveniently, in both the adding and editing cases, the URL
+    from which the form gets accesed and the one for submitting form data are
+    identical.
+#}
+
+{% block subpage_title %}
+    {% if course %}
+        Edit Course Details
+    {% else %}
+        Add a Course
+    {% endif %}
+{% endblock %}
+
+{% block page_css %}
+    <link rel="stylesheet" type="text/css"
+        href="{{ STATIC_URL }}css/forms.css">
+{% endblock %}
+
+{% block padded_content %}
+    {% if course %}
+        <h1 class="no-bottom-margin">Edit Course Details</h1>
+        <span class="subtext">
+            Change the details of <em>{{ course.code }}</em> below as
+            needed.
+        </span>
+    {% else %}
+        <h1 class="no-bottom-margin">Add a Course</h1>
+        <span class="subtext">
+            Please ensure that the course you are about to add really does exist.
+        </span>
+    {% endif %}
+
+    <hr>
+
+    <form action='' method="POST">
+        {% csrf_token %}
+
+        <span class="subtext">
+            <i><span class="required-data">*</span> - required</i>
+        </span>
+
+        <h2>Basic course information</h2>
+        <p>
+            <label for="courseCode">Course code:
+                <span class="required-data">*</span>
+                <input type="text" name="courseCode"
+                {% if course %}
+                    value="{{ course.code }}"
+                {% endif %}
+                >
+                </input>
+            </label>
+            <span class="helptext">The short name for courses, e.g. <i>BASICON</i></span>
+        </p>
+        <p>
+            <label>Course name:
+                <span class="required-data">*</span>
+                <input type="text" name="courseName" size="40"
+                {% if course %}
+                    value="{{ course.name }}"
+                {% endif %}
+                    >
+                </input>
+            </label>
+            <span class="helptext">
+                The long name for courses, e.g. <i>Basic Computer Concepts</i>
+            </span>
+        </p>
+        <p>
+            <label>Course description:
+                <input type="text" name="description" size="50"
+                    {% if course %}
+                        value="{{ course.description }}"
+                    {% endif %}
+                    >
+                </input>
+            </label>
+            <span class="helptext">
+                A brief description of what the course is about, this is shown
+                in search results.
+            </span>
+        </p>
+        <input type="submit"></input>
+    </form>
+{% endblock %}

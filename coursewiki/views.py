@@ -83,7 +83,7 @@ def course_details_edit(request, uni_name, course_code):
     course = Course.objects.get(code = course_code)
 
     if request.method == 'GET':
-        template = loader.get_template('coursewiki/coursedetails-edit.html')
+        template = loader.get_template('coursewiki/courseeditor.html')
         context = RequestContext(request, {
             'course': course,
             'sections': Section.objects.filter(course = course),
@@ -163,6 +163,6 @@ def add_course_view(request, uni_name=None):
         return add_course_on_post(request)
 
     context = RequestContext(request)
-    template = loader.get_template('coursewiki/addcourse.html')
+    template = loader.get_template('coursewiki/courseeditor.html')
     return HttpResponse(template.render(context))
 
