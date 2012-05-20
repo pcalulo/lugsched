@@ -13,7 +13,10 @@ Course Wiki Search
 
 {% block narrow_content %}
     <div class="searchbox">
-        <h1 class="no-bottom-margin">Course Wiki - {{ uni_name }}</h1>
+        <h1 id="coursewiki-title-heading">
+            <span class="university-name">{{ uni_name }}</span>
+            Course Wiki
+        </h1>
         <span class="subtext">
             Search for courses from this university below.
         </span>
@@ -40,8 +43,7 @@ Course Wiki Search
         {% for course in searchResults %}
             <div class="search-result">
                 <a href="{{ course.get_absolute_url }}">
-                    {{ course.code }} - {{ course.name }}
-                </a>
+                    {{ course.code }} - {{ course.name }}</a>
                 <br>
                 <span class="subtext">{{ course.description }}</span>
             </div>
