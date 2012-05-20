@@ -53,14 +53,16 @@ def main_page(request, uni_name=None):
 def search_view(request, uni_name):
     template = loader.get_template('coursewiki/search.html')
 
+    university = University.objects.get(name=uni_name)
     results = Course.objects.all()
 
     context = RequestContext(request, {
         'uni_name': uni_name,
+        'university': university,
         'searchQuery': request.GET.get('searchQuery', ''),
         'searchResults': results,
     })
-    
+
     return HttpResponse(template.render(context))
 
 def course_details_view(request, uni_name, course_code):

@@ -49,7 +49,9 @@ Course Wiki Search
 
         <div id="add-course-tip">
             Unable to find the course you're looking for? LugSched might not know
-            about it yet. <a href="./addcourse">Add it to the wiki</a>.
+            about it yet.
+            {% url coursewiki.views.add_course_view uni_name=uni_name as add_url %}
+            <a href="{{ add_url }}">Add it to the wiki</a>.
         </div>
     {% endif %}
 {% endblock %}
