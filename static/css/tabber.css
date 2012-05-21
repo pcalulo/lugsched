@@ -4,6 +4,7 @@ ul.tabbernav {
     border-bottom: 1px solid #bbb;
     padding-bottom: 8px;
     text-align: center;
+    font-weight: normal;
 }
 
 ul.tabbernav > li {
