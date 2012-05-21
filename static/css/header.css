@@ -29,9 +29,10 @@ div.header {
     font-weight: normal;
 }
 
-#apptitle > a {
+#apptitle > a:first-child {
     color: white;
     text-decoration: none;
+    font-family: Bree Serif;
 }
 
 #header-university-label {
