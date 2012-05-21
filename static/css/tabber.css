@@ -2,38 +2,37 @@
 ul.tabbernav {
     padding-left: 16px;
     border-bottom: 1px solid #bbb;
-    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: center;
 }
 
 ul.tabbernav > li {
-    border: 1px solid #bbb;
-    border-bottom: none;
     display: inline;
     margin-right: 8px;
-
-    position: relative;
-
-/*
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;*/
-
-    background-color: #bbb;
-}
-
-ul.tabbernav > li.tabberactive {
-    border-bottom: 1px solid white;
     padding-top: 4px;
     padding-bottom: 4px;
-    
-    position: relative;
-    bottom: 4px;
-    background-color: inherit;
-}
 
-li.tabberactive > a {
+    background-color: lightgray;
+    border-radius: 8px;
+    box-shadow: 0 0 10px 1px lightgray;
 }
 
 ul.tabbernav > li > a {
+    /* Extend the clickable area to cover the entire "tab" */
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+ul.tabbernav > li.tabberactive {
+    position: relative;
+    background-color: #9c0;
+}
+
+ul > li.tabberactive > a {
+    color: white;
+}
+
+ul.tabbernav a {
     text-decoration: none;
     font-size: 0.8em;
     color: #333;
