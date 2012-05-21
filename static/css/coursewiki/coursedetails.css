@@ -7,8 +7,7 @@ div#course-details {
 }
 
 div.course-actions {
-    position: relative;
-    top: 8px;
+    float: right;
 }
 
 .actionbutton {
@@ -17,6 +16,7 @@ div.course-actions {
     box-shadow: 0 0 10px 1px lightgray;
     text-decoration: none;
     border-radius: 8px;
+    background-color: white;
 
     font-size: 12px;
     font-weight: lighter;
@@ -24,14 +24,33 @@ div.course-actions {
     text-transform: none;
 }
 
-#course-info {
-    width: 50%;
+#course-info-container {
     float: left;
+    width: 50%;
+}
+
+#course-info {
+    border: 1px solid lightgray;
+    background-color: white;
+    padding: 8px;
+}
+
+#course-info h1 {
+    margin: 0;
+}
+
+.course-details-ad {
+    text-align: center;
+    margin-top: 16px;
+}
+
+#sections-container {
+    float: right;
+    width: 50%;
 }
 
 #sections {
-    width: 50%;
-    float: right;
+    padding: 8px;
 }
 
 #add-section-toggle {
@@ -39,7 +58,7 @@ div.course-actions {
 }
 
 #sections-header {
-    margin-bottom: 4px;
+    margin: 0;
 }
 
 #add-section-panel {

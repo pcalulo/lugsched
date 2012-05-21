@@ -31,130 +31,157 @@
 {% block padded_content %}
     <div id="container" class="tabber">
 
+    <!-- Course Details tab -->
     <div id="course-details" class="tabbertab" title="Course Details">
-        <div id="course-info">
-            <h1 class="no-bottom-margin">
-                {{ course.code }}
-                <span class="faded-out">{{ course.name }}</span>
-            </h1>
-            <span class="subtext">
-                {{ course.description }}
-                <div class="course-actions">
-                    <a class="actionbutton" href="history">History</a>
-                    <a class="actionbutton" href="edit">Edit</a>
-                </div>
-            </span>
+        <div id="course-info-container">
+            <!--
+            o hai there, person reading the source.
+
+            Yes, I know this div doesn't have useful semantics etc etc, but until I
+            can use the shiny new flexbox and expect it to work pretty much
+            everywhere, I need to do this.
+
+            But hey, LugSched is FOSS! If you have a better way of doing it, either
+            tell me, or if you're extra-awesome, send me a pull request.
+            -->
+            <div id="course-info">
+                <h1>
+                    {{ course.code }}
+                    <span class="faded-out">{{ course.name }}</span>
+                    <div class="course-actions">
+                        <a class="actionbutton" href="history">History</a>
+                        <a class="actionbutton" href="edit">Edit</a>
+                    </div>
+                </h1>
+                <span class="subtext">
+                    {{ course.description }}
+                </span>
+                <hr>
+
+                <h2>About this course</h2>
+                <p>
+                    Bacon ipsum dolor sit amet jerky laborum pork belly, ut
+                    drumstick short ribs tenderloin sirloin turducken flank esse
+                    pastrami labore. Consectetur spare ribs hamburger culpa occaecat
+                    exercitation. Pork loin fugiat ullamco, sed drumstick ea
+                    proident ham hock beef capicola mollit non strip steak.
+                    Cupidatat sint nulla venison hamburger.
+                </p>
+            </div>
         </div>
 
-        <div id="sections">
-            <h2 id="sections-header">
-                Sections for the current term
-                <a id="add-section-toggle" href="javascript:void(null)" class="actionbutton"
-                    onClick="AddSectionPanel.toggle()">
-                    Add Section
-                </a>
-            </h2>
-            <div id="add-section-panel">
-                <h3 class="no-bottom-margin">Add Section</h3>
-                <span class="subtext">
-                    Please ensure that the information you enter here matches those
-                    listed in your school's course offerings for this term. All
-                    fields must be filled in.
-                </span>
-                <form action="sections" method="POST">
-                    <p>
-                        <label>Name:</label>
-                        <input type="text" size="5"></input>
-                        <span class="helptext">
-                            The identifier for this section as specified by your
-                            school, e.g. <em>S22</em>.
-                        </span>
-                    </p>
-                    <h4>Meetings</h4>
-                    <p>
-                        <label>Room:</label>
-                        <input type="text" size="5"></input>
-                        <span class="helptext">
-                            Where will the meeting(s) be held?
-                        </span>
-                    </p>
-                    <p>
-                        <label>Days:</label>
-                        <span id="weekday-checkboxes">
-                            <input type="checkbox" name="monday"></input>
-                            <label for="monday">Mon</label>
-
-                            <input type="checkbox" name="tuesday"></input>
-                            <label for="tuesday">Tue</label>
-
-                            <input type="checkbox" name="wednesday"></input>
-                            <label for="wednesday">Wed</label>
-
-                            <input type="checkbox" name="thursday"></input>
-                            <label for="thursday">Thu</label>
-
-                            <input type="checkbox" name="friday"></input>
-                            <label for="friday">Fri</label>
-
-                            <input type="checkbox" name="saturday"></input>
-                            <label for="saturday">Sat</label>
-                        </span>
-
-                        <!--
-                        Implement this after basic section-adding functionality
-                        is done.
-                        <input type="checkbox" name="specific-day"></input>
-                        <label for="specific-day">Specific date</label>
-                        -->
-
-                        <span class="helptext">
-                            Select all days on which this meeting takes place.
-                        </span>
-                    </p>
-                    <p>
-                        <label>Time slot:</label>
-                        <input type="text" size="7"></input>
-                        to
-                        <input type="text" size="7"></input>
-                        <span class="helptext">
-                            e.g. <em>8am</em> or <em>0800</em>
-                        </span>
-                    </p>
-    
-                    <div id="add-section-controls">
-                        <!--
-                        Finish basic section-adding functionality before
-                        adding this
-                        <input type="button" value="More meetings"></input>
-                        -->
-                        <hr>
-                        <input type="button" value="Submit"></input>
-                        <input type="button" value="Cancel"
-                            onClick="AddSectionPanel.hide()">
-                        </input>
-                    </div>
-                </form>
-            </div>
-            <div id="section-list">
-                {% if sections|length == 0 %}
+        <!-- Another non-semantic piece of HTML. See short blurb above. -->
+        <div id="sections-container">
+            <div id="sections">
+                <h2 id="sections-header">
+                    Sections for the current term
+                    <a id="add-section-toggle" href="javascript:void(null)" class="actionbutton"
+                        onClick="AddSectionPanel.toggle()">
+                        Add Section
+                    </a>
+                </h2>
+                <div id="add-section-panel">
+                    <h3 class="no-bottom-margin">Add Section</h3>
                     <span class="subtext">
-                        This course doesn't have any sections yet.
+                        Please ensure that the information you enter here matches those
+                        listed in your school's course offerings for this term. All
+                        fields must be filled in.
                     </span>
-                {% else %}
-                    <div class="clicklist-header">
-                        Hello, world!
-                    </div>
-                {% endif %}
-                {% for section in sections %}
-                    <div class="clicklist-item">
-                        <div class="clicklist-maintext">
-                            {{ section.name }}
+                    <form action="sections" method="POST">
+                        <p>
+                            <label>Name:</label>
+                            <input type="text" size="5"></input>
+                            <span class="helptext">
+                                The identifier for this section as specified by your
+                                school, e.g. <em>S22</em>.
+                            </span>
+                        </p>
+                        <h4>Meetings</h4>
+                        <p>
+                            <label>Room:</label>
+                            <input type="text" size="5"></input>
+                            <span class="helptext">
+                                Where will the meeting(s) be held?
+                            </span>
+                        </p>
+                        <p>
+                            <label>Days:</label>
+                            <span id="weekday-checkboxes">
+                                <input type="checkbox" name="monday"></input>
+                                <label for="monday">Mon</label>
+
+                                <input type="checkbox" name="tuesday"></input>
+                                <label for="tuesday">Tue</label>
+
+                                <input type="checkbox" name="wednesday"></input>
+                                <label for="wednesday">Wed</label>
+
+                                <input type="checkbox" name="thursday"></input>
+                                <label for="thursday">Thu</label>
+
+                                <input type="checkbox" name="friday"></input>
+                                <label for="friday">Fri</label>
+
+                                <input type="checkbox" name="saturday"></input>
+                                <label for="saturday">Sat</label>
+                            </span>
+
+                            <!--
+                            Implement this after basic section-adding functionality
+                            is done.
+                            <input type="checkbox" name="specific-day"></input>
+                            <label for="specific-day">Specific date</label>
+                            -->
+
+                            <span class="helptext">
+                                Select all days on which this meeting takes place.
+                            </span>
+                        </p>
+                        <p>
+                            <label>Time slot:</label>
+                            <input type="text" size="7"></input>
+                            to
+                            <input type="text" size="7"></input>
+                            <span class="helptext">
+                                e.g. <em>8am</em> or <em>0800</em>
+                            </span>
+                        </p>
+        
+                        <div id="add-section-controls">
+                            <!--
+                            Finish basic section-adding functionality before
+                            adding this
+                            <input type="button" value="More meetings"></input>
+                            -->
+                            <hr>
+                            <input type="button" value="Submit"></input>
+                            <input type="button" value="Cancel"
+                                onClick="AddSectionPanel.hide()">
+                            </input>
                         </div>
-                        <div class="clicklist-subtext">
-                            Something something something
+                    </form>
+                </div>
+                <div id="section-list">
+                    {% if sections|length == 0 %}
+                        <span class="subtext">
+                            This course doesn't have any sections yet.
+                        </span>
+                    {% else %}
+                        <div class="clicklist-header">
+                            Hello, world!
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endif %}
+                    {% for section in sections %}
+                        <div class="clicklist-item">
+                            <div class="clicklist-maintext">
+                                {{ section.name }}
+                            </div>
+                            <div class="clicklist-subtext">
+                                Something something something
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>

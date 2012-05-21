@@ -30,6 +30,7 @@ hr {
 
 p {
     line-height: 150%;
+    text-align: justify;
 }
 
 label, span.subtext {
