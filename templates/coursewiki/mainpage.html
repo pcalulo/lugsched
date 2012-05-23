@@ -18,7 +18,7 @@ Course Wiki
         </span>
     </div>
     <div class="searchbox">
-        <form method="GET" action="{{ coursewiki.views.search_view }}">
+        <form method="GET" action="{% url coursewiki.views.search_view uni_name %}">
             <input name="searchQuery" type="text" size="70"></input>
             <input type="submit" value="Search"></input>
         </form>
