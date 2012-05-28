@@ -120,6 +120,20 @@ class University(BaseUniversity):
         archived_uni.copy(self)
         archived_uni.save()
 
+    def get_history(self):
+        """
+        Gets all revisions of this University that has ever been stored in the
+        course wiki, ordered by creation date
+        """
+        history = self.archiveduniversity_set.all()
+
+        # Order the results by creation date, descending (newest first). If
+        # there are two instances created within the same second, order them by
+        # their IDs.
+        history = history.order_by('-edit_timestamp', '-pk')
+
+        return history
+
     def get_absolute_url(self):
         return '/wiki/uni/%s/' % urlquote(self.name, safe='')
 
@@ -136,6 +150,20 @@ class Term(BaseTerm):
         archived_term.copy(self)
         archived_term.save()
 
+    def get_history(self):
+        """
+        Gets all revisions of this Term that has ever been stored in the
+        course wiki, ordered by creation date
+        """
+        history = self.archivedterm_set.all()
+
+        # Order the results by creation date, descending (newest first). If
+        # there are two instances created within the same second, order them by
+        # their IDs.
+        history = history.order_by('-edit_timestamp', '-pk')
+
+        return history
+
 
 class Course(BaseCourse):
     def update(self, user, message):
@@ -148,6 +176,20 @@ class Course(BaseCourse):
         archived_course = ArchivedCourse()
         archived_course.copy(self)
         archived_course.save()
+
+    def get_history(self):
+        """
+        Gets all revisions of this Course that has ever been stored in the
+        course wiki, ordered by creation date
+        """
+        history = self.archivedcourse_set.all()
+
+        # Order the results by creation date, descending (newest first). If
+        # there are two instances created within the same second, order them by
+        # their IDs.
+        history = history.order_by('-edit_timestamp', '-pk')
+
+        return history
 
     def get_absolute_url(self):
         return ('/wiki/uni/%s/courses/%s/' %
@@ -168,6 +210,20 @@ class Section(BaseSection):
         archived_section.copy(self)
         archived_section.save()
 
+    def get_history(self):
+        """
+        Gets all revisions of this Section that has ever been stored in the
+        course wiki, ordered by creation date
+        """
+        history = self.archivedsection_set.all()
+
+        # Order the results by creation date, descending (newest first). If
+        # there are two instances created within the same second, order them by
+        # their IDs.
+        history = history.order_by('-edit_timestamp', '-pk')
+
+        return history
+
 
 class Meeting(BaseMeeting):
     def update(self, user, message):
@@ -180,6 +236,20 @@ class Meeting(BaseMeeting):
         archived_meeting = ArchivedMeeting()
         archived_meeting.copy(self)
         archived_meeting.save()
+
+    def get_history(self):
+        """
+        Gets all revisions of this Meeting that has ever been stored in the
+        course wiki, ordered by creation date
+        """
+        history = self.archivedmeeting_set.all()
+
+        # Order the results by creation date, descending (newest first). If
+        # there are two instances created within the same second, order them by
+        # their IDs.
+        history = history.order_by('-edit_timestamp', '-pk')
+
+        return history
 
 
 ################################################################################

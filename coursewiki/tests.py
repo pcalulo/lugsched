@@ -81,9 +81,7 @@ class CopyTest(TestCase):
         uni.address += appended_string
         uni.update(self.user, appended_string)
 
-        # The update() calls are extremely close to each other, so we can't
-        # order by edit_timestamp
-        history = uni.archiveduniversity_set.all().order_by('-pk')
+        history = uni.get_history()
 
         latest = history[0]
         self.assertEqual(latest.name, orig_name + appended_string)
@@ -111,9 +109,7 @@ class CopyTest(TestCase):
         term.note += appended_string
         term.update(self.user, 'Testing testing 1234')
 
-        # The update() calls are extremely close to each other, so we can't
-        # order by edit_timestamp.
-        history = term.archivedterm_set.all().order_by('-pk')
+        history = term.get_history()
 
         latest = history[0]
         self.assertEqual(latest.university, temp_uni)
@@ -148,7 +144,7 @@ class CopyTest(TestCase):
         course.creation_date = datetime.now()
         course.update(self.user, 'Testing testing 1234')
 
-        history = course.archivedcourse_set.all().order_by('-pk')
+        history = course.get_history()
 
         latest = history[0]
         self.assertEqual(latest.university, temp_uni)
@@ -184,7 +180,7 @@ class CopyTest(TestCase):
         section.term = temp_term
         section.update(self.user, 'Testing testing 1234')
 
-        history = section.archivedsection_set.all().order_by('-pk')
+        history = section.get_history()
 
         latest = history[0]
         self.assertEqual(latest.name, orig_name + appended_string)
