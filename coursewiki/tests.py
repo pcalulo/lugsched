@@ -26,6 +26,29 @@ def create_temp_university():
 
     return uni
 
+def create_temp_course(uni):
+    course = Course()
+
+    course.university = uni
+    course.code = 'EXAMPLE'
+    course.name = 'An example course'
+    course.description = 'Apple Banana Coconut'
+    course.creation_date = datetime.now()
+    course.update(uni.editor, 'Added temp course')
+
+    return course
+
+def create_temp_term(uni):
+    term = Term()
+    term.university = uni
+    term.academic_year = 2012
+    term.index = 1
+    term.note = 'Lorem ipsum dolor sit amet...'
+
+    term.update(uni.editor, 'Added temp term')
+
+    return term
+
 class CopyTest(TestCase):
     """
     Tests that check whether the data that gets copied into the archives is
@@ -39,6 +62,10 @@ class CopyTest(TestCase):
         user.email = 'test@example.com'
         user.save()
         sample_data.add_wiki_data(user)
+
+        self.temp_uni = create_temp_university()
+        self.temp_term = create_temp_term(self.temp_uni)
+        self.temp_course = create_temp_course(self.temp_uni)
 
 
     def test_university(self):
@@ -75,7 +102,7 @@ class CopyTest(TestCase):
         orig_index = term.index
         orig_note = term.note
 
-        temp_uni = create_temp_university()
+        temp_uni = self.temp_uni
         appended_string = 'Testing'
 
         term.university = temp_uni
@@ -110,7 +137,7 @@ class CopyTest(TestCase):
         orig_description = course.description
         orig_creation_date = course.creation_date
 
-        temp_uni = create_temp_university()
+        temp_uni = self.temp_uni
         appended_string = 'Testing'
         current_date = datetime.now()
 
@@ -139,4 +166,33 @@ class CopyTest(TestCase):
         self.assertEqual(second_latest.code, orig_code)
         self.assertEqual(second_latest.description, orig_description)
         self.assertEqual(second_latest.creation_date, orig_creation_date)
+
+    def test_section(self):
+        sections = Section.objects.all()
+
+        section = sections[0]
+        orig_name = section.name
+        orig_course = section.course
+        orig_term = section.term
+
+        temp_course = self.temp_course
+        temp_term = self.temp_term
+        appended_string = 'A'
+
+        section.name += appended_string
+        section.course = temp_course
+        section.term = temp_term
+        section.update(self.user, 'Testing testing 1234')
+
+        history = section.archivedsection_set.all().order_by('-pk')
+
+        latest = history[0]
+        self.assertEqual(latest.name, orig_name + appended_string)
+        self.assertEqual(latest.course, temp_course)
+        self.assertEqual(latest.term, temp_term)
+
+        second_latest = history[1]
+        self.assertEqual(second_latest.name, orig_name)
+        self.assertEqual(second_latest.course, orig_course)
+        self.assertEqual(second_latest.term, orig_term)
 
