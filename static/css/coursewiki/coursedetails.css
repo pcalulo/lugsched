@@ -1,4 +1,8 @@
 
+#breadcrumbs {
+    float: left;
+}
+
 div#container {
     min-height: 100%;
 }

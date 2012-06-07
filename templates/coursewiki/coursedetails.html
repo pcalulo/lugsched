@@ -29,6 +29,9 @@
 {% endblock %}
 
 {% block padded_content %}
+    <span id="breadcrumbs">
+        {{ course.university.name }} &gt; Courses &gt; {{ course.code }}
+    </span>
     <div id="container" class="tabber">
 
     <!-- Course Details tab -->

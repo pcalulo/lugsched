@@ -1,20 +1,18 @@
 
 ul.tabbernav {
-    padding-left: 16px;
     border-bottom: 1px solid #bbb;
-    padding-bottom: 8px;
-    text-align: center;
+    padding-left: 0px;
+    padding-bottom: 4px;
+    text-align: right;
     font-weight: normal;
 }
 
 ul.tabbernav > li {
     display: inline;
-    margin-right: 8px;
     padding-top: 4px;
     padding-bottom: 4px;
 
     background-color: lightgray;
-    border-radius: 8px;
     box-shadow: 0 0 10px 1px lightgray;
 }
 
