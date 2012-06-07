@@ -192,3 +192,55 @@ class CopyTest(TestCase):
         self.assertEqual(second_latest.course, orig_course)
         self.assertEqual(second_latest.term, orig_term)
 
+    def test_meeting(self):
+        meeting = Meeting()
+
+        # The section we use here doesn't really matter; what matters is that we
+        # have a section to work with
+        meeting.section = Section.objects.all()[0]
+        meeting.start_time = time(8, 0)
+        meeting.end_time = time(9, 30)
+        meeting.has_mondays = True
+        meeting.has_wednesdays = True
+
+        meeting.update(self.user, 'Add for testing')
+
+        orig_start_time = meeting.start_time
+        orig_end_time = meeting.end_time
+        
+        meeting.start_time = time(9, 40)
+        meeting.end_time = time(11, 10)
+        meeting.has_mondays = False
+        meeting.has_tuesdays = True
+        meeting.has_wednesdays = False
+        meeting.has_thursdays = True
+        meeting.has_fridays = True
+        meeting.has_saturdays = True
+        meeting.has_sundays = True
+
+        meeting.update(self.user, 'Testing testing 1234')
+
+        history = meeting.get_history()
+
+        latest = history[0]
+        self.assertEqual(meeting.start_time, latest.start_time)
+        self.assertEqual(meeting.end_time, latest.end_time)
+        self.assertEqual(meeting.has_mondays, latest.has_mondays)
+        self.assertEqual(meeting.has_tuesdays, latest.has_tuesdays)
+        self.assertEqual(meeting.has_wednesdays, latest.has_wednesdays)
+        self.assertEqual(meeting.has_thursdays, latest.has_thursdays)
+        self.assertEqual(meeting.has_fridays, latest.has_fridays)
+        self.assertEqual(meeting.has_saturdays, latest.has_saturdays)
+        self.assertEqual(meeting.has_sundays, latest.has_sundays)
+
+        second_latest = history[1]
+        self.assertEqual(second_latest.start_time, orig_start_time)
+        self.assertEqual(second_latest.end_time, orig_end_time)
+        self.assertTrue(second_latest.has_mondays)
+        self.assertFalse(second_latest.has_tuesdays)
+        self.assertTrue(second_latest.has_wednesdays)
+        self.assertFalse(second_latest.has_thursdays)
+        self.assertFalse(second_latest.has_fridays)
+        self.assertFalse(second_latest.has_saturdays)
+        self.assertFalse(second_latest.has_sundays)
+
