@@ -1,8 +1,9 @@
 
-p {
+form p {
     line-height: 90%;
     padding: 0px;
     margin-bottom: 10px;
+    text-align: inherit;
 }
 
 .extra-bottom-padding {
