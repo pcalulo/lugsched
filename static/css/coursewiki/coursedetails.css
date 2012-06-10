@@ -29,7 +29,7 @@ div.course-actions {
 
 #course-info-container {
     float: left;
-    width: 50%;
+    width: 65%;
 }
 
 #course-info {
@@ -49,7 +49,7 @@ div.course-actions {
 
 #sections-container {
     float: right;
-    width: 50%;
+    width: 35%;
 }
 
 #sections {
